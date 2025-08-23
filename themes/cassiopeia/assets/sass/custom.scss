@@ -1,0 +1,72 @@
+// Custom theme styles.
+
+// style the site brand logo
+.site-brand {
+    height: 48px;
+    width: 190px;
+    fill: currentColor;
+}
+
+// astro-icons
+.astro-icons {
+    width: 1em;
+    height: 1em;
+    fill: $primary;
+}
+
+.astro-icons-big {
+    width: 4em;
+    height: 4em;
+}
+
+// site icons
+.site-icons {
+    width: 1em;
+    height: 1em;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+// icons styles
+.social-icon {
+    width: 1.2em;
+    height: 1.2em;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+a /*hover colors*/ {
+    $icon-blue: #0085ff;
+    $icon-black: #000000;
+    $icon-gray: #8b8b8b;
+    $icon-red: #FF0000;
+
+    .icon-twitter:hover {
+        fill: $icon-blue;
+    }
+
+    .icon-xitter:hover {
+        fill: $icon-black;
+    }
+    .icon-bsky:hover {
+        fill: $icon-blue;
+    }
+
+    .icon-github:hover {
+        fill: $icon-gray;
+    }
+
+    .icon-youtube:hover {
+        fill: $icon-red;
+    }
+
+    .icon-facebook:hover {
+        fill: $icon-blue;
+    }
+}

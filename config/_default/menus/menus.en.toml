@@ -1,0 +1,129 @@
+[[main]]
+name = "About"
+url = "about"
+weight = 20
+title = "About Westminster Astronomical Society"
+
+[[main]]
+name = "Events"
+url = "https://nightsky.jpl.nasa.gov/events/wasi/"
+weight = 20
+title = "WASI Night Sky Network Calendar"
+
+[[main]]
+identifier = "observatory"
+name = "Observatory"
+url = "observatory"
+weight = 40
+title = "WASI Observatory"
+
+[[main]]
+identifier = "planetarium"
+name = "Planetarium"
+url = "planetarium"
+weight = 50
+title = "Bear Branch Planetarium"
+
+[[main]]
+identifier = "membership"
+name = "Membership"
+url = "membership"
+weight = 60
+title = "Join the Westminster Astronomical Society"
+
+[[main]]
+identifier = "resources"
+name = "Resources"
+weight = 70
+title = "Astronomy Resources"
+
+[[main]]
+  name = "Bear Branch Almanac"
+  url = "almanac"
+  weight = 5
+  parent = "resources"
+  title = "Sun and Moon Almanac"
+
+[[main]]
+  name = "General Astronomy"
+  url = "tags/astronomy"
+  weight = 10
+  parent = "resources"
+
+[[main]]
+  name = "Observer Resources"
+  url = "tags/observer"
+  weight = 20
+  parent = "resources"
+
+[[main]]
+  name = "Outreach Resources"
+  url = "tags/outreach"
+  weight = 30
+  parent = "resources"
+
+[[main]]
+identifier = "news"
+name = "News"
+weight = 80
+title = "WASI News and Announcements"
+
+[[main]]
+  name = "All"
+  url = "post"
+  weight = 100
+  parent = "news"
+
+[[main]]
+  name = "Star*Points"
+  url = "tags/star-points"
+  weight = 20
+  parent = "news"
+
+[[main]]
+  name = "Announcements"
+  url = "tags/announcements"
+  weight = 30
+  parent = "news"
+
+[[main]]
+  name = "Newsletter"
+  url = "tags/newsletter"
+  weight = 40
+  parent = "news"
+
+
+[[social]]
+  name = "GitHub"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-github'><use href='icons/social-icons.svg#github'/></svg>"
+  url = "https://github.com/Westminster-Astronomical-Society"
+  weight = 10
+  title = "Visit the GitHub project"
+
+[[social]]
+  name = "Bsky"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-bsky'><use href='icons/social-icons.svg#bsky'/></svg>"
+  url = "https://bsky.app/profile/wasi-astro.bsky.social"
+  weight = 20
+  title = "Contact us on Bsky"
+
+[[social]]
+  name = "Xitter"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-xitter'><use href='icons/social-icons.svg#xitter'/></svg>"
+  url = "https://twitter.com/WASI_Astro/"
+  weight = 20
+  title = "Contact us on Xitter"
+
+[[social]]
+  name = "Youtube"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-youtube'><use href='icons/social-icons.svg#youtube'/></svg>"
+  url = "https://www.youtube.com/@westminsterastronomicalsoc1858"
+  weight = 30
+  title = "Visit our YouTube channel"
+
+  [[social]]
+  name = "Facebook"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-facebook'><use href='icons/social-icons.svg#facebook'/></svg>"
+  url = "https://www.facebook.com/groups/wasi.contact/"
+  weight = 40
+  title = "Visit our Facebook page"

@@ -1,0 +1,13 @@
+[en]
+languageName = "English"
+languageCode = "en-US"
+weight = 10
+[en.params]
+  languageISO = "EN"
+
+[es]
+languageName = "Spanish"
+languageCode = "es-ES"
+weight = 20
+[es.params]
+  languageISO = "ES"
