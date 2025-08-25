@@ -1,3 +1,6 @@
+{{ if .Site.Params.alert -}}
+{{ partial "header/alert.html" . }}
+{{ end -}}
 <!--! Navigation bar -->
 
 <header class="main-header sticky-top bg-body" style="background-color: var(--bs-body-bg);">
