@@ -5,28 +5,31 @@
 {{ $cfg := cond (and $raw (isset $raw "features")) $raw.features $raw }}
 
 {{ if and $cfg (ne $cfg.enable false) (isset $cfg "items") }}
-{{ with index $cfg "section-title" }}
-<h2 class="display-8 text-center text-body-emphasis mb-4">{{ . }}</h2>
-{{ end }}
-<div class="row justify-content-center mt-lg-3">
-    {{ range $cfg.items }}
-    <div class="col-lg-4">
-        <div class="d-flex align-items-center justify-content-center gap-3 mb-3">
-            {{ $icon := default "/icons/astro-icons.svg#astro-1-1" .icon }}
-            <svg xmlns="http://www.w3.org/2000/svg" class="astro-icons astro-icons-big">
-                <use href="{{ $icon | relURL }}" />
-            </svg>
-            <h3 class="display-8 mb-0">{{ .title }}</h3>
+
+<section class="section container bg-light p-4 my-5">
+    {{ with index $cfg "section-title" }}
+    <h2 class="display-8 text-center text-body-emphasis mb-4">{{ . }}</h2>
+    {{ end }}
+    <div class="row justify-content-center mt-lg-3">
+        {{ range $cfg.items }}
+        <div class="col-lg-4">
+            <div class="d-flex align-items-center justify-content-center gap-3 mb-3">
+                {{ $icon := default "/icons/astro-icons.svg#astro-1-1" .icon }}
+                <svg xmlns="http://www.w3.org/2000/svg" class="astro-icons astro-icons-big">
+                    <use href="{{ $icon | relURL }}" />
+                </svg>
+                <h3 class="display-8 mb-0">{{ .title }}</h3>
+            </div>
+            <p>{{ .content }}</p>
+            {{ with .button }}
+            {{ if .enable }}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a class="btn btn-primary px-4" href="{{ .link }}">{{ .label }}</a>
+            </div>
+            {{ end }}
+            {{ end }}
         </div>
-        <p>{{ .content }}</p>
-        {{ with .button }}
-        {{ if .enable }}
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <a class="btn btn-primary px-4" href="{{ .link }}">{{ .label }}</a>
-        </div>
-        {{ end }}
         {{ end }}
     </div>
-    {{ end }}
-</div>
+</section>
 {{ end }}
