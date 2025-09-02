@@ -1,7 +1,7 @@
-# ---------------------------- Carousel ----------------------------
+# ---------------------------- Features ----------------------------
 
   #  Data keys supported (in `data/features.yml` under `features`):
-  #    - enable: true|false        # show/hide the carousel
+  #    - enable: true|false        # show/hide the features section
   #    - section-title: "Title"    # optional; title text for the features section
   #
   #    - items:                    # array of feature objects
@@ -13,7 +13,7 @@
 
 features:
   enable: true
-  section-title: "" # optional; title text for the features section
+  section-title: ""
 
   items:
     - icon: "/icons/astro-icons.svg#astro-4-1"
