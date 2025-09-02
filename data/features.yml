@@ -1,0 +1,41 @@
+# ---------------------------- Carousel ----------------------------
+
+  #  Data keys supported (in `data/features.yml` under `features`):
+  #    - enable: true|false        # show/hide the carousel
+  #    - section-title: "Title"    # optional; title text for the features section
+  #
+  #    - items:                    # array of feature objects
+  #        - icon: "path/to/icon.svg"
+  #          title: "Feature Title"
+  #          content: "Feature Content"
+  #
+  # The features section will display three across or stacked
+
+features:
+  enable: true
+  section-title: "" # optional; title text for the features section
+
+  items:
+    - icon: "/icons/astro-icons.svg#astro-4-1"
+      title: "Outreach"
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
+      button:
+        enable: true
+        label: "Learn more"
+        link: "#outreach"
+
+    - icon: "/icons/astro-icons.svg#astro-2-1"
+      title: "Observing"
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
+      button:
+        enable: true
+        label: "Learn more"
+        link: "#observing"
+
+    - icon: "/icons/astro-icons.svg#astro-5-1"
+      title: "Resources"
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
+      button:
+        enable: true
+        label: "Learn more"
+        link: "#resources"

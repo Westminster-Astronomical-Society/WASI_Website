@@ -1,25 +1,32 @@
-<!-- Featueres section -->
+<!-- Features section: render from data/features.yml -->
+{{ $raw := .Site.Data.features }}
 
-<div class="row justify-content-center text-center mt-lg-3">
+{{/* Normalize config: prefer $raw.features if present, otherwise use $raw */}}
+{{ $cfg := cond (and $raw (isset $raw "features")) $raw.features $raw }}
+
+{{ if and $cfg (ne $cfg.enable false) (isset $cfg "items") }}
+{{ with index $cfg "section-title" }}
+<h2 class="display-8 text-center text-body-emphasis mb-4">{{ . }}</h2>
+{{ end }}
+<div class="row justify-content-center mt-lg-3">
+    {{ range $cfg.items }}
     <div class="col-lg-4">
-        <svg xmlns='http://www.w3.org/2000/svg' class='astro-icons astro-icons-big'>
-            <use href="{{ `/icons/astro-icons.svg#astro-4-1` | relURL }}"/>
-        </svg>
-        <h2 class="h2">Public Outreach</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos.</p>
+        <div class="d-flex align-items-center justify-content-center gap-3 mb-3">
+            {{ $icon := default "/icons/astro-icons.svg#astro-1-1" .icon }}
+            <svg xmlns="http://www.w3.org/2000/svg" class="astro-icons astro-icons-big">
+                <use href="{{ $icon | relURL }}" />
+            </svg>
+            <h3 class="display-8 mb-0">{{ .title }}</h3>
+        </div>
+        <p>{{ .content }}</p>
+        {{ with .button }}
+        {{ if .enable }}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a class="btn btn-primary px-4" href="{{ .link }}">{{ .label }}</a>
+        </div>
+        {{ end }}
+        {{ end }}
     </div>
-    <div class="col-lg-4">
-        <svg xmlns='http://www.w3.org/2000/svg' class='astro-icons astro-icons-big'>
-            <use href="{{ `/icons/astro-icons.svg#astro-2-1` | relURL }}"/>
-        </svg>
-        <h2 class="h2">Observing the Night Sky</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos.</p>
-    </div>
-    <div class="col-lg-4">
-        <svg xmlns='http://www.w3.org/2000/svg' class='astro-icons astro-icons-big'>
-            <use href="{{ `/icons/astro-icons.svg#astro-5-1` | relURL }}"/>
-        </svg>
-        <h2 class="h2">Astronomy Resources</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos.</p>
-    </div>
+    {{ end }}
 </div>
+{{ end }}
