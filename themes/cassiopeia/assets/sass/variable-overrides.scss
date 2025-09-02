@@ -1,7 +1,7 @@
 // Default variable overrides
 
 // scss-docs-start theme-color-variables
-$primary:       #3a3a79;
+// $primary:       #3a3a79;
 // $secondary:     #6c757d;
 // $success:       #198754;
 // $info:          #0dcaf0;
@@ -14,3 +14,25 @@ $primary:       #3a3a79;
 // Your variable overrides
 // $body-bg: #212529;
 // $body-color: #dee2e6;
+
+$theme-colors: (
+  "primary":    #3D3E77,
+  "secondary":  #6c757d,
+  "success":    #198754,
+  "info":       #0dcaf0,
+  "warning":    #ffc107,
+  "danger":     #dc3545,
+  "light":      #f8f9fa,
+  "dark":       #212529
+);
+
+$theme-colors-dark: (
+  "primary":    #4d4e96,
+  "secondary":  #adb5bd,
+  "success":    #71dd8a,
+  "info":       #66e0ff,
+  "warning":    #ffd966,
+  "danger":     #ff6666,
+  "light":      #343a40,
+  "dark":       #f8f9fa
+);

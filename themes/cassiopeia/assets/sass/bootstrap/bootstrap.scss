@@ -5,6 +5,8 @@
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
+@import "../variable-overrides.scss";
+
 @import "variables";
 @import "variables-dark";
 @import "maps";
@@ -49,4 +51,14 @@
 
 // Utilities
 @import "utilities/api";
+
+// Generate CSS custom properties for dark theme colors so --bs-primary etc. exist under [data-bs-theme="dark"]
+@if type-of($theme-colors-dark) == "map" {
+  [data-bs-theme="dark"] {
+    @each $name, $color in $theme-colors-dark {
+      --bs-#{$name}: #{$color};
+      --bs-#{$name}-rgb: #{red($color)}, #{green($color)}, #{blue($color)};
+    }
+  }
+}
 // scss-docs-end import-stack
