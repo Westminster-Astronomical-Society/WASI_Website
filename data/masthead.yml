@@ -1,0 +1,19 @@
+# ---------------------------- Masthead ----------------------------
+
+  # banner:
+  #   enable: true                  # Set to false to hide the banner
+  #   title: "Title"                # Main heading text (uses site title if not specified)
+  #   content: "Content"            # Subtitle or description
+  #   button:
+  #     enable: true                # Set to false to hide the button
+  #     label: "About WASI"         # Button text
+  #     link: "#about"              # Button link (anchor or URL)
+
+masthead:
+  enable: true
+  title: "Westminster Astronomical Society"
+  content: "Bringing the Universe to Carroll County, Maryland since 1984"
+  button:
+    enable: true
+    label: "About WASI"
+    link: "#about"
