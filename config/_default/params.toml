@@ -24,6 +24,7 @@ footerAboutTitle = ""
 footerAboutText = ""
 
 [options]
+colormode = "light"
 bootStrapJs = true
 breadCrumb = true
 listCategoryFilter = true

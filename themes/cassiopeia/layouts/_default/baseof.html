@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}">
+<html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}" data-bs-theme="{{ .Site.Params.options.colorMode | default "dark" }}">
 {{ partial "head/head.html" . }}
 {{ if eq .Kind "home" -}}
     {{ .Store.Set "class" "home" -}}
