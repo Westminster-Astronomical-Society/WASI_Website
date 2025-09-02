@@ -1,8 +1,15 @@
-<div class="row row-cols-1 g-4">
-
-    {{ range .Site.Taxonomies.tags.featured }}
+<!-- Featured Pages section: render from data/pages.yml -->
+{{ $cfg := default (dict) .Site.Data.pages.featured_pages }}
+{{ if $cfg.enable }}
+<section class="section container bg-light p-4 my-5">
+    {{ $title := index $cfg "section-title" | default "" }}
+    {{ $titleTrim := replaceRE "\\s+" "" $title }}
+    {{ if ne $titleTrim "" }}
+    <h2 class="display-8 text-center text-body-emphasis mb-4">{{ $title }}</h2>
+    {{ end }}
+    <div class="row row-cols-1 g-4">
+        {{ range .Site.Taxonomies.tags.featured }}
         <div class="col">
-
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">
@@ -12,9 +19,9 @@
                     </h4>
                     <p class="text-text">
                         {{ with .Params.description }}
-                            {{ . }}
+                        {{ . }}
                         {{ else }}
-                            {{ .Summary | truncate 400 }}
+                        {{ .Summary | truncate 400 }}
                         {{ end }}
                     </p>
                     <p class="text-text text-muted">
@@ -24,7 +31,8 @@
                     </p>
                 </div>
             </div>
-    
         </div>
-    {{ end }}
-</div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}

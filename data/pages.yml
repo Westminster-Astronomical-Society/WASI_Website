@@ -1,0 +1,11 @@
+# ---------------------------- Featured Pages ----------------------------
+
+  #  Data keys supported (in `data/posts.yml` under `featured_pages`):
+  #    - enable: true|false        # show/hide the featured pages
+  #    - section-title: "Title"    # optional; title text for the featured pages section
+  #
+  # The featured pages section will display three across or stacked
+
+featured_pages:
+  enable: true
+  section-title: "Featured Pages"
