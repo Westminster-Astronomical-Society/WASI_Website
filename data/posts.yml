@@ -1,0 +1,13 @@
+# ---------------------------- Latest Posts ----------------------------
+
+  #  Data keys supported (in `data/posts.yml` under `latest_posts`):
+  #    - enable: true|false        # show/hide the latest posts
+  #    - section-title: "Title"    # optional; title text for the latest posts section
+  #    - number_of_posts: #        # number of posts to display; default: 3
+  #
+  # The latest posts section will display three across or stacked
+
+latest_posts:
+  enable: true
+  section-title: "Latest Posts"
+  number_of_posts: 3 # Three looks best

@@ -1,8 +1,16 @@
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-    {{ range first 3 (where .Site.RegularPages.ByDate.Reverse "Section" "post" ) }}
+<!-- latest-posts section: render from data/posts.yml -->
+{{ $cfg := default (dict) .Site.Data.posts.latest_posts }}
+{{ if $cfg.enable }}
+<section class="section container bg-light p-4 my-5">
+    {{ $title := index $cfg "section-title" | default "" }}
+    {{ $titleTrim := replaceRE "\\s+" "" $title }}
+    {{ if ne $titleTrim "" }}
+    <h2 class="display-8 text-center text-body-emphasis mb-4">{{ $title }}</h2>
+    {{ end }}
+    <div class="row row-cols-1 row-cols-lg-3 g-4">
+        {{ $n := default 3 $cfg.number_of_posts }}
+        {{ range first $n (where .Site.RegularPages.ByDate.Reverse "Section" "post" ) }}
         <div class="col">
-
             <div class="card h-100">
                 <div class="card-body">
                     <h4 class="card-title">
@@ -11,15 +19,15 @@
                         </a>
                     </h4>
                     {{ with .Params.authors }}
-                        <p class="card-subtitle text-muted">
-                            by {{ index . 0 }}
-                        </p>
+                    <p class="card-subtitle text-muted">
+                        by {{ index . 0 }}
+                    </p>
                     {{ end }}
                     <p class="card-text mt-3">
                         {{ with .Params.description }}
-                            {{ . }}
+                        {{ . }}
                         {{ else }}
-                            {{ .Summary | truncate 200 }}
+                        {{ .Summary | truncate 200 }}
                         {{ end }}
                     </p>
                 </div>
@@ -27,8 +35,8 @@
                     <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small>
                 </div>
             </div>
- 
         </div>
-    {{ end }}
-
-</div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
