@@ -70,8 +70,15 @@ and emits the resource RelPermalink when available, otherwise falls back to relU
             <div class="info-box bg-dark bg-opacity-75 text-light p-4 rounded shadow" style="max-width:400px; text-align:left;">
               {{ with $ib.title }}<h5 class="mb-2">{{ . }}</h5>{{ end }}
               {{ with $ib.content }}<p class="mb-3">{{ . | markdownify | safeHTML }}</p>{{ end }}
-              {{ with $ib.link }}<a class="btn btn-primary btn-sm" data-bs-toggle="offcanvas" href="{{ . }}" role="button"
-                aria-controls="offcanvasDonate" style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>{{ end}}
+              {{/* Render info box action: prefer `offcanvas` key, fall back to `link` */}}
+              {{ $off := index $ib "offcanvas" }}
+              {{ $lnk := index $ib "link" }}
+              {{ if $off }}
+                {{ $ctrl := replaceRE "^#" "" $off }}
+                <a class="btn btn-primary btn-sm" data-bs-toggle="offcanvas" data-bs-target="{{ $off }}" href="{{ $off }}" role="button" aria-controls="{{ $ctrl }}" style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>
+              {{ else if $lnk }}
+                <a class="btn btn-primary btn-sm" href="{{ $lnk }}" role="button" style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>
+              {{ end }}
             </div>
           </div>
           {{ end }}
