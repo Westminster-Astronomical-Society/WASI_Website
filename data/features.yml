@@ -20,7 +20,7 @@ features:
       title: "Outreach"
       content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
       button:
-        enable: true
+        enable: false
         label: "Learn more"
         link: "#outreach"
 
@@ -28,7 +28,7 @@ features:
       title: "Observing"
       content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
       button:
-        enable: true
+        enable: false
         label: "Learn more"
         link: "#observing"
 
@@ -36,6 +36,6 @@ features:
       title: "Resources"
       content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
       button:
-        enable: true
+        enable: false
         label: "Learn more"
         link: "#resources"

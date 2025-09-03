@@ -19,7 +19,7 @@
   #            link: "#"
 
 carousel:
-  enable: true
+  enable: false
   autoplay: true
   transition: "fade"
   default_interval: 5000

@@ -1,7 +1,7 @@
 # ---------------------------- Banner ----------------------------
 
   # banner:
-  #   enable: true                  # Set to false to hide the banner
+  #   enable: true|false            # Set to false to hide the banner
   #   bg_image: "assets/images/.."  # Path to the background image
   #   bg_image_credit: ""           # Optional: Add photographer credit with Markdown link
   #   icon: ""                      # Optional: Specify an icon from astro-icons.svg
