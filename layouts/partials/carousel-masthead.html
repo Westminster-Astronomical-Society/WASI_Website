@@ -1,0 +1,102 @@
+{{/* Partial: carousel-masthead
+Uses data from data/carousel.yml (available at .Site.Data.carousel)
+
+The partial resolves images via Hugo's resource pipeline (resources.Get / GetMatch)
+and emits the resource RelPermalink when available, otherwise falls back to relURL.
+*/}}
+
+{{ $raw := .Site.Data.carousel }}
+{{ $data := or (index $raw "carousel") $raw }}
+{{ if and $data (or $data.enable (not (isset $data "enable"))) }}
+<section id="carousel-masthead" class="section" data-bs-theme="light">
+  <div id="carousel" class="carousel slide {{ if eq $data.transition "fade" }}carousel-fade{{ end }}"
+    data-bs-ride="{{ if $data.autoplay }}carousel{{ else }}false{{ end }}">
+    <div class="carousel-indicators d-none d-sm-flex">
+      {{ $count := len $data.slides }}
+      {{ range $n := seq $count }}
+      {{ $i := sub $n 1 }}
+      <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{ $i }}"
+        class="{{ if eq $i 0 }}active{{ end }}" aria-current="{{ if eq $i 0 }}true{{ end }}"
+        aria-label="Slide {{ $n }}"></button>
+      {{ end }}
+    </div>
+    <div class="carousel-inner">
+      {{ $count := len $data.slides }}
+      {{ range $n := seq $count }}
+      {{ $idx := sub $n 1 }}
+      {{ $key := printf "slide-%d" $n }}
+      {{ $slide := index $data.slides $key }}
+      {{ if $slide }}
+      {{/* Resolve media sources (video/poster or image) */}}
+      {{ $videoPath := or $slide.video }}
+      {{ $videoRes := resources.Get $videoPath }}
+      {{ if not $videoRes }}{{ $videoRes = resources.GetMatch (print "**/" (path.Base $videoPath)) }}{{ end }}
+      {{ $posterPath := or $slide.poster }}
+      {{ $posterRes := resources.Get $posterPath }}
+      {{ if not $posterRes }}{{ $posterRes = resources.GetMatch (print "**/" (path.Base $posterPath)) }}{{ end }}
+
+      {{ $imgPath := or $slide.image }}
+      {{ $imgRes := resources.Get $imgPath }}
+      {{ if not $imgRes }}{{ $imgRes = resources.GetMatch (print "**/" (path.Base $imgPath)) }}{{ end }}
+
+      {{ $ib := $slide.info_box }}
+      {{ $hasInfo := and $ib (or $ib.enable (not (isset $ib "enable"))) }}
+      {{ $interval := or $slide.interval $data.default_interval }}
+
+      <div class="carousel-item {{ if eq $idx 0 }}active{{ end }} slide-item" {{ with $interval
+        }}data-bs-interval="{{ . }}" {{ end }}>
+        {{ if $videoPath }}
+        <video class="d-block w-100 slide-image" autoplay muted loop playsinline {{ with $posterPath
+          }}poster="{{ if $posterRes }}{{ $posterRes.RelPermalink }}{{ else }}{{ . | relURL }}{{ end }}" {{ end }}>
+          <source src="{{ if $videoRes }}{{ $videoRes.RelPermalink }}{{ else }}{{ $videoPath | relURL }}{{ end }}"
+            type="video/mp4">
+          {{ if $imgRes }}
+          <img src="{{ $imgRes.RelPermalink }}" class="d-block w-100 slide-image" alt="{{ $slide.title }}">
+          {{ else }}
+          <img src="{{ $imgPath | relURL }}" class="d-block w-100 slide-image" alt="{{ $slide.title }}">
+          {{ end }}
+        </video>
+        {{ else }}
+        <img src="{{ if $imgRes }}{{ $imgRes.RelPermalink }}{{ else }}{{ $imgPath | relURL }}{{ end }}"
+          class="d-block w-100 slide-image" alt="{{ $slide.title }}">
+        {{ end }}
+
+        <div class="carousel-caption top-0 mt-5">
+          <h1 class="display-4 mt-5">{{ $slide.title }}</h1>
+          <p class="fs-5">{{ $slide.content }}</p>
+
+          {{ if $hasInfo }}
+          <div class="position-absolute bottom-0 start-0 mb-5" style="z-index:1;">
+            <div class="info-box bg-dark bg-opacity-75 text-light p-4 rounded shadow" style="max-width:400px; text-align:left;">
+              {{ with $ib.title }}<h5 class="mb-2">{{ . }}</h5>{{ end }}
+              {{ with $ib.content }}<p class="mb-3">{{ . | markdownify | safeHTML }}</p>{{ end }}
+              {{ with $ib.link }}<a class="btn btn-primary btn-sm" data-bs-toggle="offcanvas" href="{{ . }}" role="button"
+                aria-controls="offcanvasDonate" style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>{{ end}}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+
+
+
+        {{ with $slide.image_credit }}
+        <div class="{{ cond $hasInfo " position-absolute bottom-0 end-0 m-3" "position-absolute bottom-0 start-0 m-3"
+          }}" style="z-index:2;" data-bs-theme="dark">
+          <small class="text-body-secondary cover-credit">{{ . | markdownify | safeHTML }}</small>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+{{ end }}

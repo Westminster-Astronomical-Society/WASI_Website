@@ -1,0 +1,78 @@
+# ---------------------------- Carousel ----------------------------
+
+  #  Data keys supported (in `data/carousel.yml` under `carousel`):
+  #    - enable: true|false        # show/hide the carousel
+  #    - autoplay: true|false      # enable automatic cycling
+  #    - transition: "fade"        # optional; set to "fade" to add .carousel-fade class
+  #    - default_interval: 5000    # global default interval (ms) for slides
+  #    - slides:                   # array of slide objects
+  #        - image_1: "assets/path/to.jpg"   # image path (resources.Get or static)
+  #          image_credit: "Credit text or [Link](https://example.com)"
+  #          title: "Slide title"
+  #          content: "Slide content"
+  #          interval: 8000        # Per-slide interval (ms)
+  #          info_box:             # optional info box overlay (bottom-left)
+  #            enable: true|false
+  #            title: "Info Box Title"
+  #            content: "Info Box Content"
+  #            button_label: "Button Label"
+  #            link: "#"
+
+carousel:
+  enable: true
+  autoplay: true
+  transition: "fade"
+  default_interval: 5000
+
+  slides:
+    slide-1:
+      image: "assets/images/backgrounds/6L3A3162.jpg"
+      image_credit: "Credit: [Photographer Name](https://example.com)"
+      title: "Westminster Astronomical Society"
+      content: "Bringing the Universe to Carroll County, Maryland since 1984"
+      interval: 8000
+      info_box:
+        enable: true
+        title: "Support WASI!"
+        content: "Your generous support helps us bring the wonders of the night sky to everyone!"
+        button_label: "Donate"
+        link: "#offcanvasDonate"
+
+    slide-2:
+      image: "assets/images/backgrounds/6L3A3177.jpg"
+      image_credit: "Credit: [Photographer Name](https://example.com)"
+      title: "Westminster Astronomical Society"
+      content: "Bringing the Universe to Carroll County, Maryland since 1984"
+      info_box:
+        enable: true
+        title: "Join WASI!"
+        content: "Joining is easy. Become a member today and start exploring the wonders of the universe!"
+        button_label: ""
+        link: "#offcanvasJoin"
+
+
+    slide-3:
+      video: "assets/images/backgrounds/lune.mp4"
+      poster: "assets/images/backgrounds/lune_poster.png"
+      image_credit: "Credit: [Photographer Name](https://example.com)"
+      title: "Westminster Astronomical Society"
+      content: "Bringing the Universe to Carroll County, Maryland since 1984"
+      interval: 10000
+      info_box:
+        enable: true
+        title: "Observe the Moon!"
+        content: "International Observe the Moon Night is October 4, 2025. Join us for a night of lunar observation and exploration!"
+        button_label: ""
+        link: "#"
+
+    slide-4:
+      image: "assets/images/backgrounds/6L3A3255.jpg"
+      image_credit: "Credit: [Photographer Name](https://example.com)"
+      title: "Westminster Astronomical Society"
+      content: "Bringing the Universe to Carroll County, Maryland since 1984"
+      info_box:
+        enable: false
+        title: "Public Stargazing Events"
+        content: "Join us at our next event and see what wonders await you in the night sky!"
+        button_label: ""
+        link: "#"
