@@ -13,7 +13,7 @@
   #     link: "#about"              # Button link (anchor or URL)
 
 banner:
-  enable: true
+  enable: false
   bg_image: "assets/images/backgrounds/bg_bfrmo.jpg"
   bg_image_credit: "Credit: [Photographer Name](https://link-to-photographer-website.com)"
   icon: ""
