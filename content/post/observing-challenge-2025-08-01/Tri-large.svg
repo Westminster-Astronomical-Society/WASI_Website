@@ -21,15 +21,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="1.7661687"
-     inkscape:cx="313.67332"
-     inkscape:cy="306.02965"
+     inkscape:zoom="0.93683789"
+     inkscape:cx="239.1022"
+     inkscape:cy="390.1422"
      inkscape:window-width="1920"
      inkscape:window-height="1010"
      inkscape:window-x="0"
      inkscape:window-y="34"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg543" />
+     inkscape:current-layer="g544" />
   <defs
      id="defs84">
     <g
@@ -3381,174 +3381,174 @@
        stroke-miterlimit="10"
        d="M 45.355469,19.84375 H 385.51172 V 234.14453 H 45.355469 Z m 0,0"
        id="path514"
-       style="stroke:#ffffff" />
+       style="stroke:#999999" />
     <g
        fill="#000000"
        fill-opacity="1"
        id="g525"
-       style="fill:#ffffff">
+       style="fill:#999999">
       <use
          xlink:href="#glyph-3-0"
          x="320.26172"
          y="246.61328"
          id="use524"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-1"
          x="324.67313"
          y="246.61328"
          id="use525"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
     </g>
     <g
        fill="#000000"
        fill-opacity="1"
        id="g527"
-       style="fill:#ffffff">
+       style="fill:#999999">
       <use
          xlink:href="#glyph-3-2"
          x="138.62109"
          y="246.61328"
          id="use526"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-1"
          x="143.03252"
          y="246.61328"
          id="use527"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
     </g>
     <g
        fill="#000000"
        fill-opacity="1"
        id="g530"
-       style="fill:#ffffff">
+       style="fill:#999999">
       <use
          xlink:href="#glyph-3-3"
          x="28.070312"
          y="186.52734"
          id="use528"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-4"
          x="32.481731"
          y="186.52734"
          id="use529"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-5"
          x="36.89315"
          y="186.52734"
          id="use530"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
     </g>
     <g
        fill="#000000"
        fill-opacity="1"
        id="g533"
-       style="fill:#ffffff">
+       style="fill:#999999">
       <use
          xlink:href="#glyph-3-6"
          x="28.070312"
          y="47.363281"
          id="use531"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-4"
          x="32.481731"
          y="47.363281"
          id="use532"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-5"
          x="36.89315"
          y="47.363281"
          id="use533"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
     </g>
     <g
        fill="#000000"
        fill-opacity="1"
        id="g535"
-       style="fill:#ffffff">
+       style="fill:#999999">
       <use
          xlink:href="#glyph-3-0"
          x="300.79297"
          y="14.171875"
          id="use534"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-1"
          x="305.20438"
          y="14.171875"
          id="use535"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
     </g>
     <g
        fill="#000000"
        fill-opacity="1"
        id="g537"
-       style="fill:#ffffff">
+       style="fill:#999999">
       <use
          xlink:href="#glyph-3-2"
          x="151.53906"
          y="14.171875"
          id="use536"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-1"
          x="155.95049"
          y="14.171875"
          id="use537"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
     </g>
     <g
        fill="#000000"
        fill-opacity="1"
        id="g540"
-       style="fill:#ffffff">
+       style="fill:#999999">
       <use
          xlink:href="#glyph-3-3"
          x="390.73047"
          y="186.52734"
          id="use538"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-4"
          x="395.14188"
          y="186.52734"
          id="use539"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-5"
          x="399.55331"
          y="186.52734"
          id="use540"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
     </g>
     <g
        fill="#000000"
        fill-opacity="1"
        id="g543"
-       style="fill:#ffffff">
+       style="fill:#999999">
       <use
          xlink:href="#glyph-3-6"
          x="390.85547"
          y="47.363281"
          id="use541"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-4"
          x="395.26688"
          y="47.363281"
          id="use542"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
       <use
          xlink:href="#glyph-3-5"
          x="399.67831"
          y="47.363281"
          id="use543"
-         style="fill:#ffffff" />
+         style="fill:#999999" />
     </g>
   </g>
 </svg>
