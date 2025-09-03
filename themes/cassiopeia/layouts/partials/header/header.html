@@ -1,10 +1,31 @@
 {{ if .Site.Params.alert -}}
 {{ partial "header/alert.html" . }}
 {{ end -}}
+
 <!--! Navigation bar -->
 
-<header class="main-header fixed-top bg-body" style="background-color: var(--bs-body-bg);">
-  <nav class="navbar navbar-expand-lg">
+{{ $banner := .Site.Data.cover.banner }}
+{{ $showCover := and .IsHome (and $banner $banner.enable) }}
+<style>
+  /* navbar offset for fixed-top navbar */
+  :root { --site-navbar-offset: 56px; } /* mobile default */
+  @media (min-width: 768px) { :root { --site-navbar-offset: 70px; } } /* md+ */
+
+  /* Apply top margin to content only when the header is NOT overlaying the cover */
+  {{ if not $showCover }}
+  #content { margin-top: var(--site-navbar-offset); }
+  {{ end }}
+
+  {{ if $showCover }}
+  /* Cover only: start transparent and transition to body bg on scroll */
+  .navbar { background-color: transparent; transition: background-color .75s ease, color .75s ease; }
+  .navbar.navbar-scrolled { background-color: var(--bs-body-bg); }
+  .navbar .nav-link { transition: color .75s ease; }
+  {{ end }}
+</style>
+
+<header class="main-header {{ if $showCover }}bg-transparent{{ else }}bg-body{{ end }}">
+  <nav id="site-navbar" class="navbar navbar-expand-lg fixed-top {{ if $showCover }}navbar-dark{{ else }}bg-body{{ end }}" data-has-cover="{{ if $showCover }}true{{ else }}false{{ end }}">
     <div class="container">
 
       <!-- Brand -->

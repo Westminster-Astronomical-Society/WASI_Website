@@ -1,0 +1,69 @@
+{{/* Full-screen Bootstrap cover partial using resource pipeline */}}
+{{ $banner := .Site.Data.cover.banner }}
+{{ if and $banner $banner.enable }}
+{{ $bgPath := $banner.bg_image }}
+{{ $bgResource := resources.Get $bgPath }}
+{{ if not $bgResource }}
+{{ $bgResource = resources.GetMatch (print "**/" (path.Base $bgPath)) }}
+{{ end }}
+{{ $ib := $banner.info_box }}
+{{ $hasInfo := and $ib (or $ib.enable (not (isset $ib "enable"))) }}
+
+<section id="site-cover" class="position-relative w-100 min-vh-100 d-flex" aria-label="Site cover">
+    <style>
+        #site-cover {
+            background-image: url('{{ if $bgResource }}{{ $bgResource.RelPermalink }}{{ else }}{{ relURL $bgPath }}{{ end }}');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+
+    <div class="container text-center position-relative my-5" style="z-index:1;" data-bs-theme="dark">
+        <div class="row justify-content-center">
+            <div class="col-md-10 my-5">
+                {{ with $banner.icon }}
+                <div class="mb-3">
+                    <img src="{{ . | relURL }}" alt="" class="img-fluid" style="max-height:72px;">
+                </div>
+                {{ end }}
+
+                {{ with $banner.title }}
+                <h1 class="display-3 mt-5 text-body">{{ . }}</h1>
+                {{ end }}
+
+                {{ with $banner.content }}
+                <p class="lead text-body-secondary mb-4">{{ . }}</p>
+                {{ end }}
+
+                {{ with $banner.button }}
+                {{ if .enable }}
+                <a class="btn btn-secondary btn-lg" href="{{ .link }}" role="button">{{ .label }}</a>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+
+        {{ if $hasInfo }}
+        <div class="row justify-content-left">
+            <div class="position-absolute bottom-0 start-0" style="z-index:2;" data-bs-theme="light">
+                    <div class="bg-dark bg-opacity-75 text-light text-start p-4 rounded shadow info-box" style="max-width:400px; text-align:left;">
+                    {{ with $ib.title }}<h5 class="mb-2">{{ . }}</h5>{{ end }}
+                    {{ with $ib.content }}<p class="mb-3">{{ . | markdownify | safeHTML }}</p>{{ end }}
+                    {{ with $ib.link }}<a class="btn btn-primary btn-sm" style="min-width: 120px;" href="{{ . }}">{{ or
+                        $ib.button_label "Learn more" }}</a>{{ end }}
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+
+    {{ with $banner.bg_image_credit }}
+    <div class="{{ cond $hasInfo " position-absolute bottom-0 end-0 m-3" "position-absolute bottom-0 start-0 m-3" }}"
+        style="z-index:3;" data-bs-theme="dark">
+        <small class="text-body-secondary cover-credit">{{ . | markdownify | safeHTML }}</small>
+    </div>
+    {{ end }}
+</section>
+{{ end }}

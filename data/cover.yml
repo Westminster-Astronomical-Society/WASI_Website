@@ -1,0 +1,31 @@
+# ---------------------------- Banner ----------------------------
+
+  # banner:
+  #   enable: true                  # Set to false to hide the banner
+  #   bg_image: "assets/images/.."  # Path to the background image
+  #   bg_image_credit: ""           # Optional: Add photographer credit with Markdown link
+  #   icon: ""                      # Optional: Specify an icon from astro-icons.svg
+  #   title: "Title"                # Main heading text
+  #   content: "Content"            # Subtitle or description
+  #   button:
+  #     enable: true                # Set to false to hide the button
+  #     label: "About WASI"         # Button text
+  #     link: "#about"              # Button link (anchor or URL)
+
+banner:
+  enable: true
+  bg_image: "assets/images/backgrounds/bg_bfrmo.jpg"
+  bg_image_credit: "Credit: [Photographer Name](https://link-to-photographer-website.com)"
+  icon: ""
+  title: "Westminster Astronomical Society"
+  content: "Bringing the Universe to Carroll County, Maryland since 1984"
+  button:
+    enable: true
+    label: "About WASI"
+    link: "#about"
+  info_box:
+    enable: true
+    title: "Support WASI!"
+    content: "Your generous support helps us bring the wonders of the night sky to everyone!"
+    button_label: "Donate"
+    link: "#donate"
