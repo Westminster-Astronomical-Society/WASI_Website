@@ -13,10 +13,6 @@
     <style>
         #site-cover {
             background-image: url('{{ if $bgResource }}{{ $bgResource.RelPermalink }}{{ else }}{{ relURL $bgPath }}{{ end }}');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
         }
     </style>
 
@@ -48,7 +44,7 @@
         {{ if $hasInfo }}
         <div class="row justify-content-left">
             <div class="position-absolute bottom-0 start-0" style="z-index:2;" data-bs-theme="light">
-                    <div class="bg-dark bg-opacity-75 text-light text-start p-4 rounded shadow info-box" style="max-width:400px; text-align:left;">
+                    <div class="info-box bg-dark bg-opacity-75 text-light text-start p-4 rounded shadow" style="max-width:400px; text-align:left;">
                     {{ with $ib.title }}<h5 class="mb-2">{{ . }}</h5>{{ end }}
                     {{ with $ib.content }}<p class="mb-3">{{ . | markdownify | safeHTML }}</p>{{ end }}
                     {{ with $ib.link }}<a class="btn btn-primary btn-sm" style="min-width: 120px;" href="{{ . }}">{{ or

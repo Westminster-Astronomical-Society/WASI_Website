@@ -7,6 +7,49 @@
     fill: currentColor;
 }
 
+// Cover styles
+#site-cover {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+// Carousel styles
+.carousel {
+
+    /* Ensure carousel controls don't interfere with info box and image credits */
+    .carousel-control-prev,
+    .carousel-control-next {
+        background: none;
+        /* remove invisible background */
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        pointer-events: auto;
+        /* clickable */
+
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        pointer-events: none;
+        /* container not clickable */
+    }
+
+    .slide-item {
+        height: 70vh; // Set the height of the carousel
+
+        .slide-image {
+            // Scale and fit the images
+            object-fit: cover;
+            height: 100%;
+            filter: brightness(0.7); // Darken the image
+        }
+    }
+}
+
 // astro-icons
 .astro-icons {
     width: 1em;
@@ -41,7 +84,10 @@
     fill: none;
 }
 
-a /*hover colors*/ {
+a
+
+/*hover colors*/
+    {
     $icon-blue: #0085ff;
     $icon-black: #000000;
     $icon-gray: #8b8b8b;
@@ -54,6 +100,7 @@ a /*hover colors*/ {
     .icon-xitter:hover {
         fill: $icon-black;
     }
+
     .icon-bsky:hover {
         fill: $icon-blue;
     }
