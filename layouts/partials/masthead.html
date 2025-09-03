@@ -1,16 +1,16 @@
 {{/* Masthead partial - renders from data/masthead.yml */}}
 {{ $m := .Site.Data.masthead.masthead }}
 {{ if and $m $m.enable }}
-<section class="section bd-masthead" data-bs-theme="light">
-  <div class="container-xxl">
-    <div class="col-md-10 mx-auto text-center my-5">
+<section class="section mt-5 pt-5 bg-light">
+  <div class="container-xxl mt-5">
+    <div class="col-md-10 mx-auto text-center">
       {{ with $m.title }}
         <h1 class="display-4 mb-3">{{ . }}</h1>
       {{ else }}
-        <h1 class="display-4 mb-3">{{ .Site.Title }}</h1>
+        <h1 class="display-4 py-4">{{ .Site.Title }}</h1>
       {{ end }}
       {{ with $m.content }}
-        <p class="lead text-secondary mb-3">{{ . }}</p>
+        <p class="lead text-secondary">{{ . }}</p>
       {{ end }}
       {{ with $m.button }}
         {{ if .enable }}
