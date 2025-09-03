@@ -1,5 +1,7 @@
+{{/* Determine color mode: prefer options.colorMode, then options.colormode, then default to "light" */}}
+{{ $cm := .Site.Params.options.colorMode | default ( .Site.Params.options.colormode | default "light") }}
 <!doctype html>
-<html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}" data-bs-theme="{{ .Site.Params.options.colorMode | default "dark" }}">
+<html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}" data-bs-theme="{{ $cm }}">
 {{ partial "head/head.html" . }}
 {{ if eq .Kind "home" -}}
     {{ .Store.Set "class" "home" -}}
