@@ -18,11 +18,6 @@ alert = false
 alertDismissable = true
 alertText = "An Announcement! <a class=\"alert-link stretched-link\" href=\"https://example/\">Click here</a>"
 
-# Pre-footer
-footerAbout = true
-footerAboutTitle = ""
-footerAboutText = ""
-
 [options]
 colormode = "light"
 bootStrapJs = true
