@@ -77,14 +77,16 @@ and emits the resource RelPermalink when available, otherwise falls back to relU
                 {{ $ctrl := replaceRE "^#" "" $off }}
                 <a class="btn btn-primary btn-sm" data-bs-toggle="offcanvas" data-bs-target="{{ $off }}" href="{{ $off }}" role="button" aria-controls="{{ $ctrl }}" style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>
               {{ else if $lnk }}
-                <a class="btn btn-primary btn-sm" href="{{ $lnk }}" role="button" style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>
+                {{ if strings.HasPrefix $lnk "http" }}
+                  <a class="btn btn-primary btn-sm" href="{{ $lnk }}" role="button" target="_blank" rel="noopener" style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>
+                {{ else }}
+                  <a class="btn btn-primary btn-sm" href="{{ $lnk }}" role="button" style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>
+                {{ end }}
               {{ end }}
             </div>
           </div>
           {{ end }}
         </div>
-
-
 
         {{ with $slide.image_credit }}
         <div class="{{ cond $hasInfo " position-absolute bottom-0 end-0 m-3" "position-absolute bottom-0 start-0 m-3"
