@@ -7,10 +7,10 @@
 {{ if and $cfg (ne $cfg.enable false) (isset $cfg "items") }}
 
 <section class="section pt-1 pb-5 mb-5">
-    <div class="container-xxl">
+    <div class="container">
 
         {{ with index $cfg "section-title" }}
-        <h2 class="display-8 text-center text-body-emphasis mb-4">{{ . }}</h2>
+        <h2 class="display-6 text-center text-body-emphasis mb-4">{{ . }}</h2>
         {{ end }}
         <div class="row justify-content-center gy-4 mt-lg-3">
             {{ range $cfg.items }}
@@ -20,13 +20,17 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="astro-icons astro-icons-big">
                         <use href="{{ $icon | relURL }}" />
                     </svg>
-                    <h3 class="display-8 mb-0">{{ .title }}</h3>
+                    <h3 class="display-6 mb-0">{{ .title }}</h3>
                 </div>
                 <p>{{ .content }}</p>
                 {{ with .button }}
                 {{ if .enable }}
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    {{ if strings.HasPrefix .link "http" }}
+                    <a class="btn btn-primary px-4" href="{{ .link }}" target="_blank" rel="noopener">{{ .label }}</a>
+                    {{ else }}
                     <a class="btn btn-primary px-4" href="{{ .link }}">{{ .label }}</a>
+                    {{ end }}
                 </div>
                 {{ end }}
                 {{ end }}
