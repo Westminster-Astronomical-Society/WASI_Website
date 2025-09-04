@@ -5,7 +5,7 @@
     {{ $title := index $cfg "section-title" | default "" }}
     {{ $titleTrim := replaceRE "\\s+" "" $title }}
     {{ if ne $titleTrim "" }}
-    <h2 class="display-8 text-center text-body-emphasis mb-4">{{ $title }}</h2>
+    <h2 class="display-6 text-center text-body-emphasis mb-4">{{ $title }}</h2>
     {{ end }}
     <div class="row row-cols-1 g-4">
         {{ range .Site.Taxonomies.tags.featured }}
