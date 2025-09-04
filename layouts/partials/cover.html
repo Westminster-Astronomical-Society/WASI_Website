@@ -44,11 +44,27 @@
         {{ if $hasInfo }}
         <div class="row justify-content-left">
             <div class="position-absolute bottom-0 start-0" style="z-index:2;" data-bs-theme="light">
-                    <div class="info-box bg-dark bg-opacity-75 text-light text-start p-4 rounded shadow" style="max-width:400px; text-align:left;">
+                <div class="info-box bg-dark bg-opacity-75 text-light text-start p-4 rounded shadow"
+                    style="max-width:400px; text-align:left;">
                     {{ with $ib.title }}<h5 class="mb-2">{{ . }}</h5>{{ end }}
                     {{ with $ib.content }}<p class="mb-3">{{ . | markdownify | safeHTML }}</p>{{ end }}
-                    {{ with $ib.link }}<a class="btn btn-primary btn-sm" style="min-width: 120px;" href="{{ . }}">{{ or
-                        $ib.button_label "Learn more" }}</a>{{ end }}
+                    {{/* Render info box action: prefer `offcanvas` key, fall back to `link` */}}
+                    {{ $off := index $ib "offcanvas" }}
+                    {{ $lnk := index $ib "link" }}
+                    {{ if $off }}
+                    {{ $ctrl := replaceRE "^#" "" $off }}
+                    <a class="btn btn-primary btn-sm" data-bs-toggle="offcanvas" data-bs-target="{{ $off }}"
+                        href="{{ $off }}" role="button" aria-controls="{{ $ctrl }}" style="min-width: 120px;">{{ or
+                        $ib.button_label "Learn more" }}</a>
+                    {{ else if $lnk }}
+                    {{ if strings.HasPrefix $lnk "http" }}
+                    <a class="btn btn-primary btn-sm" href="{{ $lnk }}" role="button" target="_blank" rel="noopener"
+                        style="min-width: 120px;">{{ or $ib.button_label "Learn more" }}</a>
+                    {{ else }}
+                    <a class="btn btn-primary btn-sm" href="{{ $lnk }}" role="button" style="min-width: 120px;">{{ or
+                        $ib.button_label "Learn more" }}</a>
+                    {{ end }}
+                    {{ end }}
                 </div>
             </div>
         </div>
