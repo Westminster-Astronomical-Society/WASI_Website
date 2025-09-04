@@ -1,0 +1,87 @@
+{{/* Contacts partial
+
+Renders a two-column contact section. Reads optional values from `data/contact.yml` under `contact`.
+*/}}
+{{ $raw := .Site.Data.contact }}
+{{ $c := cond (and $raw (isset $raw "contact")) $raw.contact $raw }}
+{{ $title := default "Contact Us" $c.title }}
+{{ $text := default (or $c.content $c.text) "" }}
+{{ $address := default "" $c.address }}
+{{ $mailing := default "" $c.mail }}
+{{ $email := default "" $c.email }}
+{{ $phone := default "" $c.phone }}
+
+<section class="section bg-light mb-0">
+    <div class="container pt-5">
+        <div class="row align-items-start">
+
+            <!-- Left: contact list -->
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    {{ if ne $address "" }}
+                    <li class="d-flex align-items-start mb-3">
+                        <svg class="site-icons contact-icons me-3" aria-hidden="true">
+                            <use href="{{ `/icons/site-icons.svg#map-pin` | relURL }}" />
+                        </svg>
+                        <div>
+                            <strong>Address</strong>
+                            <div class="text-muted">{{ $address | markdownify | safeHTML }}</div>
+                        </div>
+                    </li>
+                    {{ end }}
+
+                    {{ if ne $mailing "" }}
+                    <li class="d-flex align-items-start mb-3">
+                        <svg class="site-icons contact-icons me-3" aria-hidden="true">
+                            <use href="{{ `/icons/site-icons.svg#mail` | relURL }}" />
+                        </svg>
+                        <div>
+                            <strong>Mailing address</strong>
+                            <div class="text-muted">{{ $mailing | markdownify | safeHTML }}</div>
+                        </div>
+                    </li>
+                    {{ end }}
+
+                    {{ if ne $email "" }}
+                    <li class="d-flex align-items-start mb-3">
+                        <svg class="site-icons contact-icons me-3" aria-hidden="true">
+                            <use href="{{ `/icons/site-icons.svg#at-sign` | relURL }}" />
+                        </svg>
+                        <div>
+                            <strong>Email</strong>
+                            <div class="text-muted"><a href="mailto:{{ $email }}">{{ $email }}</a></div>
+                        </div>
+                    </li>
+                    {{ end }}
+
+                    {{ if ne $phone "" }}
+                    <li class="d-flex align-items-start mb-3">
+                        <svg class="site-icons contact-icons me-3" aria-hidden="true">
+                            <use href="{{ `/icons/site-icons.svg#phone-call` | relURL }}" />
+                        </svg>
+                        <div>
+                            <strong>Phone</strong>
+                            <div class="text-muted"><a href="tel:{{ $phone }}">{{ $phone }}</a></div>
+                        </div>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+
+            <!-- Right: title and text -->
+            <div class="col-md-6">
+                <h2 class="display-6">{{ $title }}</h2>
+                {{ if ne $text "" }}
+                <p class="lead text-body-secondary">{{ $text | markdownify | safeHTML }}</p>
+                {{ end }}
+                {{ with $c.contact_form }}
+                {{ if strings.HasPrefix . "http" }}
+                <a class="btn btn-primary mt-3" href="{{ . }}" target="_blank" rel="noopener">Contact us</a>
+                {{ else }}
+                <a class="btn btn-primary mt-3" href="{{ . }}">Contact us</a>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
