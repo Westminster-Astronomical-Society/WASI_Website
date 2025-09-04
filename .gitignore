@@ -5,4 +5,5 @@ resources
 .hugo_build.lock
 references.md
 bin
-*/deploy.sh
+deploy.sh
+.htaccess
