@@ -7,7 +7,7 @@ images: ["star-points-2021-06-02.jpg"]
 categories: ["WASI Blog"]
 tags: ["star-points"]
 keywords: ["solar eclipse", "partial eclipse", "annular eclipse", "eclipse glasses"]
-authors: ["Curt Roelle"]
+authors: ["curt-roelle"]
 ---
 
 ![The Sun](star-points-2021-06-02.jpg)

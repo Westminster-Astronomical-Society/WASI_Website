@@ -7,7 +7,7 @@ images: ["star-points-2021-05-04.jpg"]
 categories: ["WASI Blog"]
 tags: ["star-points"]
 keywords: ["Mars","Ingenuity", "Perseverance", "Mars rover"]
-authors: ["Curt Roelle"]
+authors: ["curt-roelle"]
 ---
 
 ![The Sun](star-points-2021-05-04.jpg)

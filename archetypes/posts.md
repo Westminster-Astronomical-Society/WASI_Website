@@ -7,7 +7,7 @@ images: ["{{ .Name | urlize }}.jpg"]
 categories: ["General","Blog"]
 tags: ["featured"]
 keywords: ["{{ replace .Name "-" " " | lower }}"]
-author: ""
+authors: []
 ---
 
 ![{{ replace .Name "-" " " | title }}]({{ .Name | urlize }}.jpg)

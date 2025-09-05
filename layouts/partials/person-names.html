@@ -1,0 +1,23 @@
+{{/*
+  person-names.html
+  Renders only the person's name(s) linked to their profile page.
+  Usage: partial "person-names.html" (dict "page" . "param" "authors" "prefix" "by ")
+*/}}
+
+{{ $page := .page }}
+{{ $param := .param }}
+{{ $prefix := .prefix | default "" }}
+
+{{ with index $page.Params $param }}
+  {{ $names := slice }}
+  {{ range $i, $slug := . }}
+    {{ $person := site.GetPage (printf "people/%s" $slug) }}
+    {{ if $person }}
+      {{ $names = $names | append (printf "<a href=\"%s\">%s</a>" $person.RelPermalink $person.Title) }}
+    {{ else }}
+      {{ $pretty := $slug | replace "-" " " | title }}
+      {{ $names = $names | append $pretty }}
+    {{ end }}
+  {{ end }}
+  {{ printf "%s%s" $prefix (delimit $names ", ") | safeHTML }}
+{{ end }}

@@ -8,7 +8,7 @@ images: ["observing-challenge-2025-08-01.png"]
 categories: ["WASI Observing Challenge"]
 tags: ["Observing Challenge"]
 keywords: []
-authors: ["Paul Moos"]
+authors: ["paul-moos"]
 ---
 
 

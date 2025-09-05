@@ -7,7 +7,7 @@ images: ["star-points-2021-04-04.jpg"]
 categories: ["WASI Blog"]
 tags: ["star-points"]
 keywords: ["solar cycle","sunspots"]
-authors: ["Curt Roelle"]
+authors: ["curt-roelle"]
 ---
 
 ![The Sun](star-points-2021-04-04.jpg)

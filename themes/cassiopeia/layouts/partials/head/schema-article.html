@@ -19,13 +19,13 @@
   "datePublished": {{ .PublishDate.Format $iso8601 }},
   "dateModified": {{ .Lastmod.Format $iso8601 }},
   {{ with .Params.authors -}}
-  {{ with (index (.) 0) -}}
+  {{ $a := index . 0 -}}
+  {{ $p := $.Site.GetPage (printf "/people/%s" (urlize $a)) -}}
   "author": {
     "@type": "Person",
-    "name": "{{ . }}"{{ with $.Site.GetPage (printf "/authors/%s" . ) }},
-    "url": "{{ .Permalink }}"{{ end}}
+    "name": "{{ with $p }}{{ .Title }}{{ else }}{{ $a | replace "-" " " | title }}{{ end }}"{{ with $p }},
+    "url": "{{ .Permalink }}"{{ end }}
   },
-  {{ end -}}
   {{ end -}}
   "mainEntityOfPage": {{ .Site.BaseURL }},
   "publisher": {

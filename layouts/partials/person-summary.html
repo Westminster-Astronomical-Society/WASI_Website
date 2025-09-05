@@ -1,0 +1,24 @@
+{{- $person := . -}}
+<div class="d-flex align-items-center gap-2">
+  {{ $imgParam := $person.Params.image }}
+  {{ if $imgParam }}
+    {{ $pimg := $person.Resources.GetMatch (printf "*%s" $imgParam) }}
+    {{ if $pimg }}
+      <img class="rounded-circle" src="{{ $pimg.RelPermalink }}" alt="{{ $person.Title }}" width="40" height="40">
+    {{ else }}
+      <img class="rounded-circle" src="{{ $imgParam | relURL }}" alt="{{ $person.Title }}" width="40" height="40">
+    {{ end }}
+  {{ else }}
+    {{ with site.GetPage "people" }}
+      {{ with .Resources.GetMatch "avatar-blank.*" }}
+        <img class="rounded-circle" src="{{ .RelPermalink }}" alt="{{ $person.Title }}" width="40" height="40">
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  <div>
+    <a class="text-decoration-none" href="{{ $person.RelPermalink }}">{{ $person.Title }}</a>
+    {{ with $person.Params.roles }}
+      <div class="small text-muted">{{ delimit . ", " }}</div>
+    {{ end }}
+  </div>
+</div>

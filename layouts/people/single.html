@@ -1,0 +1,88 @@
+{{ define "main" }}
+<div class="container py-4">
+  <article class="person-profile">
+    <header class="mb-4 d-flex align-items-center gap-3">
+      {{ $p := . }}
+      {{ $imgParam := $p.Params.image }}
+      {{ if $imgParam }}
+        {{ $img := $p.Resources.GetMatch (printf "*%s" $imgParam) }}
+        {{ if $img }}
+          <img class="rounded-circle" src="{{ $img.RelPermalink }}" alt="{{ $p.Title }}" width="96" height="96">
+        {{ else }}
+          <img class="rounded-circle" src="{{ $imgParam | relURL }}" alt="{{ $p.Title }}" width="96" height="96">
+        {{ end }}
+      {{ else }}
+        {{ with site.GetPage "people" }}
+          {{ with .Resources.GetMatch "avatar-blank.*" }}
+            <img class="rounded-circle" src="{{ .RelPermalink }}" alt="{{ $p.Title }}" width="96" height="96">
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      <div>
+        <h1 class="mb-1">{{ .Title }}</h1>
+        {{ with .Params.roles }}
+          <p class="text-muted mb-0">{{ delimit . ", " }}</p>
+        {{ end }}
+        {{ with .Params.affiliation }}
+          <p class="text-muted mb-0">{{ . }}</p>
+        {{ end }}
+      </div>
+    </header>
+
+    {{ with .Content }}
+    <div class="content mb-4">
+      {{ . }}
+    </div>
+    {{ end }}
+
+    {{/* Optionally list related content by this person via front matter keys */}}
+    <section class="related">
+  {{/* Derive slug from the content folder name (works for leaf bundles) */}}
+  {{ $slug := path.Base .File.Dir }}
+      {{ $posts := where site.RegularPages "Section" "post" }}
+      {{ $events := where site.RegularPages "Section" "events" }}
+
+      {{ $byAuthor := where $posts ".Params.authors" "intersect" (slice $slug) }}
+      {{ $bySpeaker := where $events ".Params.speakers" "intersect" (slice $slug) }}
+      {{ $byOrganizer := where $events ".Params.organizers" "intersect" (slice $slug) }}
+
+      {{ if or (gt (len $byAuthor) 0) (gt (len $bySpeaker) 0) (gt (len $byOrganizer) 0) }}
+      <div class="row g-4">
+        {{ if gt (len $byAuthor) 0 }}
+        <div class="col-12">
+          <h2 class="h4">Posts</h2>
+          <ul>
+            {{ range $byAuthor }}
+              <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small></li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+
+        {{ if gt (len $bySpeaker) 0 }}
+        <div class="col-12">
+          <h2 class="h4">Talks</h2>
+          <ul>
+            {{ range $bySpeaker }}
+              <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small></li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+
+        {{ if gt (len $byOrganizer) 0 }}
+        <div class="col-12">
+          <h2 class="h4">Organized Events</h2>
+          <ul>
+            {{ range $byOrganizer }}
+              <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small></li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </section>
+  </article>
+</div>
+{{ end }}

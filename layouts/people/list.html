@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="container py-4">
+  <h1 class="mb-4">People</h1>
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+    {{ range $i, $p := .Pages.ByTitle }}
+    <div class="col">
+      <div class="card h-100">
+        {{ $imgParam := $p.Params.image }}
+        {{ if $imgParam }}
+          {{ $img := $p.Resources.GetMatch (printf "*%s" $imgParam) }}
+          {{ if $img }}
+            <img class="card-img-top" src="{{ $img.RelPermalink }}" alt="{{ $p.Title }}">
+          {{ else }}
+            <img class="card-img-top" src="{{ $imgParam | relURL }}" alt="{{ $p.Title }}">
+          {{ end }}
+        {{ else }}
+          {{ with site.GetPage "people" }}
+            {{ with .Resources.GetMatch "avatar-blank.*" }}
+              <img class="card-img-top" src="{{ .RelPermalink }}" alt="{{ $p.Title }}">
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        <div class="card-body">
+          <h2 class="h5 card-title"><a class="stretched-link text-decoration-none" href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+          {{ with $p.Params.roles }}
+            <p class="card-subtitle text-muted">{{ delimit . ", " }}</p>
+          {{ end }}
+          {{/*  {{ with $p.Summary }}
+          <p class="card-text mt-2">{{ . }}</p>
+          {{ end }}  */}}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

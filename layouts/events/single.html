@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="container py-4">
+  <article>
+    <header class="mb-3">
+      <h1>{{ .Title }}</h1>
+      {{ with .Date }}
+      <p class="text-muted">{{ . | time.Format ":date_long" }}</p>
+      {{ end }}
+      {{ with .Params.speakers }}
+      {{ $count := len . }}
+      {{ if eq $count 1 }}
+        {{ $label := "Speaker" }}
+      {{ else }}
+        {{ $label := "Speakers" }}
+      {{ end }}
+      <p class="mb-1"><strong>{{ if eq $count 1 }}Speaker{{ else }}Speakers{{ end }}:</strong> {{ partial "person-names.html" (dict "page" $ "param" "speakers") }}</p>
+      {{ end }}
+  {{ with .Params.organizers }}
+  {{ $count := len . }}
+  <p class="mb-1"><strong>{{ if eq $count 1 }}Organizer{{ else }}Organizers{{ end }}:</strong> {{ partial "person-names.html" (dict "page" $ "param" "organizers") }}</p>
+  {{ end }}
+    </header>
+
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </article>
+</div>
+{{ end }}

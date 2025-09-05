@@ -26,7 +26,6 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 tag = "tags"
 category = "categories"
 series = 'series'
-author = "authors"
 
 [sitemap]
 changefreq = "weekly"
