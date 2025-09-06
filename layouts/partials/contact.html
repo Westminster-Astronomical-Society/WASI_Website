@@ -13,7 +13,22 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
 
 <section class="section bg-light mb-0">
     <div class="container pt-5">
-        <div class="row align-items-start">
+        <div class="row flex-md-row-reverse align-items-start gy-5">
+
+            <!-- Right: title and text -->
+            <div class="col-md-6">
+                <h2 class="display-6">{{ $title }}</h2>
+                {{ if ne $text "" }}
+                <p class="lead text-body-secondary">{{ $text | markdownify | safeHTML }}</p>
+                {{ end }}
+                {{ with $c.contact_form }}
+                {{ if strings.HasPrefix . "http" }}
+                <a class="btn btn-primary mt-3" href="{{ . }}" target="_blank" rel="noopener">Contact us</a>
+                {{ else }}
+                <a class="btn btn-primary mt-3" href="{{ . }}">Contact us</a>
+                {{ end }}
+                {{ end }}
+            </div>
 
             <!-- Left: contact list -->
             <div class="col-md-6">
@@ -68,20 +83,6 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                 </ul>
             </div>
 
-            <!-- Right: title and text -->
-            <div class="col-md-6">
-                <h2 class="display-6">{{ $title }}</h2>
-                {{ if ne $text "" }}
-                <p class="lead text-body-secondary">{{ $text | markdownify | safeHTML }}</p>
-                {{ end }}
-                {{ with $c.contact_form }}
-                {{ if strings.HasPrefix . "http" }}
-                <a class="btn btn-primary mt-3" href="{{ . }}" target="_blank" rel="noopener">Contact us</a>
-                {{ else }}
-                <a class="btn btn-primary mt-3" href="{{ . }}">Contact us</a>
-                {{ end }}
-                {{ end }}
-            </div>
         </div>
     </div>
 </section>
