@@ -1,5 +1,4 @@
 {{/* Contacts partial
-
 Renders a two-column contact section. Reads optional values from `data/contact.yml` under `contact`.
 */}}
 {{ $raw := .Site.Data.contact }}
@@ -13,25 +12,44 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
 
 <section class="section bg-light mb-0">
     <div class="container pt-5">
-        <div class="row flex-md-row-reverse align-items-start gy-5">
+    <div class="row flex-md-row-reverse align-items-stretch gy-5">
 
             <!-- Right: title and text -->
-            <div class="col-md-6">
-                <h2 class="display-6">{{ $title }}</h2>
+            <div class="col-md-6 d-none d-lg-block position-relative">
+                <div class="row">
+                <h3 class="display-6 fs-2">{{ $title }}</h3>
                 {{ if ne $text "" }}
                 <p class="lead text-body-secondary">{{ $text | markdownify | safeHTML }}</p>
                 {{ end }}
-                {{ with $c.contact_form }}
-                {{ if strings.HasPrefix . "http" }}
-                <a class="btn btn-primary mt-3" href="{{ . }}" target="_blank" rel="noopener">Contact us</a>
-                {{ else }}
-                <a class="btn btn-primary mt-3" href="{{ . }}">Contact us</a>
-                {{ end }}
-                {{ end }}
+                </div>
+                <!-- AL affiliation with logo -->
+                <div class="row">
+                    <hr style="width:75%;">
+                    <div class="col-9">
+                        <p class="lead text-body-secondary">
+                            Westminster Astronomical Society is a member of
+                            <a href="https://www.astroleague.org/" target="_blank" rel="noopener">The Astronomical League</a>.
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <svg class="contact-logo position-absolute" aria-hidden="true" style="bottom:0; right:0; width:90px; height:90px;" focusable="false">
+                            <use href="{{ "/icons/site-logos.svg#al-color-logo3" | relURL }}" />
+                        </svg>
+                    </div>
+                </div>
             </div>
 
             <!-- Left: contact list -->
-            <div class="col-md-6">
+            <div class="col-lg-6">
+
+                {{ with $c.contact_form }}
+                {{ if strings.HasPrefix . "http" }}
+                <a class="btn btn-primary mb-3" href="{{ . }}" target="_blank" rel="noopener">Contact Form</a>
+                {{ else }}
+                <a class="btn btn-primary mb-3" href="{{ . }}">Contact us</a>
+                {{ end }}
+                {{ end }}      
+
                 <ul class="list-unstyled">
                     {{ if ne $address "" }}
                     <li class="d-flex align-items-start mb-3">
@@ -39,8 +57,7 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                             <use href="{{ `/icons/site-icons.svg#map-pin` | relURL }}" />
                         </svg>
                         <div>
-                            <strong>Address</strong>
-                            <div class="text-muted">{{ $address | markdownify | safeHTML }}</div>
+                            <div class="fw-medium">{{ $address | markdownify | safeHTML }}</div>
                         </div>
                     </li>
                     {{ end }}
@@ -51,8 +68,7 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                             <use href="{{ `/icons/site-icons.svg#mail` | relURL }}" />
                         </svg>
                         <div>
-                            <strong>Mailing address</strong>
-                            <div class="text-muted">{{ $mailing | markdownify | safeHTML }}</div>
+                            <div class="fw-medium">{{ $mailing | markdownify | safeHTML }}</div>
                         </div>
                     </li>
                     {{ end }}
@@ -63,8 +79,7 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                             <use href="{{ `/icons/site-icons.svg#at-sign` | relURL }}" />
                         </svg>
                         <div>
-                            <strong>Email</strong>
-                            <div class="text-muted"><a href="mailto:{{ $email }}">{{ $email }}</a></div>
+                            <div class="fw-medium">{{ $email | markdownify | safeHTML }}</div>
                         </div>
                     </li>
                     {{ end }}
@@ -75,12 +90,12 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                             <use href="{{ `/icons/site-icons.svg#phone-call` | relURL }}" />
                         </svg>
                         <div>
-                            <strong>Phone</strong>
-                            <div class="text-muted"><a href="tel:{{ $phone }}">{{ $phone }}</a></div>
+                            <div class="fw-medium">{{ $phone | markdownify | safeHTML }}</div>
                         </div>
                     </li>
                     {{ end }}
                 </ul>
+                
             </div>
 
         </div>
