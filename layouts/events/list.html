@@ -2,85 +2,91 @@
 
 <div class="container py-3">
 
-	{{ if or .Site.Params.options.listCategoryFilter .Site.Params.options.listTagFilter }}
-		<div class="row mb-3">
+    {{ if .Content }}
+        <div class="mb-3">
+            {{ .Content }}
+        </div>
+    {{ end }}
 
-			{{ if .Site.Params.options.listCategoryFilter }}
-				<div class="col-auto">
-					<svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/icons/site-icons.svg#folder` | relURL }}"/></svg>
-					{{range ($.Site.GetPage "taxonomyTerm" "categories").Pages.ByTitle }}
-						<a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
-					{{end}}
-				</div>
-			{{ end }}
+    {{ if or .Site.Params.options.listCategoryFilter .Site.Params.options.listTagFilter }}
+        <div class="row mb-3">
 
-			{{ if .Site.Params.options.listTagFilter }}
-				<div class="col-auto">
-					<svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/icons/site-icons.svg#tag` | relURL }}"/></svg>
-					{{range ($.Site.GetPage "taxonomyTerm" "tags").Pages.ByTitle }}
-						<a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
-					{{end}}
-				</div>
-			{{ end }}
+            {{ if .Site.Params.options.listCategoryFilter }}
+                <div class="col-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/icons/site-icons.svg#folder` | relURL }}"/></svg>
+                    {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages.ByTitle }}
+                        <a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
+                    {{end}}
+                </div>
+            {{ end }}
 
-		</div>
-	{{ end }}
+            {{ if .Site.Params.options.listTagFilter }}
+                <div class="col-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/icons/site-icons.svg#tag` | relURL }}"/></svg>
+                    {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages.ByTitle }}
+                        <a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
+                    {{end}}
+                </div>
+            {{ end }}
 
-	{{ if ne .Kind "taxonomy" }}
+        </div>
+    {{ end }}
 
-		{{ range .Pages }}
-		<div class="card border-light-subtle mb-3">
-			<div class="row g-0">
+    {{ if ne .Kind "taxonomy" }}
 
-				<div class="col-md-4 d-flex align-items-center">
-					{{ if isset .Params "images" }}
-						{{ with .Resources.GetMatch (index .Params.Images 0) }}
-							{{ $image := .Fill "600x300 Center webp" }}
-							<img class="img-fluid rounded p-1" src="{{ $image.RelPermalink }}" loading="lazy" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="featured image {{.Title }}">
-						{{ end }}
-					{{ end }}
-				</div>
+        {{ range .Pages }}
+        <div class="card border-light-subtle mb-3">
+            <div class="row g-0">
 
-				<div class="col-md-8">
-					<div class="card-body">
-						<h2 class="card-title text-primary">{{ .Title }}</h2>
+                <div class="col-md-4 d-flex align-items-center">
+                    {{ if isset .Params "images" }}
+                        {{ with .Resources.GetMatch (index .Params.Images 0) }}
+                            {{ $image := .Fill "600x300 Center webp" }}
+                            <img class="img-fluid rounded p-1" src="{{ $image.RelPermalink }}" loading="lazy" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="featured image {{.Title }}">
+                        {{ end }}
+                    {{ end }}
+                </div>
 
-						<div class="card-subtitle text-muted mb-3">
-							<svg xmlns="http://www.w3.org/2000/svg" class="site-icons"><use href="{{ `/icons/site-icons.svg#calendar` | relURL }}"/></svg>
-							<time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .Lastmod | time.Format ":date_long" }}</time>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary">{{ .Title }}</h2>
 
-							{{ if isset .Params "categories" }}
-								<svg xmlns="http://www.w3.org/2000/svg" class="site-icons ms-4"><use href="{{ `/icons/site-icons.svg#folder` | relURL }}"/></svg>
-								{{ range .Params.categories }}
-									<a class="text-decoration-none text-muted ms-2" href="{{ `/categories/` | relLangURL }}{{ . | urlize}}/">{{ . }}</a>
-								{{end}}
-							{{ end }}
+                        <div class="card-subtitle text-muted mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="site-icons"><use href="{{ `/icons/site-icons.svg#calendar` | relURL }}"/></svg>
+                            <time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">Last modified: {{ .Lastmod | time.Format ":date_long" }}</time>
 
-							{{ if isset .Params "tags" }}
-								<svg xmlns="http://www.w3.org/2000/svg" class="site-icons ms-4"><use href="{{ `/icons/site-icons.svg#tag` | relURL }}"/></svg>
-								{{ range .Params.tags }}
-									<a class="text-decoration-none text-muted ms-2" href="{{ `/tags/` | relLangURL }}{{ . | urlize}}/">{{ . }}</a>
-								{{ end }}
-							{{ end }}
-						</div>
+                            {{ if isset .Params "categories" }}
+                                <svg xmlns="http://www.w3.org/2000/svg" class="site-icons ms-4"><use href="{{ `/icons/site-icons.svg#folder` | relURL }}"/></svg>
+                                {{ range .Params.categories }}
+                                    <a class="text-decoration-none text-muted ms-2" href="{{ `/categories/` | relLangURL }}{{ . | urlize}}/">{{ . }}</a>
+                                {{end}}
+                            {{ end }}
 
-						<div class="card-text">
-							{{ with .Params.description }}
-								{{ . }}
-							{{ else }}
-								{{ .Summary | truncate 400 }}
-							{{ end }}
-						</div>
+                            {{ if isset .Params "tags" }}
+                                <svg xmlns="http://www.w3.org/2000/svg" class="site-icons ms-4"><use href="{{ `/icons/site-icons.svg#tag` | relURL }}"/></svg>
+                                {{ range .Params.tags }}
+                                    <a class="text-decoration-none text-muted ms-2" href="{{ `/tags/` | relLangURL }}{{ . | urlize}}/">{{ . }}</a>
+                                {{ end }}
+                            {{ end }}
+                        </div>
+
+                        <div class="card-text">
+                            {{ with .Params.description }}
+                                {{ . }}
+                            {{ else }}
+                                {{ .Summary | truncate 400 }}
+                            {{ end }}
+                        </div>
                         
-						<a class="stretched-link" href="{{.RelPermalink}}"></a>
-					</div>
-				</div>
+                        <a class="stretched-link" href="{{.RelPermalink}}"></a>
+                    </div>
+                </div>
 
-			</div>
-		</div>
-		{{ end }}
+            </div>
+        </div>
+        {{ end }}
 
-	{{ end }}
+    {{ end }}
 
 </div>
 {{ end }}
