@@ -4,7 +4,9 @@
     <header class="mb-3">
       <h1>{{ .Title }}</h1>
       {{ with .Date }}
-      <p class="text-muted">{{ . | time.Format ":date_long" }}</p>
+      <div class="text-muted">
+  <time datetime="{{ .Format `2006-01-02T15:04:05Z0700` }}">{{ . | time.Format ":date_long" }} {{ . | time.Format "3:04 PM" }}</time>
+      </div>
       {{ end }}
       {{ with .Params.speakers }}
       {{ $count := len . }}
