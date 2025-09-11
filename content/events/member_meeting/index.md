@@ -1,6 +1,7 @@
 ---
 title: "August 2025 Members Meeting"
-date: 2025-08-01
+publishDate: 2025-08-01
+date: 2025-08-13T19:00:00-04:00
 description: "Monthly members meeting and What's Up Basics!"
 images: [""]
 organizers: ["laurie-ansorge"]
@@ -11,7 +12,7 @@ draft: false
 
 ## What's Up Basics!
 
-{{< youtube FF0HLiRQVfI >}}
-{ .my-5 }
 
 ## Voyager Legacy
+
+{{< youtube id="FF0HLiRQVfI" class="video-container" >}}
