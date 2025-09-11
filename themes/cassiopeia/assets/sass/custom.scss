@@ -74,7 +74,7 @@
 }
 
 // contact icons
-.contact-icons{
+.contact-icons {
     width: 1.5em;
     height: 1.5em;
 }
@@ -90,37 +90,49 @@
     fill: none;
 }
 
-a
+/* hover colors */
+$icon-blue: #0085ff;
+$icon-black: #000000;
+$icon-gray: #8b8b8b;
+$icon-red: #FF0000;
 
-/*hover colors*/
-    {
-    $icon-blue: #0085ff;
-    $icon-black: #000000;
-    $icon-gray: #8b8b8b;
-    $icon-red: #FF0000;
-
-    .icon-twitter:hover {
-        fill: $icon-blue;
-    }
-
-    .icon-xitter:hover {
-        fill: $icon-black;
-    }
-
-    .icon-bsky:hover {
-        fill: $icon-blue;
-    }
-
-    .icon-github:hover {
-        fill: $icon-gray;
-    }
-
-    .icon-youtube:hover {
-        fill: $icon-red;
-    }
-
-    .icon-facebook:hover {
-        fill: $icon-blue;
-    }
+.icon-twitter:hover {
+    fill: $icon-blue;
 }
 
+.icon-xitter:hover {
+    fill: $icon-black;
+}
+
+.icon-bsky:hover {
+    fill: $icon-blue;
+}
+
+.icon-github:hover {
+    fill: $icon-gray;
+}
+
+.icon-youtube:hover {
+    fill: $icon-red;
+}
+
+.icon-facebook:hover {
+    fill: $icon-blue;
+}
+
+.video-container {
+  width: 80%;              /* make it 60% of page width */
+  margin: 1rem auto;          /* center horizontally */
+  position: relative;
+  padding-bottom: 45.0%;  /* maintain 16:9 aspect ratio */
+  height: 0;               /* collapse initial height */
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;             /* fill container */
+  height: 100%;
+}
