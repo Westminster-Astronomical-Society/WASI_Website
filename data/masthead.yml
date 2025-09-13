@@ -10,7 +10,7 @@
   #     link: "#about"              # Button link (anchor or URL)
 
 masthead:
-  enable: true
+  enable: false
   title: "Westminster Astronomical Society"
   content: "Bringing the Universe to Carroll County, Maryland since 1984"
   button:

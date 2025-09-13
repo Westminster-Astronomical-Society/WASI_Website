@@ -6,7 +6,8 @@
   #    - transition: "fade"        # optional; set to "fade" to add .carousel-fade class
   #    - default_interval: 5000    # global default interval (ms) for slides
   #    - slides:                   # array of slide objects
-  #        - image_1: "assets/path/to.jpg"   # image path (resources.Get or static)
+  #      slide-1:                  # unique key for each slide (e.g. slide-1, slide-2, etc.)
+  #        - image: "assets/path/to.jpg"   # image path (resources.Get or static)
   #          image_credit: "Credit text or [Link](https://example.com)"
   #          title: "Slide title"
   #          content: "Slide content"
@@ -19,7 +20,7 @@
   #            link: "#"
 
 carousel:
-  enable: false
+  enable: true
   autoplay: true
   transition: "fade"
   default_interval: 5000
