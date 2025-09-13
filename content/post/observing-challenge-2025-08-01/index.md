@@ -4,11 +4,13 @@ description : "This month's challenges can be found throughout the northern, eas
 Here are the details..."
 date: 2025-08-01
 draft: false
+type: "post"
 images: ["observing-challenge-2025-08-01.png"]
 categories: ["WASI Observing Challenge"]
 tags: ["Observing Challenge"]
 keywords: []
 authors: ["paul-moos"]
+
 ---
 
 
