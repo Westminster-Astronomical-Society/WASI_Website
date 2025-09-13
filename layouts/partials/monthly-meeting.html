@@ -1,0 +1,31 @@
+{{/* Monthly Meeting partial driven by data/meeting.yml */}}
+
+{{ $raw := index .Site.Data "meeting" }}
+{{ $cfg := or (index $raw "section") $raw }}
+{{ if and $cfg (ne $cfg.enable false) }}
+<section id="monthly-meeting" class="section container bg-light my-5 px-0">
+<div class="row align-items-stretch g-5">
+    {{ $imgPath := default "bootstrap-themes.png" $cfg.image }}
+    {{ $imgRes := resources.Get $imgPath }}
+    {{ if not $imgRes }}{{ $imgRes = resources.GetMatch (print "**/" (path.Base $imgPath)) }}{{ end }}
+    <div class="col-lg-6 m-0">
+        {{ $bg := cond $imgRes $imgRes.RelPermalink ($imgPath | relURL) }}
+        <div class="w-100 h-100" style="background-image: url('{{ $bg }}'); background-size: cover; background-position: center; min-height: 400px;">
+        </div>
+    </div>
+    <div class="col-lg-6 d-flex m-0">
+        <div class="d-flex flex-column justify-content-center h-100 w-100 p-4">
+        {{ with $cfg.title }}<h2 class="display-6 fs-2 text-body-emphasis lh-1 mb-3">{{ . }}</h2>{{ end }}
+        {{ with $cfg.content }}<p class="lead">{{ . }}</p>{{ end }}
+        {{ with $cfg.button }}
+        {{ if and .enable .link }}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a class="btn btn-primary btn-lg px-4 me-md-2" href="{{ .link }}">{{ or .label "Learn more" }}</a>
+        </div>
+        {{ end }}
+        {{ end }}
+        </div>
+    </div>
+</div>
+</section>
+{{ end }}

@@ -1,0 +1,12 @@
+section:
+  enable: true
+  title: "Monthly Members Meeting"
+  content: "Monthly members meetings are held at 7:00 PM EST on the second Wednesday
+    of the month at the Bear Branch Nature Center and online via Zoom. Meetings are
+    open to the public and all are welcome to attend. Meetings feature a guest speaker
+    and a \"What's Up\" presentation highlighting current astronomical events."
+  image: "assets/images/backgrounds/bear-branch.jpg"
+  button:
+    enable: true
+    label: "Details"
+    link: "/about/"
