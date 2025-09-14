@@ -39,14 +39,16 @@
     <section class="related">
   {{/* Derive slug from the content folder name (works for leaf bundles) */}}
   {{ $slug := path.Base .File.Dir }}
-      {{ $posts := where site.RegularPages "Section" "post" }}
-      {{ $events := where site.RegularPages "Section" "events" }}
+  {{ $posts := where site.RegularPages "Section" "post" }}
+  {{ $events := where site.RegularPages "Section" "events" }}
+  {{ $observations := where site.RegularPages "Section" "observations" }}
 
-      {{ $byAuthor := where $posts ".Params.authors" "intersect" (slice $slug) }}
-      {{ $bySpeaker := where $events ".Params.speakers" "intersect" (slice $slug) }}
-      {{ $byOrganizer := where $events ".Params.organizers" "intersect" (slice $slug) }}
+  {{ $byAuthor := where $posts ".Params.authors" "intersect" (slice $slug) }}
+  {{ $bySpeaker := where $events ".Params.speakers" "intersect" (slice $slug) }}
+  {{ $byOrganizer := where $events ".Params.organizers" "intersect" (slice $slug) }}
+  {{ $byObserver := where $observations ".Params.observers" "intersect" (slice $slug) }}
 
-      {{ if or (gt (len $byAuthor) 0) (gt (len $bySpeaker) 0) (gt (len $byOrganizer) 0) }}
+  {{ if or (gt (len $byAuthor) 0) (gt (len $bySpeaker) 0) (gt (len $byOrganizer) 0) (gt (len $byObserver) 0) }}
       <div class="row g-4">
         {{ if gt (len $byAuthor) 0 }}
         <div class="col-12">
@@ -75,6 +77,17 @@
           <h2 class="h4">Organized Events</h2>
           <ul>
             {{ range $byOrganizer }}
+              <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small></li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+
+        {{ if gt (len $byObserver) 0 }}
+        <div class="col-12">
+          <h2 class="h4">Observations</h2>
+          <ul>
+            {{ range $byObserver }}
               <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small></li>
             {{ end }}
           </ul>

@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="container py-4">
+  <h1 class="mb-4">Observations</h1>
+  {{ if .Pages }}
+  <ul class="list-unstyled">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ $pg := . }}
+      <li class="mb-3">
+        <h2 class="h5 mb-1"><a href="{{ .RelPermalink }}" class="text-decoration-none">{{ .Title }}</a></h2>
+        {{ with .Date }}
+          <div class="text-muted small">{{ . | time.Format ":date_long" }}</div>
+        {{ end }}
+        {{ with $pg.Params.observers }}
+          <div class="small"><strong>{{ if eq (len .) 1 }}Observer{{ else }}Observers{{ end }}:</strong> {{ partial "person-names.html" (dict "page" $pg "param" "observers") }}</div>
+        {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+  {{ else }}
+    <p class="text-muted">No observations yet.</p>
+  {{ end }}
+</div>
+{{ end }}

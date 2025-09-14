@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="container py-4">
+  <article>
+    <header class="mb-3">
+      <h1>{{ .Title }}</h1>
+      {{ with .Date }}
+      <p class="text-muted">{{ . | time.Format ":date_long" }}</p>
+      {{ end }}
+      {{ with .Params.observers }}
+      <p class="mb-1"><strong>{{ if eq (len .) 1 }}Observer{{ else }}Observers{{ end }}:</strong> {{ partial "person-names.html" (dict "page" $ "param" "observers") }}</p>
+      {{ end }}
+    </header>
+
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </article>
+</div>
+{{ end }}
