@@ -5,9 +5,9 @@ weight = 10
 [en.params]
   languageISO = "EN"
 
-[es]
-languageName = "Spanish"
-languageCode = "es-ES"
-weight = 20
-[es.params]
-  languageISO = "ES"
+# [es]
+# languageName = "Spanish"
+# languageCode = "es-ES"
+# weight = 20
+# [es.params]
+#   languageISO = "ES"
