@@ -9,6 +9,7 @@
       {{ with .Params.observers }}
       <p class="mb-1"><strong>{{ if eq (len .) 1 }}Observer{{ else }}Observers{{ end }}:</strong> {{ partial "person-names.html" (dict "page" $ "param" "observers") }}</p>
       {{ end }}
+      {{ partial "share-links.html" . }}
     </header>
 
     <div class="content">

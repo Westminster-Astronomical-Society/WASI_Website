@@ -21,6 +21,7 @@
   {{ $count := len . }}
   <p class="mb-1"><strong>{{ if eq $count 1 }}Organizer{{ else }}Organizers{{ end }}:</strong> {{ partial "person-names.html" (dict "page" $ "param" "organizers") }}</p>
   {{ end }}
+  {{ partial "share-links.html" . }}
     </header>
 
     <div class="content">
