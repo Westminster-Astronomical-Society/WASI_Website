@@ -1,96 +1,252 @@
 {{ $logo := default "/icons/site-logos.svg#wasi-brand" .Site.Params.mainMenuLogo }}
 
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasDonate"
-  aria-labelledby="offcanvasDonateLabel">
+<div
+  class="offcanvas offcanvas-start"
+  data-bs-scroll="true"
+  tabindex="-1"
+  id="offcanvasDonate"
+  aria-labelledby="offcanvasDonateLabel"
+>
   <div class="offcanvas-header">
     <svg class="site-brand" role="img" aria-hidden="true">
       <use xlink:href="{{ $logo }}"></use>
     </svg>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
   </div>
   <div class="offcanvas-body">
-    <p>Thank you for supporting the Westminster Astronomical Society. Your contributions enable us to provide
-      community outreach and continue our mission of bringing the wonders of the universe to everyone.</p>
+    <p>
+      Thank you for supporting the Westminster Astronomical Society. Your
+      contributions enable us to provide community outreach and continue our
+      mission of bringing the wonders of the universe to everyone.
+    </p>
 
     {{/* paypal form */}}
     <div class="d-flex flex-column align-items-center justify-content-center">
       <p>Make a secure donation online via PayPal.</p>
 
-      <form action="https://www.paypal.com/donate" method="post" target="_top" class="text-center">
-
+      <form
+        action="https://www.paypal.com/donate"
+        method="post"
+        target="_top"
+        class="text-center"
+      >
         <!-- Replace with your PayPal business ID or email -->
-        <input type="hidden" name="business" value="YOUR_PAYPAL_MERCHANT_ID_OR_EMAIL">
+        <input
+          type="hidden"
+          name="business"
+          value="YOUR_PAYPAL_MERCHANT_ID_OR_EMAIL"
+        />
 
         <!-- Donation purpose (optional) -->
-        <input type="hidden" name="item_name" value="Support Westminster Astronomical Society">
+        <input
+          type="hidden"
+          name="item_name"
+          value="Support Westminster Astronomical Society"
+        />
 
         <!-- Currency -->
-        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="currency_code" value="USD" />
 
         <!-- Official PayPal donate button image -->
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit"
-          title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button">
-        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        <input
+          type="image"
+          src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+          border="0"
+          name="submit"
+          title="PayPal - The safer, easier way to pay online!"
+          alt="Donate with PayPal button"
+        />
+        <img
+          alt=""
+          border="0"
+          src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+          width="1"
+          height="1"
+        />
       </form>
       <p class="my-4">To use your mobile app scan the QR code:</p>
-      <img src="paypal.svg" alt="PayPal QR Code" class="qr-code" width="300" height="300">
+      <img
+        src="paypal.svg"
+        alt="PayPal QR Code"
+        class="qr-code"
+        width="300"
+        height="300"
+      />
     </div>
-    <p class="my-4">Westminster Astronomical Society, Inc. is a 501c(3) educational tax-exempt organization.</p>
-
+    <p class="my-4">
+      Westminster Astronomical Society, Inc. is a 501c(3) educational tax-exempt
+      organization.
+    </p>
   </div>
 </div>
 
-
-
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasJoin"
-  aria-labelledby="offcanvasJoinLabel">
+<div
+  class="offcanvas offcanvas-start"
+  data-bs-scroll="true"
+  tabindex="-1"
+  id="offcanvasJoin"
+  aria-labelledby="offcanvasJoinLabel"
+>
   <div class="offcanvas-header">
     <svg class="site-brand" role="img" aria-hidden="true">
       <use xlink:href="{{ $logo }}"></use>
     </svg>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
   </div>
   <div class="offcanvas-body">
-    <p>Thank you for your interest in joining Westminster Astronomical Society. You can become a member
-      by filling out the online application form at the Night Sky Network.</p>
-    <a href="https://nightsky.jpl.nasa.gov/join/wasi/" class="btn btn-primary my-2" target="_blank" rel="noopener">
-      Join WASI</a>
+    <p>
+      Thank you for your interest in joining Westminster Astronomical Society.
+      You can become a member by filling out the online application form at the
+      Night Sky Network.
+    </p>
+    <a
+      href="https://nightsky.jpl.nasa.gov/join/wasi/"
+      class="btn btn-primary my-2"
+      target="_blank"
+      rel="noopener"
+    >
+      Join WASI</a
+    >
 
-    <p>Membership Dues for individuals and families (at no additional cost) are:</p>
+    <p>
+      Membership Dues for individuals and families (at no additional cost) are:
+    </p>
     <ul>
       <li>$25 per year</li>
       <li>$40 for two years</li>
       <li>$80 for four years</li>
     </ul>
-    <p>Please include the names of family members as they should appear on the membership card, and email addresses
-      for official notices, either in the additional comments or by separate email.</p>
+    <p>
+      Please include the names of family members as they should appear on the
+      membership card, and email addresses for official notices, either in the
+      additional comments or by separate email.
+    </p>
 
     {{/* paypal form */}}
-    <div class="d-flex flex-column align-items-center justify-content-center my-4">
+    <div
+      class="d-flex flex-column align-items-center justify-content-center my-4"
+    >
       <p>You can make a secure online payment via PayPal.</p>
 
-      <form action="https://www.paypal.com/donate" method="post" target="_top" class="text-center">
-
+      <form
+        action="https://www.paypal.com/donate"
+        method="post"
+        target="_top"
+        class="text-center"
+      >
         <!-- Replace with your PayPal business ID or email -->
-        <input type="hidden" name="business" value="YOUR_PAYPAL_MERCHANT_ID_OR_EMAIL">
+        <input
+          type="hidden"
+          name="business"
+          value="YOUR_PAYPAL_MERCHANT_ID_OR_EMAIL"
+        />
 
         <!-- Payment purpose (optional) -->
-        <input type="hidden" name="item_name" value="Westminster Astronomical Society Membership Dues">
+        <input
+          type="hidden"
+          name="item_name"
+          value="Westminster Astronomical Society Membership Dues"
+        />
 
         <!-- Currency -->
-        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="currency_code" value="USD" />
 
         <!-- Official PayPal donate button image -->
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit"
-          title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button">
-        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        <input
+          type="image"
+          src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+          border="0"
+          name="submit"
+          title="PayPal - The safer, easier way to pay online!"
+          alt="Donate with PayPal button"
+        />
+        <img
+          alt=""
+          border="0"
+          src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+          width="1"
+          height="1"
+        />
       </form>
-      </div>
-
-      <p>Or print this
-        <a href="https://www.westminsterastro.org/wp-content/uploads/2024/02/2024-paper-application-WASI.pdf"
-          target="_blank" rel="noopener">application form</a>
-        and mail it with a check for $25.00 made out to WASI to the address on the form.
-      </p>
     </div>
+
+    <p>
+      Or print this
+      <a
+        href="https://www.westminsterastro.org/wp-content/uploads/2024/02/2024-paper-application-WASI.pdf"
+        target="_blank"
+        rel="noopener"
+        >application form</a
+      >
+      and mail it with a check for $25.00 made out to WASI to the address on the
+      form.
+    </p>
   </div>
+</div>
+
+{{/* Meeting Information Offcanvas */}}
+<div
+  class="offcanvas offcanvas-start"
+  data-bs-scroll="true"
+  tabindex="-1"
+  id="offcanvasMeeting"
+  aria-labelledby="offcanvasMeetingLabel"
+>
+  <div class="offcanvas-header">
+    <svg class="site-brand" role="img" aria-hidden="true">
+      <use xlink:href="{{ $logo }}"></use>
+    </svg>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>
+      Monthly members meetings are held at 7:00 PM EST on the second Wednesday
+      of the month at the Bear Branch Nature Center and online via Zoom.
+    </p>
+
+    <p>
+      The "What's Up Basics!" presentation is at 7:00 PM EST, followed by the featured
+      guest speaker presentation at 7:30 PM EST. Club updates and business meeting
+      will follow.
+    </p>
+
+    <p class="lead">Bear Branch Nature Center:</p>
+
+    {{ $addr := "300 John Owings Rd. Westminster, MD" }}
+    {{ $maps := (print "https://www.google.com/maps/search/?api=1&query=" ($addr | urlquery)) }}
+    <p class="d-flex align-items-center mb-2">
+      <svg class="site-icons contact-icons me-2" aria-hidden="true" focusable="false" role="img">
+        <use href="{{ `/icons/site-icons.svg#map-pin` | relURL }}" />
+      </svg>
+      <a class="fw-medium" href="{{ $maps }}" target="_blank" rel="noopener">{{ $addr }}</a>
+    </p>
+
+    <p class="lead mt-4">Or join us online via Zoom:</p>
+    <a
+      href="https://us02web.zoom.us/meeting/tZMkcOqgqjopE9K3yEznQ_KY5S-pADc2L0Eq/ics?icsToken=98tyKuGvpzwpEtCUsxCBRpwEHY_Cb_zwiH5ej_p2zwbAGS5iXSjPY9EPIpNbE4r8"
+      class="btn btn-primary mb-2"
+      target="_blank"
+      rel="noopener"
+    >
+      Zoom</a
+    >
+
+    <p class="mb-0">Meeting ID: 879 7384 1396</p>
+    <p>Passcode: 965007</p>
+  </div>
+</div>

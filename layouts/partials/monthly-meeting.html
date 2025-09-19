@@ -17,13 +17,24 @@
         <div class="d-flex flex-column justify-content-center h-100 w-100 p-4">
         {{ with $cfg.title }}<h2 class="display-6 fs-2 text-body-emphasis lh-1 mb-3">{{ . }}</h2>{{ end }}
         {{ with $cfg.content }}<p class="lead">{{ . }}</p>{{ end }}
-        {{ with $cfg.button }}
-        {{ if and .enable .link }}
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <a class="btn btn-primary btn-lg px-4 me-md-2" href="{{ .link }}">{{ or .label "Learn more" }}</a>
-        </div>
-        {{ end }}
-        {{ end }}
+                {{ with $cfg.button }}
+                {{ $off := index . "offcanvas" }}
+                {{ $lnk := index . "link" }}
+                {{ if $off }}
+                {{ $ctrl := replaceRE "^#" "" $off }}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a class="btn btn-primary btn-lg px-4 me-md-2" data-bs-toggle="offcanvas" data-bs-target="{{ $off }}" href="{{ $off }}" role="button" aria-controls="{{ $ctrl }}">{{ or .label "Learn more" }}</a>
+                </div>
+                {{ else if and .enable $lnk }}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        {{ if strings.HasPrefix $lnk "http" }}
+                            <a class="btn btn-primary btn-lg px-4 me-md-2" href="{{ $lnk }}" role="button" target="_blank" rel="noopener">{{ or .label "Learn more" }}</a>
+                        {{ else }}
+                            <a class="btn btn-primary btn-lg px-4 me-md-2" href="{{ $lnk }}" role="button">{{ or .label "Learn more" }}</a>
+                        {{ end }}
+                </div>
+                {{ end }}
+                {{ end }}
         </div>
     </div>
 </div>
