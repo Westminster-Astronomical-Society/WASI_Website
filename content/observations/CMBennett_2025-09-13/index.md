@@ -4,7 +4,7 @@ date: 2025-09-13T04:00:00-04:00
 description: "Observations of Jupiter and Saturn"
 images: [""]
 observers: ["chris-bennett"]
-tags: ["planets", "Jupiter", "Saturn"]
+tags: ["planets"]
 draft: false
 ---
 

@@ -6,8 +6,8 @@ date: 2025-08-01
 draft: false
 type: "post"
 images: ["observing-challenge-2025-08-01.png"]
-categories: ["WASI Observing Challenge"]
-tags: ["Observing Challenge"]
+categories: ["Observing Challenge"]
+tags: [""]
 keywords: []
 authors: ["paul-moos"]
 
@@ -134,4 +134,4 @@ also a topic for posting observations of other objects in August – let us know
 what you are observing!
 Caph
 
-[^1]: From the Turkish word 'kara-kulac', the Caracal or Perian (Desert) Lynx 'Caracal' description from Wikipedia: "Typically nocturnal, the caracal is highly secretive and difficult to observe. It lives mainly alone or in pairs." (I kid you not...)
+[^1]: From the Turkish word 'kara-kulac', the Caracal or Persian (Desert) Lynx 'Caracal' description from Wikipedia: "Typically nocturnal, the caracal is highly secretive and difficult to observe. It lives mainly alone or in pairs." (I kid you not...)

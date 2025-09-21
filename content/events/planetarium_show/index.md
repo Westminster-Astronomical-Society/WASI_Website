@@ -6,6 +6,7 @@ description: "Monthly Planetarium Show and Stargazing at Bear Branch"
 draft: false
 images: ["6L3A3004.jpg"]
 organizers: ["brooke-parkhurst", "al-ansorge"]
-tags: ["Planetarium Show"]
+tags: [""]
+categories: ["Planetarium Show"]
 ---
 
