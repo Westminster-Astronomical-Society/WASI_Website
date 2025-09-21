@@ -1,12 +1,6 @@
 {{ define "main" }}
 
 <div class="container py-3">
-	
-	{{ if .Content }}
-	<div class="mb-3">
-		{{ .Content }}
-	</div>
-	{{ end }}
 
 	{{ if or .Site.Params.options.listCategoryFilter .Site.Params.options.listTagFilter }}
 	<div class="row mb-3">
@@ -35,7 +29,13 @@
 
 	</div>
 	{{ end }}
-
+	
+	{{ if .Content }}
+	<div class="mb-3">
+		{{ .Content }}
+	</div>
+	{{ end }}
+    
 	{{ if ne .Kind "taxonomy" }}
 
 	{{ range .Pages }}
