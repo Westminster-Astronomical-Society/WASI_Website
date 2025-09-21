@@ -1,0 +1,15 @@
+{{/* Shortcode: button — renders a Bootstrap link button. Params: href (required), title, class, target */}}
+
+{{ $href := .Get "href" }}
+{{ if not $href }}
+  {{ errorf "button shortcode requires href parameter" }}
+{{ end }}
+{{ $title := .Get "title" | default (.Inner | plainify) }}
+{{ $extraClass := .Get "class" | default "" }}
+{{ $target := .Get "target" | default "" }}
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+  <a href="{{ $href }}" class="btn {{ $extraClass }}" {{ if $target }}target="{{ $target }}" rel="noopener"{{ end }}>
+    {{- $title -}}
+  </a>
+</div>
