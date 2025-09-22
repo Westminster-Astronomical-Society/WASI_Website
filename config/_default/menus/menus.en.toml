@@ -6,7 +6,7 @@ title = "About Westminster Astronomical Society"
 
 [[main]]
 name = "Events"
-url = "https://nightsky.jpl.nasa.gov/events/wasi/"
+url = "/events/"
 weight = 20
 title = "WASI Night Sky Network Calendar"
 
@@ -25,16 +25,9 @@ weight = 50
 title = "Bear Branch Planetarium"
 
 [[main]]
-identifier = "membership"
-name = "Membership"
-url = "membership"
-weight = 60
-title = "Join the Westminster Astronomical Society"
-
-[[main]]
 identifier = "resources"
 name = "Resources"
-weight = 70
+weight = 60
 title = "Astronomy Resources"
 
 [[main]]
@@ -65,31 +58,31 @@ title = "Astronomy Resources"
 [[main]]
 identifier = "news"
 name = "News"
-weight = 80
+weight = 70
 title = "WASI News and Announcements"
 
 [[main]]
   name = "All"
   url = "post"
-  weight = 100
+  weight = 80
   parent = "news"
 
 [[main]]
   name = "Star*Points"
   url = "tags/star-points"
-  weight = 20
+  weight = 10
   parent = "news"
 
 [[main]]
   name = "Announcements"
   url = "tags/announcements"
-  weight = 30
+  weight = 20
   parent = "news"
 
 [[main]]
   name = "Newsletter"
   url = "tags/newsletter"
-  weight = 40
+  weight = 30
   parent = "news"
 
 
@@ -111,19 +104,19 @@ title = "WASI News and Announcements"
   name = "Xitter"
   pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-xitter'><use href='/icons/social-icons.svg#xitter'/></svg>"
   url = "https://twitter.com/WASI_Astro/"
-  weight = 20
+  weight = 30
   title = "Contact us on Xitter"
 
 [[social]]
   name = "Youtube"
   pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-youtube'><use href='/icons/social-icons.svg#youtube'/></svg>"
   url = "https://www.youtube.com/@westminsterastronomicalsoc1858"
-  weight = 30
+  weight = 40
   title = "Visit our YouTube channel"
 
   [[social]]
   name = "Facebook"
   pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-facebook'><use href='/icons/social-icons.svg#facebook'/></svg>"
   url = "https://www.facebook.com/groups/wasi.contact/"
-  weight = 40
+  weight = 50
   title = "Visit our Facebook page"
