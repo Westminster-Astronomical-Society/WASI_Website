@@ -5,7 +5,6 @@ draft: false
 categories: ["Featured"]
 tags: ["beginners guide"]
 images: [""]
-keywords: [""]
 ---
 
 # Beginner's Guide to Observational Astronomy

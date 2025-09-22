@@ -5,7 +5,6 @@ draft: false
 categories: ["Featured"]
 tags: ["charts", "atlases"]
 images: [""]
-keywords: [""]
 ---
 
 ## Star Charts and Atlases

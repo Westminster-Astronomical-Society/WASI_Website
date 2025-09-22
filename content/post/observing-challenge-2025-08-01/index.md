@@ -8,7 +8,6 @@ type: "post"
 images: ["observing-challenge-2025-08-01.png"]
 categories: ["Observing Challenge"]
 tags: [""]
-keywords: []
 authors: ["paul-moos"]
 
 ---
