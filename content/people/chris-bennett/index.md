@@ -2,7 +2,7 @@
 title: "Chris Bennett"
 roles: ["Member"]
 affiliation: "Westminster Astronomical Society"
-image: ""
+image: "cmb-avatar.jpg"
 email: ""
 social:
   twitter: ""
