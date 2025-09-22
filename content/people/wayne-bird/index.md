@@ -3,10 +3,6 @@ title: 'Wayne "Skip" Bird'
 roles: ["Officers", "President"]
 affiliation: "Westminster Astronomical Society"
 image: ""
-email: ""
-social:
-  twitter: ""
-  github: ""
 ---
 
 Wayne "Skip" Bird is a NASA Heliophysics Ambassador, and presently the Outreach Director/Night Sky Network Guru for the Westminster Astronomical Society, an outreach fana (definition of fana: someone who will not change his mind AND will not change the subject).

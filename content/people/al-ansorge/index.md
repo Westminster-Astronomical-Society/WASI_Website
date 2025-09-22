@@ -3,10 +3,6 @@ title: "Al Ansorge"
 roles: ["Planetarium Coordinator"]
 affiliation: "Westminster Astronomical Society"
 image: ""
-email: ""
-social:
-  twitter: ""
-  github: ""
 ---
 
 In this role, Al works closely with our county partners at Bear Branch to schedule monthly shows, maintain the equipment, and find exciting content for the shows. He is married to your treasurer, and can be found at several of the public outreach events held each
