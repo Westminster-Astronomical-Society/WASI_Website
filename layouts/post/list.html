@@ -11,7 +11,7 @@
 				<use href="{{ `/icons/site-icons.svg#folder` | relURL }}" />
 			</svg>
 			{{range ($.Site.GetPage "taxonomyTerm" "categories").Pages.ByTitle }}
-			<a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
+			<a class="badge text-bg-secondary nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
 			{{end}}
 		</div>
 		{{ end }}
@@ -22,7 +22,7 @@
 				<use href="{{ `/icons/site-icons.svg#tag` | relURL }}" />
 			</svg>
 			{{range ($.Site.GetPage "taxonomyTerm" "tags").Pages.ByTitle }}
-			<a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
+			<a class="badge text-bg-secondary nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
 			{{end}}
 		</div>
 		{{ end }}
