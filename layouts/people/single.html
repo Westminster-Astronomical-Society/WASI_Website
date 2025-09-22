@@ -85,7 +85,7 @@
 
         {{ if gt (len $byObserver) 0 }}
         <div class="col-12">
-          <h2 class="h4">Observations</h2>
+          <h2 class="h4">Observation Reports</h2>
           <ul>
             {{ range $byObserver }}
               <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small></li>
