@@ -9,3 +9,4 @@
 featured_pages:
   enable: true
   section-title: "Featured Pages"
+  number_of_pages: 3 # Three looks best

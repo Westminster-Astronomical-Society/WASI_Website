@@ -9,7 +9,10 @@
     {{ end }}
     <div class="row row-cols-1 row-cols-lg-3 g-4">
         {{ $n := default 3 $cfg.number_of_posts }}
-        {{ range first $n (where .Site.RegularPages.ByDate.Reverse "Section" "post" ) }}
+        {{ $all := where .Site.RegularPages "Section" "post" }}
+        {{ $sorted := $all.ByDate.Reverse }}
+        {{ $slice := first $n $sorted }}
+        {{ range $slice }}
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">
@@ -46,5 +49,15 @@
         </div>
         {{ end }}
     </div>
+    {{ $total := len $sorted }}
+    {{ if gt $total (len $slice) }}
+    <div class="text-center mt-4">
+        <a class="btn btn-sm btn-outline-primary" href="/post/">View all posts ({{ $total }})</a>
+    </div>
+    {{ else if eq $total (len $slice) }}
+    <div class="text-center mt-4">
+        <a class="btn btn-sm btn-outline-secondary disabled" tabindex="-1" aria-disabled="true">All posts shown</a>
+    </div>
+    {{ end }}
 </section>
 {{ end }}

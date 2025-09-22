@@ -1,38 +1,56 @@
 <!-- Featured Pages section: render from data/pages.yml -->
 {{ $cfg := default (dict) .Site.Data.pages.featured_pages }}
 {{ if $cfg.enable }}
-<section class="section container bg-light p-4 my-5">
-    {{ $title := index $cfg "section-title" | default "" }}
-    {{ $titleTrim := replaceRE "\\s+" "" $title }}
-    {{ if ne $titleTrim "" }}
-    <h2 class="display-6 text-center text-body-emphasis mb-4">{{ $title }}</h2>
-    {{ end }}
-    <div class="row row-cols-1 g-4">
-        {{ range .Site.Taxonomies.tags.featured }}
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a class="stretched-link text-primary text-decoration-none" href="{{ .RelPermalink }}">
-                            {{ .Title }}
-                        </a>
-                    </h4>
-                    <p class="text-text">
-                        {{ with .Params.description }}
-                        {{ . }}
-                        {{ else }}
-                        {{ .Summary | truncate 400 }}
-                        {{ end }}
-                    </p>
-                    <p class="text-text text-muted">
-                        <small>
-                            {{ .Lastmod | time.Format ":date_long" }}
-                        </small>
-                    </p>
-                </div>
-            </div>
-        </div>
+    {{ $limit := cond (isset $cfg "number_of_pages") (int (index $cfg "number_of_pages")) 3 }}
+    {{ if lt $limit 1 }}{{ $limit = 3 }}{{ end }}
+    {{ $all := slice }}
+    {{ with .Site.Taxonomies.categories.featured }}
+        {{ range . }}
+            {{ $all = $all | append .Page }}
         {{ end }}
-    </div>
-</section>
+    {{ end }}
+        {{ $sorted := sort $all "Date" "desc" }}
+        {{ $featured := first $limit $sorted }}
+        {{ $total := len $sorted }}
+    {{ if gt (len $featured) 0 }}
+    <section class="section container bg-light p-4 my-5">
+        {{ $title := index $cfg "section-title" | default "" }}
+        {{ $titleTrim := replaceRE "\\s+" "" $title }}
+        {{ if ne $titleTrim "" }}
+            <h2 class="display-6 text-center text-body-emphasis mb-4">{{ $title }}</h2>
+        {{ end }}
+            <div class="row row-cols-1 g-4">
+            {{ range $featured }}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="card-title mb-2">
+                                <a class="stretched-link text-primary text-decoration-none" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                            </h4>
+                            <p class="text-text flex-grow-1 mb-2">
+                                {{ with .Params.description }}
+                                    {{ . }}
+                                {{ else }}
+                                    {{ .Summary | truncate 400 }}
+                                {{ end }}
+                            </p>
+                            <p class="text-text text-muted mb-0"><small>{{ .Lastmod | time.Format ":date_long" }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+                {{ if gt $total (len $featured) }}
+                    <div class="text-center mt-4">
+                        <a class="btn btn-sm btn-outline-primary" href="{{ with site.GetPage (printf "/categories/featured") }}{{ .RelPermalink }}{{ else }}/categories/featured/{{ end }}">
+                            View all featured ({{ $total }})
+                        </a>
+                    </div>
+                {{ else if eq $total (len $featured) }}
+                    <div class="text-center mt-4">
+                        <a class="btn btn-sm btn-outline-secondary disabled" tabindex="-1" aria-disabled="true">All featured pages shown</a>
+                    </div>
+                {{ end }}
+    </section>
+    {{ end }}
 {{ end }}
