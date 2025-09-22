@@ -1,23 +1,39 @@
 {{/*
-  person-names.html
-  Renders only the person's name(s) linked to their profile page.
-  Usage: partial "person-names.html" (dict "page" . "param" "authors" "prefix" "by ")
+	person-names.html
+	Renders comma-delimited list of people from a front matter param.
+	Usage: partial "person-names.html" (dict "page" . "param" "authors" "prefix" "by ")
+	Behaviors:
+		- Accepts param value as string or slice; coerces to slice.
+		- If a matching people page exists (content/people/<slug>/), link to it.
+		- If not, render the raw (prettified) name as plain text.
 */}}
 
 {{ $page := .page }}
 {{ $param := .param }}
 {{ $prefix := .prefix | default "" }}
-
-{{ with index $page.Params $param }}
-  {{ $names := slice }}
-  {{ range $i, $slug := . }}
-    {{ $person := site.GetPage (printf "people/%s" $slug) }}
-    {{ if $person }}
-      {{ $names = $names | append (printf "<a href=\"%s\">%s</a>" $person.RelPermalink $person.Title) }}
-    {{ else }}
-      {{ $pretty := $slug | replace "-" " " | title }}
-      {{ $names = $names | append $pretty }}
-    {{ end }}
-  {{ end }}
-  {{ printf "%s%s" $prefix (delimit $names ", ") | safeHTML }}
+{{ $raw := index $page.Params $param }}
+{{ if $raw }}
+	{{/* Coerce to slice */}}
+	{{ $list := cond (or (reflect.IsSlice $raw) (reflect.IsArray $raw)) $raw (slice $raw) }}
+	{{ $names := slice }}
+	{{ range $list }}
+		{{ $val := trim . " \t\n" }}
+		{{ if ne $val "" }}
+			{{ $slug := $val | urlize }}
+			{{ $person := site.GetPage (printf "people/%s" $slug) }}
+			{{ if $person }}
+				{{ $names = $names | append (printf "<a href=\"%s\">%s</a>" $person.RelPermalink $person.Title) }}
+			{{ else }}
+				{{/* Fallback: if original has a space keep it; otherwise prettify slug form. Avoid lone dash. */}}
+				{{ $hasSpace := in $val " " }}
+				{{ $fallback := cond $hasSpace $val ($val | replace "-" " " | title) }}
+				{{ if or (eq $fallback "-") (eq $fallback "") }}
+					{{/* Skip pathological single-dash or empty values */}}
+				{{ else }}
+					{{ $names = $names | append ($fallback | htmlEscape) }}
+				{{ end }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+	{{ if gt (len $names) 0 }}{{ printf "%s%s" $prefix (delimit $names ", ") | safeHTML }}{{ end }}
 {{ end }}
