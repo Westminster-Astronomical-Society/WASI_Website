@@ -18,7 +18,7 @@ features:
   items:
     - icon: "/icons/astro-icons.svg#astro-4-1"
       title: "Outreach"
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
+      content: "It is our mission to inspire interest in astronomy through public engagement and community outreach. We host local events and partner with community organizations to promote astronomy education."
       button:
         enable: false
         label: "Learn more"
@@ -26,7 +26,7 @@ features:
 
     - icon: "/icons/astro-icons.svg#astro-2-1"
       title: "Observing"
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
+      content: "We host regular observing events throughout Carroll County, MD and the surrounding areas. We hope to provide members and the public with opportunities to observe and appreciate the night sky."
       button:
         enable: false
         label: "Learn more"
@@ -34,7 +34,7 @@ features:
 
     - icon: "/icons/astro-icons.svg#astro-5-1"
       title: "Resources"
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos."
+      content: "We have a variety of resources to help members, and the public improve their observational skills and understanding of astronomy. We have experienced observers who can offer guidance and support."
       button:
         enable: false
         label: "Learn more"
