@@ -10,9 +10,16 @@
 // Cover styles
 #site-cover {
     background-size: cover;
-    background-position: center left 20%;
+    background-position: center 20%;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+/* Disable fixed background on small screens to avoid performance/paint issues */
+@media (max-width: 768px) {
+  #site-cover {
+    background-attachment: scroll;
+  }
 }
 
 // Carousel styles
@@ -39,7 +46,7 @@
     }
 
     .slide-item {
-        height: 70vh; // Set the height of the carousel
+        height: 68vh; // Set the height of the carousel
 
         .slide-image {
             // Scale and fit the images
