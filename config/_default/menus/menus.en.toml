@@ -38,20 +38,20 @@ title = "Astronomy Resources"
   title = "Sun and Moon Almanac"
 
 [[main]]
-  name = "General Astronomy"
-  url = "tags/astronomy"
+  name = "Astronomy References"
+  url = "astronomy-references"
   weight = 10
   parent = "resources"
 
 [[main]]
-  name = "Observer Resources"
-  url = "tags/observer"
+  name = "Observing Resources"
+  url = "observing"
   weight = 20
   parent = "resources"
 
 [[main]]
   name = "Outreach Resources"
-  url = "tags/outreach"
+  url = "outreach"
   weight = 30
   parent = "resources"
 
