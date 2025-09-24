@@ -4,9 +4,8 @@ description: ""
 date: {{ .Date }}
 draft: true
 images: ["{{ .Name | urlize }}.jpg"]
-categories: ["General","Blog"]
-tags: ["featured"]
-keywords: ["{{ replace .Name "-" " " | lower }}"]
+categories: ["WASI Blog"]
+tags: []
 authors: []
 ---
 
