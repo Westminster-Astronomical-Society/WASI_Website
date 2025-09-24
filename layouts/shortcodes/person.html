@@ -1,8 +1,0 @@
-{{/* Usage: {{< person slug="curt-roelle" >}} */}}
-{{ $slug := .Get "slug" }}
-{{ with site.GetPage (printf "people/%s" $slug) }}
-  {{ partial "person-summary.html" . }}
-{{ else }}
-  {{ $pretty := $slug | replace "-" " " | title }}
-  {{ $pretty }}
-{{ end }}

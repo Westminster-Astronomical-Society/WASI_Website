@@ -43,13 +43,6 @@
   <link rel="{{ .Rel }}" {{ printf "type=%q" .MediaType.Type | safeHTMLAttr }} href="{{ .Permalink | safeURL }}">
 {{ end -}}
 
-<!-- Removed "_internal/schema.html" as it generates invalid HTML. Using "head/schema-article.html" in ld+json instead. -->
-
-<!-- Removed "_internal/opengraph.html" as it generates invalid image links. Using "head/opengraph.html" and "head/facebook.html" instead. -->
-{{ partial "head/opengraph.html" . }}
-{{ partial "head/facebook-admin.html" . }}
-{{ partial "head/twitter.html" . }}
-
 <!-- will load JSON-LD Schemas in pages -->
 <!-- https://schema.org/docs/schemas.html -->
 {{ if .IsPage }}
@@ -66,24 +59,11 @@
   {{ if .Site.Params.organization }}
     {{- partial "head/schema-organization.html" .  -}}
   {{ end }}
-  <!-- Local Business structured data -->
-  {{ if .Site.Params.localBusiness }}
-    {{- partial "head/schema-local-business.html" .  -}}
-  {{ end }}
+
   <!-- Event structured data -->
   {{ if .Site.Params.event -}}
     {{- partial "head/schema-event.html" .  -}}
   {{ end }}
-{{ end }}
-
-<!-- Product structured data -->
-{{ if .Params.product -}}
-  {{- partial "head/schema-product.html" .  -}}
-{{ end }}
-
-<!-- Software Application structured data -->
-{{ if .Params.softwareApplication -}}
-  {{- partial "head/schema-software-application.html" .  -}}
 {{ end }}
 
 <!-- FAQPage structured data -->
