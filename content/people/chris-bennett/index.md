@@ -1,6 +1,6 @@
 ---
 title: "Chris Bennett"
-roles: ["Member"]
+roles: ["WASI Member"]
 affiliation: "Westminster Astronomical Society"
 image: "cmb-avatar.jpg"
 ---
