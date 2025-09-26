@@ -6,12 +6,11 @@
 # https://schema.org/Thing
 # https://schema.org/Article
 description = "The home of Westminster Astronomical Society"
-images = ['images/WASI-3.svg', 'images/site-feature-image.png']
 mainMenuLogo = "/icons/site-logos.svg#wasi-blue-brand"
 
 # For favicons
 ## Chrome Browser
-themeColor = "#212529"
+themeColor = "#3D3E77"
 
 # Alert
 alert = false
@@ -19,7 +18,7 @@ alertDismissable = true
 alertText = "An Announcement! <a class=\"alert-link stretched-link\" href=\"https://example/\">Click here</a>"
 
 [options]
-colormode = "light"
+colormode = "light" # "light", "dark" or "auto"
 bootStrapJs = true
 breadCrumb = true
 listCategoryFilter = true
@@ -27,4 +26,4 @@ listTagFilter = true
 
 [share]
 # Providers in desired order. Valid keys: xitter, facebook, bsky, email
-providers = ["xitter", "facebook", "bsky", "email"]
+providers = ["xitter", "bsky", "facebook", "email"]

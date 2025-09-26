@@ -1,20 +1,10 @@
 // Default variable overrides
 
-// scss-docs-start theme-color-variables
-// $primary:       #3a3a79;
-// $secondary:     #6c757d;
-// $success:       #198754;
-// $info:          #0dcaf0;
-// $warning:       #ffc107;
-// $danger:        #dc3545;
-// $light:         #f8f9fa;
-// $dark:          #212529;
-// scss-docs-end theme-color-variables
-
 // Your variable overrides
 // $body-bg: #212529;
 // $body-color: #dee2e6;
 
+// Color maps must be imported after functions in bootstrap.scss
 $theme-colors: (
   "primary":    #3D3E77,
   "secondary":  #6c757d,
