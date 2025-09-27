@@ -1,5 +1,8 @@
 # ---------------------------- Contact --------------------------------
 
+# This file contains the contact information for the organization. It is
+# displayed in the extra-footer section of the front page.
+
 contact:
   enable: true
   title: "Contact WASI"
@@ -13,7 +16,3 @@ contact:
   phone: "(443) 732-0020"
 
   contact_form: "https://nightsky.jpl.nasa.gov/contact/wasi/"
-
-map:
-  lat: 39.6474
-  lng: -76.9873

@@ -1,10 +1,11 @@
 # ---------------------------- Featured Pages ----------------------------
+# Displays the most recently edited feature pages on the homepage.
 
-  #  Data keys supported (in `data/posts.yml` under `featured_pages`):
+  #  Data keys supported (in `data/pages.yml` under `featured_pages`):
   #    - enable: true|false        # show/hide the featured pages
   #    - section-title: "Title"    # optional; title text for the featured pages section
   #
-  # The featured pages section will display three across or stacked
+  # The featured pages section will display stacked
 
 featured_pages:
   enable: true

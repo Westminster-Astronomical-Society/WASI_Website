@@ -1,3 +1,9 @@
+# ---------------------------- Meetings --------------------------------
+
+# This file contains the monthly meeting information. It includes a button
+# that triggers an offcanvas with information about meeting location and
+# Zoom link.
+
 section:
   enable: true
   title: "Monthly Members Meeting"
