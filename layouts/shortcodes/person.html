@@ -1,0 +1,133 @@
+{{/*
+	person shortcode
+	Renders a compact person card (image, name, role) optionally linked to the person's page.
+
+	Usage examples:
+		{{< person image="avatar.jpg" name="Chris Bennett" role="Chair" url="/people/chris-bennett/" >}}
+		{{< person name="Chris Bennett" role="Chair" slug="chris-bennett" >}}
+
+	Params:
+		- name        (required) Display name.
+		- role        (optional) Override roles; if omitted uses all roles from profile.
+		- image       (optional) Explicit image filename or path. If relative & a matching person page exists, attempts to resolve within that page resources first, else treated as relURL/static.
+		- url         (optional) Explicit URL to link to. If absent but slug or name resolves to a people page, that page's RelPermalink is used.
+		- slug        (optional) Person content folder slug (overrides derivation from name|url).
+		- class       (optional) Extra CSS classes appended to wrapper.
+		- size        (optional) Image square size in px (default 96).
+		- showrole    (optional bool) If set to false, hide roles even if present.
+
+	Fallback image: If no image param and a person page is resolved, tries that page's first image resource (avatar*, profile*, portrait*, *avatar*). Else falls back to site people/ avatar-blank.* resource if present.
+*/}}
+
+{{ $name      := .Get "name" }}
+{{ $roleParam := .Get "role" }}
+{{/* affiliation deprecated */}}
+{{ $affParam  := .Get "affiliation" }}
+{{ $image     := .Get "image" }}
+{{ $urlParam  := .Get "url" }}
+{{ $slugParam := .Get "slug" }}
+{{ $extraCls  := .Get "class" }}
+{{ $size      := .Get "size" | default 96 }}
+{{/* Raw boolean params (accept only explicit true/false; anything else = default) */}}
+{{ $showRoleParam := .Get "showrole" }}
+{{ $showAffiliation := false }} {{/* deprecated */}}
+
+{{/* Evaluate booleans even when the raw value is the literal false (previous logic skipped due to `with`) */}}
+{{ $showRole := true }}
+{{ $valShowRole := lower (trim (printf "%v" $showRoleParam) " ") }}
+{{ if eq $valShowRole "false" }}
+  {{ $showRole = false }}
+{{ else if eq $valShowRole "true" }}
+  {{ $showRole = true }}
+{{ end }}
+
+{{ if not $name }}
+	{{ errorf "person shortcode: 'name' param is required (%s)" .Position }}
+{{ end }}
+
+{{/* Resolve the person page if possible */}}
+{{ $slug := cond (ne $slugParam "") $slugParam ($name | urlize) }}
+{{ $personPage := site.GetPage (printf "people/%s" $slug) }}
+
+{{/* Determine final URL */}}
+{{ $url := cond (ne $urlParam "") $urlParam (cond $personPage $personPage.RelPermalink "") }}
+
+{{/* Build roles display (all roles comma-separated) or override with role param */}}
+{{ $rolesDisplay := "" }}
+{{ if ne $roleParam "" }}
+	{{ $rolesDisplay = $roleParam }}
+{{ else if and $personPage (isset $personPage.Params "roles") }}
+	{{ $rolesVal := $personPage.Params.roles }}
+	{{ if (or (reflect.IsSlice $rolesVal) (reflect.IsArray $rolesVal)) }}
+		{{ $clean := slice }}
+		{{ range $rolesVal }}
+			{{ $r := trim . " \t\n" }}
+			{{ if ne $r "" }}
+				{{ $clean = $clean | append $r }}
+			{{ end }}
+		{{ end }}
+		{{ if gt (len $clean) 0 }}
+			{{ $rolesDisplay = delimit $clean ", " }}
+		{{ end }}
+	{{ else }}
+		{{ $rolesDisplay = $rolesVal }}
+	{{ end }}
+{{ end }}
+
+{{/* Affiliation resolution removed (kept stub for compatibility) */}}
+{{ $affiliation := "" }}
+
+{{/* Resolve image source */}}
+{{ $imgSrc := "" }}
+
+{{ if $image }}
+	{{/* If image is a bare filename, first try within person page resources */}}
+	{{ if and $personPage (not (findRE `^https?://` $image)) (not (strings.HasPrefix $image "/")) }}
+		{{ $res := $personPage.Resources.GetMatch (printf "*%s" $image) }}
+		{{ if $res }}
+			{{ $imgSrc = $res.RelPermalink }}
+		{{ else }}
+			{{ $imgSrc = relURL $image }}
+		{{ end }}
+	{{ else }}
+		{{/* absolute (http/https) or site-root / relative path */}}
+		{{ $imgSrc = cond (findRE `^https?://` $image) $image (relURL $image) }}
+	{{ end }}
+{{ else if $personPage }}
+	{{/* Try common avatar-like patterns */}}
+	{{ $candidates := slice "avatar" "profile" "portrait" }}
+	{{ $found := false }}
+	{{ range $candidates }}
+		{{ if not $found }}
+			{{ with $personPage.Resources.GetMatch (printf "*%s*" .) }}
+				{{ $imgSrc = .RelPermalink }}
+				{{ $found = true }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ end }}
+
+{{ if eq $imgSrc "" }}
+	{{ with site.GetPage "people" }}
+		{{ with .Resources.GetMatch "avatar-blank.*" }}
+			{{ $imgSrc = .RelPermalink }}
+		{{ end }}
+	{{ end }}
+{{ end }}
+
+{{ $wrapperCls := printf "person-card text-center d-inline-block align-top me-3 mb-3 %s" ($extraCls | default "") }}
+
+<div class="{{ $wrapperCls | strings.TrimSpace }}">
+	{{ if $url }}<a class="text-decoration-none d-inline-block" href="{{ $url }}">{{ end }}
+		{{ if ne $imgSrc "" }}
+			<img src="{{ $imgSrc }}" alt="{{ $name }}" class="rounded-circle mb-2" width="{{ $size }}" height="{{ $size }}" loading="lazy">
+		{{ end }}
+		<div class="person-meta">
+			<span class="d-block fw-semibold person-name">{{ $name }}</span>
+			{{ if and $showRole $rolesDisplay }}<span class="d-block text-muted small person-roles">{{ $rolesDisplay }}</span>{{ end }}
+			{{/* affiliation removed */}}
+		</div>
+	{{ if $url }}</a>{{ end }}
+</div>
+
+{{/* Allow wrapping markdown around the shortcode (no inner content processed) */}}

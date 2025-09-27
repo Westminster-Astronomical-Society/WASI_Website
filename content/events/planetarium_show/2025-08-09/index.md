@@ -5,7 +5,8 @@ date: 2025-08-09T20:00:00-04:00
 description: "Monthly Planetarium Show and Stargazing at Bear Branch"
 draft: false
 images: ["6L3A3004.jpg"]
-organizers: ["brooke-parkhurst", "al-ansorge"]
+speakers: ["brooke-parkhurst"]
+organizers: ["al-ansorge"]
 tags: [""]
 categories: ["Planetarium Show"]
 ---

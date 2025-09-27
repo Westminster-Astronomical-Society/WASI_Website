@@ -5,7 +5,7 @@ draft: false
 
 # Astronomy Outreach
 
-Westminster Astronomical Society is committed to public outreach and education in astronomy. We organize public star parties, public lectures, and community events to engage the community and inspire interest in astronomy and space science. To request a public outreach event for your organization, please contact the outreach coordinator at [outreach@westminsterastro.org](mailto:outreach@westminsterastro.org) or fill out the request form at the Night Sky Network.
+Westminster Astronomical Society is committed to public outreach and education in astronomy. We organize public star parties, public lectures, and community events to engage the community and inspire interest in astronomy and space science. Check our [calendar](https://nightsky.jpl.nasa.gov/events/wasi/) for upcoming events. To request a public outreach event for your organization, please contact the outreach coordinator at [outreach@westminsterastro.org](mailto:outreach@westminsterastro.org) or fill out the request form at the Night Sky Network.
 
 {{< button href="https://nightsky.jpl.nasa.gov/request/wasi/" title="Request Support" target="_blank" class="btn btn-primary mb-3"/>}}
 
@@ -27,6 +27,8 @@ Members wishing to participate in or organize outreach events have access to a v
 
 ## Planetarium Shows
 
-The Bear Branch Nature Center [Planetarium](planetarium/) is an invaluable resource for astronomy public outreach. In addition to regular monthly shows and special events, organizations and groups are encouraged to schedule private shows for their members.
+The Bear Branch Nature Center [Planetarium](/planetarium/) is an invaluable resource for astronomy public outreach. In addition to regular monthly shows and special events, organizations and groups are encouraged to schedule private shows for their members.
 
 For other events and presentations, the [Stellarium](https://stellarium.org/) planetarium software is a great tool for learning the night sky and can easily be incorporated into your presentations. It is free and open source software that can be installed on a laptop or desktop computer. It has a wide range of features and can be used to create custom shows for outreach events.
+
+{{< person name="Wayne Bird" size=56 >}}
