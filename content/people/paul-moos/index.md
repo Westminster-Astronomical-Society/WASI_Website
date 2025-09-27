@@ -1,6 +1,6 @@
 ---
 title: "Paul Moos"
-roles: ["WASI Member"]
+roles: ["Member"]
 affiliation: "Westminster Astronomical Society"
 image: ""
 ---

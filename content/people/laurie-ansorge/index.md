@@ -1,6 +1,6 @@
 ---
 title: "Laurie Ansorge"
-roles: ["Officers", "Treasurer"]
+roles: ["Treasurer"]
 affiliation: "Westminster Astronomical Society"
 image: ""
 email: "treasurer@westminsterastro.org"

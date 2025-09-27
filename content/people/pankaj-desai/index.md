@@ -1,6 +1,6 @@
 ---
 title: 'Pankaj "Doc" Desai'
-roles: ["Officers", "Board Member"]
+roles: ["Board Member"]
 affiliation: "Westminster Astronomical Society"
 image: ""
 ---

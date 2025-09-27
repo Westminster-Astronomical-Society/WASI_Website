@@ -1,6 +1,6 @@
 ---
 title: "Brooke Parkhurst"
-roles: ["Officers", "Second Vice President"]
+roles: ["2nd Vice President"]
 affiliation: "Westminster Astronomical Society"
 image: ""
 ---

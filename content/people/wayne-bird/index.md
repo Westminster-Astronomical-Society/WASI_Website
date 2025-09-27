@@ -1,6 +1,6 @@
 ---
 title: 'Wayne "Skip" Bird'
-roles: ["Officers", "President"]
+roles: ["President", "Outreach Director"]
 affiliation: "Westminster Astronomical Society"
 image: ""
 ---

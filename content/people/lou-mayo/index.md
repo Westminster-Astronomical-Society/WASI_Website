@@ -1,6 +1,6 @@
 ---
 title: 'Dr. Lou Mayo'
-roles: ["WASI Member"]
+roles: ["Member"]
 affiliation: "Westminster Astronomical Society"
 image: ""
 email: ""

@@ -1,6 +1,6 @@
 ---
 title: "Jack Ganssle"
-roles: ["Officers", "Secretary"]
+roles: ["Secretary"]
 affiliation: "Westminster Astronomical Society"
 image: ""
 email: "secretary@westminsterastro.org"

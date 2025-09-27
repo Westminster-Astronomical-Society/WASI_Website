@@ -1,6 +1,6 @@
 ---
 title: "Al Ansorge"
-roles: ["Planetarium Coordinator"]
+roles: ["Planetarium Director"]
 affiliation: "Westminster Astronomical Society"
 image: ""
 ---
