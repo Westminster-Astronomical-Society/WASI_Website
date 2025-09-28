@@ -6,13 +6,28 @@
       {{ with .Date }}
       <p class="text-muted">{{ . | time.Format ":date_long" }}</p>
       {{ end }}
-      {{ with .Params.observers }}
-      <p class="mb-1"><strong>{{ if eq (len .) 1 }}Observer{{ else }}Observers{{ end }}:</strong> {{ partial "person-names.html" (dict "page" $ "param" "observers") }}</p>
+      {{/* Show observers, observatory and program when present */}}
+      {{ if or .Params.observers (or .Params.observatory .Params.program) }}
+      <p class="mb-1">
+        {{ if .Params.observers }}
+          <strong>{{ if eq (len .Params.observers) 1 }}Observer{{ else }}Observers{{ end }}:</strong>
+          {{ partial "person-names.html" (dict "page" $ "param" "observers") }}
+        {{ end }}
+        {{ with .Params.observatory }}
+          {{ if $.Params.observers }}&nbsp;&middot;&nbsp;{{ end }}<strong>Observatory:</strong> {{ . }}
+        {{ end }}
+        {{ with .Params.program }}
+          {{ if or $.Params.observers $.Params.observatory }}&nbsp;&middot;&nbsp;{{ end }}<strong>Program:</strong> {{ . }}
+        {{ end }}
+      </p>
       {{ end }}
       {{ partial "share-links.html" . }}
     </header>
 
     <div class="content">
+      {{ with .Description }}
+      <p class="lead mb-4">{{ . }}</p>
+      {{ end }}
       {{ .Content }}
     </div>
   </article>

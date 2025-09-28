@@ -10,8 +10,24 @@
         {{ with .Date }}
           <div class="text-muted small">{{ . | time.Format ":date_long" }}</div>
         {{ end }}
-        {{ with $pg.Params.observers }}
-          <div class="small"><strong>{{ if eq (len .) 1 }}Observer{{ else }}Observers{{ end }}:</strong> {{ partial "person-names.html" (dict "page" $pg "param" "observers") }}</div>
+        {{/* Show observers, observatory and program on one line when present */}}
+        {{ if or $pg.Params.observers (or $pg.Params.observatory $pg.Params.program) }}
+          <div class="small">
+            {{ if $pg.Params.observers }}
+              <strong>{{ if eq (len $pg.Params.observers) 1 }}Observer{{ else }}Observers{{ end }}:</strong>
+              {{ partial "person-names.html" (dict "page" $pg "param" "observers") }}
+            {{ end }}
+            {{ with $pg.Params.observatory }}
+              {{ if $pg.Params.observers }}&nbsp;&middot;&nbsp;{{ end }}<strong>Observatory:</strong> {{ . }}
+            {{ end }}
+            {{ with $pg.Params.program }}
+              {{ if or $pg.Params.observers $pg.Params.observatory }}&nbsp;&middot;&nbsp;{{ end }}<strong>Program:</strong> {{ . }}
+            {{ end }}
+          </div>
+        {{ end }}
+        {{/* Show description (if any) after the meta line */}}
+        {{ with $pg.Description }}
+          <p class="mb-2 small">{{ . }}</p>
         {{ end }}
       </li>
     {{ end }}
