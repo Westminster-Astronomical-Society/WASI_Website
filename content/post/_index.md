@@ -1,5 +1,5 @@
-+++
-aliases = ["posts", "blog"]
-title = "Posts"
-tags = []
-+++
+---
+aliases: ["posts", "blog"]
+title: "Posts"
+description: "Latest news and announcements from WASI."
+---

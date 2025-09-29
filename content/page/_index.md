@@ -1,5 +1,5 @@
-+++
-aliases = ["pages", "docs"]
-title = "Docs"
-tags = []
-+++
+---
+aliases: ["pages", "docs"]
+title: "Docs"
+description: ["Guides and featured pages."]
+---

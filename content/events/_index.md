@@ -1,9 +1,8 @@
-+++
-aliases = ["events", "event"]
-title = "Events"
-authors = []
-tags = []
-+++
+---
+aliases: ["events", "event"]
+title: "Events"
+description: "Recent and upcoming events and activities hosted by WASI."
+---
 
 We invite you to attend one of public events. WASI hosts a variety of regular stargazing events throughout the year as well as special events. We host a monthly planetarium show and monthly meetings with guest speakers and presentations on various astronomy related topics.  See our calendar for upcoming events.
 
