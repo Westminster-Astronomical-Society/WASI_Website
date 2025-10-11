@@ -45,7 +45,7 @@ title = "Astronomy Resources"
 
 [[main]]
   name = "Observing Resources"
-  url = "observing"
+  url = "observer-resources"
   weight = 20
   parent = "resources"
 
