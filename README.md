@@ -59,12 +59,14 @@ and `tags` are for organizing content.
 
 Posts have `authors`, events have `organizers`, and `speakers`, observations
 have `observers`. These will link to the corresponding profiles in
-`content/people/`.
+`content/people/`. You can use the page slug (e.g. `al-ansorge`) or the name
+(e.g. `Al Ansorge`) for the person and it will find the correct profile. If
+there is no profile, it will just display the name as plain text.
 
 Draft content will not be published until `draft` is set to false, post-dated
 content will not be published until the date is reached so for events that are
-in the future you can set a `date` and a `publishDate` to control when it
-appears on the site.
+in the future you can set a `date` for the event and a `publishDate` to control
+when it appears on the site.
 
 All content is written in markdown. You can use standard markdown syntax for
 headings, lists, links, images, tables, etc. It is a very simple markup language.
@@ -83,24 +85,28 @@ There are also some shortcodes available in `layouts/shortcodes/` that can be us
 to add buttons, person links, video embeds, etc. For example, to add a button:
 
 ```markdown
-{{< button href="https://example.com" title="Click Me" />}}
+{{< button href="https://example.com" title="Click Me" class="btn btn-primary" />}}
 ```
-An example of it's use is on the outreach page.
+The class attribute can be used to apply custom styles. An example of it's use
+is on the outreach page.
 
 To add a person link with an avatar:
 
 ```markdown
-{{< person name="John Doe" >}}
+{{< person name="Wayne Bird" >}}
 ```
-The outreach page has an example of this shortcode for the outreach coordinator.
+There are several options for this shortcode, see the comments in the file for
+details. The outreach page has an example of this shortcode for the outreach
+director.
 
 For a you-tube video embed:
 
 ```markdown
 {{< youtube id="VIDEO_ID" >}}
 ```
-The August 2025 meeting post has an example of this shortcode.
-
+This is a built-in shortcode in Hugo. See the
+[Hugo docs](https://gohugo.io/shortcodes/youtube/) for options. The August 2025
+meeting post has an example of this shortcode.
 
 
 ## Structure and Layout
