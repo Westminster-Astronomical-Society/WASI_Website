@@ -1,0 +1,203 @@
+{{ define "main" }}
+<style>
+  .alerts {
+    margin-top: 1em;
+  }
+
+  .alert-body {
+    margin-top: 0.5em;
+  }
+
+  .alerts h2 {
+    font-size: 1.05em;
+    margin: 0.5em 0;
+  }
+
+  .alert {
+    border-radius: 6px;
+    padding: 0.75em;
+    margin-bottom: 0.75em;
+    background: #f7f7f9;
+    border: 1px solid #e0e0e3;
+  }
+
+  .alert.extreme {
+    background: #feecec;
+    border-color: #f5c6cb;
+  }
+  .alert.severe {
+    background: #fff4e5;
+    border-color: #ffd59e;
+  }
+  .alert.moderate {
+    background: #fffde7;
+    border-color: #fff49e;
+  }
+  .alert.minor {
+    background: #f1fbf0;
+    border-color: #c7efc7;
+  }
+
+  .alert-link {
+    margin-top: 0.5em;
+  }
+</style>
+
+<div class="container py-4">
+  <article>
+    <header class="mb-4 text-center">
+      <h1 class="display-5">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+      <p class="lead text-secondary">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <section class="almanac-overview mb-3">
+      <div class="row flex-column-reverse flex-lg-row">
+        <div class="col-lg-7 col-xl-8">
+          <div class="content">{{ .Content }}</div>
+        </div>
+        <div class="col-lg-5 col-xl-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 id="obs-name" class="card-title">—</h5>
+              <ul class="list-unstyled mb-0">
+                {{/* Observatory name, lat, lon, local time, UTC, LMST, and JD
+                */}}
+                <li class="mb-1">
+                  <span id="obs-lat">—</span>, &nbsp;<span id="obs-lon">—</span>
+                </li>
+                <hr />
+                <li class="mb-1">
+                  <strong>Local:</strong> <span id="obs-local">—</span>
+                </li>
+                <li class="mb-1">
+                  <strong>UTC:</strong> <span id="obs-utc">—</span>
+                </li>
+                <li class="mb-1">
+                  <strong>LMST:</strong> <span id="obs-lmst">—</span>
+                </li>
+                <li class="mb-1">
+                  <strong>Julian date:</strong> <span id="obs-jd">—</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          {{/* Placeholder for future widgets: weather, next events */}}
+        </div>
+      </div>
+    </section>
+
+    <section id="content" class="mb-5 mt-3">
+      <div class="row flex-column-reverse flex-lg-row">
+        <h2>Local Weather</h2>
+        <div class="col-lg-7 col-xl-8">
+          <a
+            href="https://www.cleardarksky.com/c/BearBraMDkey.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="img-fluid mt-1 mb-0"
+              src="https://www.cleardarksky.com/c/BearBraMDcsk.gif?c=2761254"
+          /></a>
+          <div class="text-muted small mb-4">
+            Attilla Danko:
+            <a
+              href="https://www.cleardarksky.com/c/BearBraMDkey.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >www.cleardarksky.com</a
+            >
+          </div>
+          {{/*  <iframe src="https://www.astrospheric.com/?App=embedded&amp;AppVersion=3&amp;Latitude=39.4723&amp;Longitude=-76.986516" style="width: 100%; height: 681px; min-width: 350px; max-width: 924px; border: medium; border-radius: 5px;"></iframe>  */}}
+          <p>You can get additional weather and astronomical observing conditions at the sites below.</p>
+            <ul>
+            <li><a href="https://forecast.weather.gov/MapClick.php?lat=39.647398&amp;lon=-76.987309" target="_blank" rel="noopener">National Weather Service</a> Forecast for Bear Branch Nature Center</li>
+            <li><a href="https://www.meteoblue.com/en/weather/outdoorsports/seeing/westminster_united-states_4373238" target="_blank" rel="noopener">Meteoblue:</a> Astronomical forecast and seeing conditions.</li>
+            <li><a href="https://www.cleardarksky.com/" target="_blank" rel="noopener">Clear Dark Sky:</a> Astronomical observing conditions.</li>
+            <li><a href="https://www.astrospheric.com/?Latitude=39.6474&amp;Longitude=-76.987316&amp;Loc=Forecast" target="_blank" rel="noopener">Astrospheric:</a> Another source for astronomical observing conditions.</li>
+            </ul>
+
+          <div id="sun-moon" class="mb-5">
+            <h2>Sun &amp; Moon</h2>
+            <p class="text-muted">
+              Sunrise, sunset, moonrise and moonset tables will be shown here.
+            </p>
+            {{/* Future: insert shortcode or partial that computes/presents
+            ephemeris data */}}
+          </div>
+
+          <div id="planets" class="mb-5">
+            <h2>Planets</h2>
+            <p class="text-muted">
+              Planet positions and visibility notes go here.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-xl-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">National Weather Service</h5>
+              <div id="wx-location" class="small text-muted mb-2">
+                Loading location…
+              </div>
+              <div id="wx-weather" class="weather loading mb-2">Loading…</div>
+              <div id="wx-alerts" class="alerts">
+                <div
+                  class="alerts-header d-flex align-items-center justify-content-between"
+                  id="wx-alerts-toggle"
+                  role="button"
+                  aria-expanded="false"
+                  tabindex="0"
+                >
+                  <div class="alerts-header-left">
+                    <strong>NWS Severe Weather Alerts</strong
+                    ><span
+                      id="wx-alerts-badge"
+                      class="badge text-bg-danger ms-2 d-none"
+                      >0</span
+                    >
+                  </div>
+                  <div id="wx-alerts-toggle-icon">▾</div>
+                </div>
+                <div
+                  id="wx-alerts-content"
+                  class="alerts-content collapsed"
+                  style="display: none"
+                >
+                  <div class="text-muted">Loading alerts…</div>
+                </div>
+              </div>
+              <div
+                id="wx-updated"
+                class="update-time small text-muted mt-2"
+              ></div>
+            </div>
+          </div>
+          {{/* Placeholder for future widgets: weather, next events */}}
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-5">
+      <hr />
+      <div class="text-muted small">
+        Last updated: {{ .Lastmod.Format "2006-01-02" }}
+      </div>
+    </footer>
+  </article>
+</div>
+{{/* Bundle and load almanac scripts (astro functions + page logic) */}} {{/* {{
+$nutation := resources.Get "js/nutation.js" | minify }} */}} {{ $astro :=
+resources.Get "js/astro.js" | minify }} {{ $almanac := resources.Get
+"js/almanac.js" | minify }} {{ $weather := resources.Get "js/nws-api.js" |
+minify }} {{ $bundle := slice $astro $almanac $weather | resources.Concat
+"js/almanac.bundle.js" | fingerprint }}
+<script
+  src="{{ $bundle.RelPermalink }}"
+  integrity="{{ $bundle.Data.Integrity }}"
+  defer
+></script>
+{{ end }}
