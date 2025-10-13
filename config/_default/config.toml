@@ -24,6 +24,7 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 [taxonomies]
 tag = "tags"
 category = "categories"
+program = "programs"
 
 [sitemap]
 changefreq = "monthly"

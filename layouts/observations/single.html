@@ -6,8 +6,8 @@
       {{ with .Date }}
       <p class="text-muted">{{ . | time.Format ":date_long" }}</p>
       {{ end }}
-      {{/* Show observers, observatory and program when present */}}
-      {{ if or .Params.observers (or .Params.observatory .Params.program) }}
+      {{/* Show observers, observatory and programs when present */}}
+      {{ if or .Params.observers (or .Params.observatory .Params.programs) }}
       <p class="mb-1">
         {{ if .Params.observers }}
           <strong>{{ if eq (len .Params.observers) 1 }}Observer{{ else }}Observers{{ end }}:</strong>
@@ -16,8 +16,11 @@
         {{ with .Params.observatory }}
           {{ if $.Params.observers }}&nbsp;&middot;&nbsp;{{ end }}<strong>Observatory:</strong> {{ . }}
         {{ end }}
-        {{ with .Params.program }}
-          {{ if or $.Params.observers $.Params.observatory }}&nbsp;&middot;&nbsp;{{ end }}<strong>Program:</strong> {{ . }}
+        {{ $progs := .Params.programs }}
+        {{ with $progs }}
+          {{ if or $.Params.observers $.Params.observatory }}&nbsp;&middot;&nbsp;{{ end }}<strong>{{ if eq (len .) 1 }}Program{{ else }}Programs{{ end }}:</strong>
+          {{ $base := `/programs/` | relLangURL }}
+          {{ range $i, $p := . }}{{ if $i }}, {{ end }}<a class="text-decoration-none text-muted" href="{{ $base }}{{ $p | urlize}}/">{{ $p }}</a>{{ end }}
         {{ end }}
       </p>
       {{ end }}

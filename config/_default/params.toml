@@ -23,6 +23,7 @@ bootStrapJs = true
 breadCrumb = true
 listCategoryFilter = true
 listTagFilter = true
+listProgramFilter = true
 
 [share]
 # Providers in desired order. Valid keys: xitter, facebook, bsky, email

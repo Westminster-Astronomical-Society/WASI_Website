@@ -1,0 +1,69 @@
+{{ define "main" }}
+<div class="container py-4">
+  <div class="d-flex align-items-center mb-3">
+    <h1 class="mb-0">Program: {{ .Title }}</h1>
+    {{/* Optional: count badge */}}
+    <span class="badge text-bg-secondary ms-3">{{ len .Pages }} item{{ if ne (len .Pages) 1 }}s{{ end }}</span>
+  </div>
+
+  {{ if .Site.Params.options.listProgramFilter }}
+  <div class="row mb-3">
+    <div class="col-auto">
+      <svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/icons/site-icons.svg#tag` | relURL }}"/></svg>
+      {{ $current := .RelPermalink }}
+      {{ range ($.Site.GetPage "taxonomyTerm" "programs").Pages.ByTitle }}
+        {{ $active := eq .RelPermalink $current }}
+        <a class="badge nav-link {{ if $active }}text-bg-primary active{{ else }}text-bg-secondary{{ end }}" href="{{ .RelPermalink }}" {{ if $active }}aria-current="page"{{ end }}>{{ .Title }}</a>&nbsp;
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  {{ if .Content }}
+  <div class="mb-3">
+    {{ .Content }}
+  </div>
+  {{ end }}
+
+  {{ if .Pages }}
+  {{ range .Pages.ByDate.Reverse }}
+  <div class="card border-light-subtle mb-3">
+    <div class="card-body">
+      <h2 class="h5 mb-1"><a class="text-decoration-none" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{ with .Date }}
+        <div class="text-muted small">{{ . | time.Format ":date_long" }}</div>
+      {{ end }}
+      {{ $pg := . }}
+      {{ if or $pg.Params.observers (or $pg.Params.observatory $pg.Params.programs) }}
+        <div class="small mt-1">
+          {{ if $pg.Params.observers }}
+            <strong>{{ if eq (len $pg.Params.observers) 1 }}Observer{{ else }}Observers{{ end }}:</strong>
+            {{ partial "person-names.html" (dict "page" $pg "param" "observers") }}
+          {{ end }}
+          {{ with $pg.Params.observatory }}
+            {{ if $pg.Params.observers }}&nbsp;&middot;&nbsp;{{ end }}<strong>Observatory:</strong> {{ . }}
+          {{ end }}
+          {{ with $pg.Params.programs }}
+            {{ if or $pg.Params.observers $pg.Params.observatory }}&nbsp;&middot;&nbsp;{{ end }}<strong>Programs:</strong>
+            {{ $base := `/programs/` | relLangURL }}
+            {{ range $i, $p := . }}{{ if $i }}, {{ end }}<a class="text-decoration-none text-muted" href="{{ $base }}{{ $p | urlize}}/">{{ $p }}</a>{{ end }}
+          {{ end }}
+        </div>
+      {{ end }}
+      {{ with $pg.Description }}
+        <p class="mb-0 mt-2 small">{{ . }}</p>
+      {{ end }}
+      <a class="stretched-link" href="{{ .RelPermalink }}"></a>
+    </div>
+  </div>
+  {{ end }}
+  {{ else }}
+  <p class="text-muted">No content items are assigned to this program yet.</p>
+  {{ end }}
+
+  <footer class="mt-4">
+    <hr />
+    <div class="text-muted small">Last updated: {{ .Lastmod.Format "2006-01-02" }}</div>
+  </footer>
+</div>
+{{ end }}

@@ -2,10 +2,10 @@
 title: "Hubble Challenge: Messier 2"
 date: 2025-09-13
 description: "Observations of Messier 2 (NGC 7089), a globular cluster in the constellation Aquarius."
-program: "Hubble Night Sky Challenge"
+programs: ["Hubble Night Sky Challenge"]
 observers: ["chris-bennett"]
 observatory: "Klee Mill"
-tags: ["Hubble Challenge"]
+tags: []
 draft: false
 ---
 

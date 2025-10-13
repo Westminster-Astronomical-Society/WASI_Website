@@ -1,6 +1,16 @@
 {{ define "main" }}
 <div class="container py-4">
   <h1 class="mb-4">Observation Reports</h1>
+  {{ if .Site.Params.options.listProgramFilter }}
+  <div class="row mb-3">
+    <div class="col-auto">
+      <svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/icons/site-icons.svg#tag` | relURL }}"/></svg>
+      {{ range ($.Site.GetPage "taxonomyTerm" "programs").Pages.ByTitle }}
+        <a class="badge text-bg-secondary nav-link" href="{{ .RelPermalink }}">{{ .Title }}</a>&nbsp;
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
   {{ if .Pages }}
   <ul class="list-unstyled">
     {{ range .Pages.ByDate.Reverse }}
@@ -10,8 +20,8 @@
         {{ with .Date }}
           <div class="text-muted small">{{ . | time.Format ":date_long" }}</div>
         {{ end }}
-        {{/* Show observers, observatory and program on one line when present */}}
-        {{ if or $pg.Params.observers (or $pg.Params.observatory $pg.Params.program) }}
+        {{/* Show observers, observatory and programs on one line when present */}}
+        {{ if or $pg.Params.observers (or $pg.Params.observatory $pg.Params.programs) }}
           <div class="small">
             {{ if $pg.Params.observers }}
               <strong>{{ if eq (len $pg.Params.observers) 1 }}Observer{{ else }}Observers{{ end }}:</strong>
@@ -20,8 +30,10 @@
             {{ with $pg.Params.observatory }}
               {{ if $pg.Params.observers }}&nbsp;&middot;&nbsp;{{ end }}<strong>Observatory:</strong> {{ . }}
             {{ end }}
-            {{ with $pg.Params.program }}
-              {{ if or $pg.Params.observers $pg.Params.observatory }}&nbsp;&middot;&nbsp;{{ end }}<strong>Program:</strong> {{ . }}
+            {{ with $pg.Params.programs }}
+              {{ if or $pg.Params.observers $pg.Params.observatory }}&nbsp;&middot;&nbsp;{{ end }}<strong>Programs:</strong>
+              {{ $base := `/programs/` | relLangURL }}
+              {{ range $i, $p := . }}{{ if $i }}, {{ end }}<a class="text-decoration-none text-muted" href="{{ $base }}{{ $p | urlize}}/">{{ $p }}</a>{{ end }}
             {{ end }}
           </div>
         {{ end }}
