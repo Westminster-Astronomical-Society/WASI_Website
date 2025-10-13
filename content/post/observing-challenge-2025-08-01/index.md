@@ -3,20 +3,16 @@ title: "August 2025 Observing Challenge"
 description : "This month's challenges can be found throughout the northern, eastern, and southern parts of the sky.
 Here are the details..."
 date: 2025-08-01
-draft: false
-type: "post"
 images: ["observing-challenge-2025-08-01.png"]
 categories: ["Observing Challenge"]
 tags: [""]
 authors: ["paul-moos"]
-
+type: "post"
+draft: false
 ---
 
-
-### August's Observing Challenge
-
-This month's challenges can be found throughout the northern, eastern, and southern parts of the sky.
-Here are the details...
+This month's challenges can be found throughout the northern, eastern, and
+southern parts of the sky. Here are the details...
 
 #### ⭐ The ‘One Star Challenge' is Caph
 

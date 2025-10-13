@@ -64,7 +64,7 @@ You can make a secure online payment via PayPal.
 {{< paypal-form >}}
 
 Or print this [application form](https://www.westminsterastro.org/wp-content/uploads/2024/02/2024-paper-application-WASI.pdf)
-and mail it with a check for $25.00 made out to WASI to the address on the form. 
+and mail it with a check for $25.00 made out to WASI to the address on the form.
 
 ### WASI Officers and Board Members
 
