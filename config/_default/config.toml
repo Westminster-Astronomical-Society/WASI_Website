@@ -46,6 +46,11 @@ priority = 0.5
   source = "static"
   target = "static"
 
+[privacy]
+  [privacy.youTube]
+    disable = false
+    privacyEnhanced = true
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'

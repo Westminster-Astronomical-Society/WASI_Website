@@ -17,8 +17,12 @@ You can embed slides here.
 
 {{< pdf "August_2025_Basics.pdf" >}}
 
-## Voyager Legacy
-
 You can embed a video here.
 
-{{< youtube id="FF0HLiRQVfI" class="video-container" >}}
+{{< youtube id="FF0HLiRQVfI" start=6 stop=2000 class="video-container" >}}
+
+## Voyager Legacy
+
+Same video, different start time.
+
+{{< youtube id="FF0HLiRQVfI" start=2025 class="video-container" >}}
