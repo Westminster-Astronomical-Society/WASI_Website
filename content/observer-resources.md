@@ -54,12 +54,12 @@ Eclipses and Transits
 - [JPL What\'s Observable](https://ssd.jpl.nasa.gov/sbwobs.cgi)
 
 ### IAU The Minor Planet Center (MPC)
+---
 - [Observing Target List](https://minorplanetcenter.net/whatsup)
 - [Minor Planet & Comet Ephemeris Service](https://minorplanetcenter.net/iau/MPEph/MPEph.html)
 - [MPC Database Search](https://minorplanetcenter.net/db_search)
 - [MPC Data Files](https://minorplanetcenter.net/data)
 
----
 ### Centre de Données astronomiques de Strasbourg
 ---
 - [SIMBAD Astronomical Database ](http://simbad.u-strasbg.fr/simbad/)
@@ -77,7 +77,7 @@ Eclipses and Transits
 - [Goddard Space Flight Center SkyView ](https://skyview.gsfc.nasa.gov/)
 
 ### Additional Online Resources 
-
+---
 - [Heavens-Above](https://www.heavens-above.com/)
 - [In-The-Sky.org](https://in-the-sky.org/)
 - [Comet Observation database (COBS)](https://cobs.si/)
