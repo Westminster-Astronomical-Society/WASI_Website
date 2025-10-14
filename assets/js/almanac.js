@@ -267,7 +267,7 @@ function renderSunTwilightTables() {
 		const html = `
 			<div class="sun-tables">
 				<div class="sun-day mb-4">
-					<div class="fw-semibold mb-2">${todayHeader}</div>
+					<div class="mb-2">${todayHeader}</div>
 					<table class="table table-sm" style="max-width: 420px;">
 						<tbody>
 							<tr><td>Sunset</td><td class="text-end">${utHoursToLocalHM(utcBaseToday, todaySun[2], observatoryTimeZone)}</td></tr>
@@ -278,7 +278,7 @@ function renderSunTwilightTables() {
 					</table>
 				</div>
 				<div class="sun-day mb-4">
-					<div class="fw-semibold mb-2">${tomorrowHeader}</div>
+					<div class="mb-2">${tomorrowHeader}</div>
 					<table class="table table-sm" style="max-width: 420px;">
 						<tbody>
 							<tr><td>Start Astronomical Twilight</td><td class="text-end">${utHoursToLocalHM(utcBaseTomorrow, tomorrowAstro[1], observatoryTimeZone)}</td></tr>

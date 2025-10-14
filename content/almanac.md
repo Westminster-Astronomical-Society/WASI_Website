@@ -12,6 +12,3 @@ Here are some links to outside resources that might be useful:
 - [JPL Solar System Dynamics:](https://ssd.jpl.nasa.gov/) Ephemerides for solar system bodies.
 
 - [TimeAndDate.com:](https://www.timeanddate.com/) Sun & Moon information, eclipses, and more.
-
-You can find more information on the [Observing Resources](/observer-resources/) page.
-
