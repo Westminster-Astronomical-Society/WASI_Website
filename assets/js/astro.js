@@ -1,3 +1,29 @@
+const toRad = Math.PI / 180.0;
+const toDeg = 180.0 / Math.PI;
+
+// Floating point modulo
+function fmod(f, m) {
+    return f % m;
+}
+
+// Fractional part
+function frac(f) {
+    return f % 1.0;
+}
+
+//Corrects values to make them between 0 and 1
+function constrain(v) {
+    while (v < 0) { v += 1; }
+    while (v > 1) { v -= 1; }
+    return v;
+}
+
+function constrainAngle(d) {
+    let t = d % 360;
+    if (t < 0) { t += 360; }
+    return t;
+}
+
 /**
  * Convert Unix time (milliseconds since 1970-01-01T00:00:00Z) to Julian Date.
  *
@@ -24,15 +50,6 @@ function UnixTimeFromJulianDate(jd) {
     return (jd - 2440587.5) * 86400000;
 }
 
-/**
- * Floating-point modulo that returns a non-negative remainder in [0, y)
- * for y > 0. Useful for angle wrapping.
- *
- * @param {number} x - Dividend
- * @param {number} y - Divisor (positive)
- * @returns {number} Remainder in [0, y)
- */
-// Note: fmod and frac are now provided by nutation.js
 
 /**
  * Compute the Earth Rotation Angle (ERA) for a given Julian Date.
@@ -161,7 +178,10 @@ var h0 = {
     astronomicalTwilight: -18
 };
 
-function getSunTimes(jd, lat, lon, ra, dec, h0) {
+function getSunTimes(jd, latitude, longitude, ra, dec, h0) {
+    let lat = latitude * toRad; // in radians
+    let lon = longitude * toRad * -1; // in radians, West longitudes positive
+
     console.log("getSunTimes", jd, lat, lon, ra, dec, h0);
     const cosH = (Math.sin(h0 * Math.PI / 180.0) - Math.sin(lat) * Math.sin(dec)) / (Math.cos(lat) * Math.cos(dec));
     const H0 = Math.acos(cosH) * 180.0 / Math.PI;
@@ -177,7 +197,6 @@ function getSunTimes(jd, lat, lon, ra, dec, h0) {
 
 // RA and Dec of the Sun
 function sunPosition(jd) {
-    const toRad = Math.PI / 180.0;
     const n = jd - 2451545.0;
     let L = (280.460 + 0.9856474 * n) % 360;
     let g = ((375.528 + .9856003 * n) % 360) * toRad;
@@ -190,5 +209,5 @@ function sunPosition(jd) {
     let ra = Math.atan2(Math.cos(eps) * Math.sin(lamba), Math.cos(lamba));
     const dec = Math.asin(Math.sin(eps) * Math.sin(lamba));
     if (ra < 0) { ra += Math.PI * 2; }
-    return [ra / toRad / 15.0, dec / toRad];
+    return [ra / toRad / 15.0, dec / toRad]; // ra in radians, dec in radians
 }

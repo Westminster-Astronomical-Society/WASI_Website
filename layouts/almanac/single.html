@@ -125,8 +125,7 @@
             <p class="text-muted">
               Sunrise, sunset, moonrise and moonset tables will be shown here.
             </p>
-            {{/* Future: insert shortcode or partial that computes/presents
-            ephemeris data */}}
+            <div id="sun-twilight-tables"></div>
           </div>
 
           <div id="planets" class="mb-5">
@@ -190,11 +189,11 @@
     </footer>
   </article>
 </div>
-{{/* Bundle and load almanac scripts (astro functions + page logic) */}} {{/* {{
-$nutation := resources.Get "js/nutation.js" | minify }} */}} {{ $astro :=
+{{/* Bundle and load almanac scripts (astro functions + page logic) */}}
+{{ $nutation := resources.Get "js/nutation.js" | minify }} {{ $astro :=
 resources.Get "js/astro.js" | minify }} {{ $almanac := resources.Get
 "js/almanac.js" | minify }} {{ $weather := resources.Get "js/nws-api.js" |
-minify }} {{ $bundle := slice $astro $almanac $weather | resources.Concat
+minify }} {{ $bundle := slice $nutation $astro $almanac $weather | resources.Concat
 "js/almanac.bundle.js" | fingerprint }}
 <script
   src="{{ $bundle.RelPermalink }}"

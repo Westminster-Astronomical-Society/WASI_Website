@@ -150,8 +150,12 @@ function updateObservatoryCard() {
 function startAlmanacClock() {
 	// Initial update
 	updateObservatoryCard();
+		// Also render Sun & Twilight tables once on load
+		renderSunTwilightTables();
 	// Update every second
 	setInterval(updateObservatoryCard, 1000);
+	// Refresh the sun/twilight tables periodically (every 10 minutes)
+	setInterval(renderSunTwilightTables, 10 * 60 * 1000);
 }
 
 // Start when DOM is ready
@@ -159,5 +163,134 @@ if (document.readyState === 'loading') {
 	document.addEventListener('DOMContentLoaded', startAlmanacClock);
 } else {
 	startAlmanacClock();
+}
+
+/**
+ * Sun/twilight tables for the Sun & Moon section
+ * Uses astro.js helpers: getSunTimes and sunPosition
+ *
+ * Renders two groups:
+ * - Today (Sunset, End Civil/Nautical/Astronomical Twilight)
+ * - Tomorrow (Start Astronomical/Nautical/Civil Twilight, Sunrise)
+ */
+function renderSunTwilightTables() {
+		const container = document.getElementById('sun-twilight-tables');
+		if (!container) return;
+
+		const now = new Date();
+		const jdNow = computeJD(now);
+
+		// Helper: RA hours -> radians, Dec degrees -> radians
+		function raDecRad(jd) {
+				const pos = sunPosition(jd); // [raHours, decDeg]
+				const raRad = pos[0] * 15 * toRad; // hours -> degrees -> radians
+				const decRad = pos[1] * toRad;     // degrees -> radians
+				return { raRad, decRad };
+		}
+
+		// Build Date at 00:00:00 UTC for a given (UTC) day offset relative to now
+		function baseUtcDate(dayOffset) {
+				const y = now.getUTCFullYear();
+				const m = now.getUTCMonth(); // 0-based
+				const d = now.getUTCDate();
+				return new Date(Date.UTC(y, m, d + dayOffset, 0, 0, 0, 0));
+		}
+
+		// Convert UT hours (0..24) on a given base UTC date to a local time string
+		function utHoursToLocalHM(utcBaseDate, utHours, timeZone) {
+				if (!isFinite(utHours)) return '—';
+				const ms = Math.round(utHours * 3600 * 1000);
+				const dt = new Date(utcBaseDate.getTime() + ms);
+				return dt.toLocaleString(undefined, {
+						timeZone,
+						hour: '2-digit',
+						minute: '2-digit',
+						hour12: false,
+				});
+		}
+
+		// Compose a header like: Tue, Oct 14, 2025 EDT (UTC-4)
+		function dayHeader(date, timeZone) {
+				const dateStr = date.toLocaleString(undefined, {
+						timeZone,
+						weekday: 'short',
+						month: 'short',
+						day: '2-digit',
+						year: 'numeric',
+				});
+				// Abbreviation
+				const abbr = date.toLocaleString(undefined, {
+						timeZone,
+						timeZoneName: 'short',
+						hour: '2-digit', // needed for some browsers to emit tz name
+				}).split(', ').pop();
+				// Offset like GMT-4 (convert to UTC-4)
+				let offset = '';
+				try {
+						const parts = new Intl.DateTimeFormat(undefined, {
+								timeZone,
+								timeZoneName: 'shortOffset',
+								hour: '2-digit',
+						}).formatToParts(date);
+						const tzPart = parts.find(p => p.type === 'timeZoneName');
+						offset = tzPart ? tzPart.value.replace('GMT', 'UTC') : '';
+				} catch (e) {
+						// Fallback: omit offset if shortOffset unsupported
+						offset = '';
+				}
+				return offset ? `${dateStr} ${abbr} (${offset})` : `${dateStr} ${abbr}`;
+		}
+
+		// Compute today's evening events (using current UT day)
+		const { raRad: raToday, decRad: decToday } = raDecRad(jdNow);
+		const utcBaseToday = baseUtcDate(0);
+
+		const todaySun = getSunTimes(jdNow, latitude, longitude, raToday, decToday, h0.sunRiseSet);
+		const todayCivil = getSunTimes(jdNow, latitude, longitude, raToday, decToday, h0.civilTwilight);
+		const todayNaut = getSunTimes(jdNow, latitude, longitude, raToday, decToday, h0.nauticalTwilight);
+		const todayAstro = getSunTimes(jdNow, latitude, longitude, raToday, decToday, h0.astronomicalTwilight);
+
+		// Compute tomorrow morning events (next UT day)
+		const jdTomorrow = jdNow + 1.0;
+		const { raRad: raTomorrow, decRad: decTomorrow } = raDecRad(jdTomorrow);
+		const utcBaseTomorrow = baseUtcDate(1);
+
+		const tomorrowAstro = getSunTimes(jdTomorrow, latitude, longitude, raTomorrow, decTomorrow, h0.astronomicalTwilight);
+		const tomorrowNaut = getSunTimes(jdTomorrow, latitude, longitude, raTomorrow, decTomorrow, h0.nauticalTwilight);
+		const tomorrowCivil = getSunTimes(jdTomorrow, latitude, longitude, raTomorrow, decTomorrow, h0.civilTwilight);
+		const tomorrowSun = getSunTimes(jdTomorrow, latitude, longitude, raTomorrow, decTomorrow, h0.sunRiseSet);
+
+		// Build HTML
+		const todayHeader = dayHeader(now, observatoryTimeZone);
+		const tomorrowHeader = dayHeader(new Date(now.getTime() + 24 * 3600 * 1000), observatoryTimeZone);
+
+		const html = `
+			<div class="sun-tables">
+				<div class="sun-day mb-4">
+					<div class="fw-semibold mb-2">${todayHeader}</div>
+					<table class="table table-sm" style="max-width: 420px;">
+						<tbody>
+							<tr><td>Sunset</td><td class="text-end">${utHoursToLocalHM(utcBaseToday, todaySun[2], observatoryTimeZone)}</td></tr>
+							<tr><td>End Civil Twilight</td><td class="text-end">${utHoursToLocalHM(utcBaseToday, todayCivil[2], observatoryTimeZone)}</td></tr>
+							<tr><td>End Nautical Twilight</td><td class="text-end">${utHoursToLocalHM(utcBaseToday, todayNaut[2], observatoryTimeZone)}</td></tr>
+							<tr><td>End Astronomical Twilight</td><td class="text-end">${utHoursToLocalHM(utcBaseToday, todayAstro[2], observatoryTimeZone)}</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="sun-day mb-4">
+					<div class="fw-semibold mb-2">${tomorrowHeader}</div>
+					<table class="table table-sm" style="max-width: 420px;">
+						<tbody>
+							<tr><td>Start Astronomical Twilight</td><td class="text-end">${utHoursToLocalHM(utcBaseTomorrow, tomorrowAstro[1], observatoryTimeZone)}</td></tr>
+							<tr><td>Start Nautical Twilight</td><td class="text-end">${utHoursToLocalHM(utcBaseTomorrow, tomorrowNaut[1], observatoryTimeZone)}</td></tr>
+							<tr><td>Start Civil Twilight</td><td class="text-end">${utHoursToLocalHM(utcBaseTomorrow, tomorrowCivil[1], observatoryTimeZone)}</td></tr>
+							<tr><td>Sunrise</td><td class="text-end">${utHoursToLocalHM(utcBaseTomorrow, tomorrowSun[1], observatoryTimeZone)}</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		`;
+
+		container.innerHTML = html;
 }
 
