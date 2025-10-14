@@ -143,3 +143,12 @@ $icon-red: #FF0000;
   width: 100%;             /* fill container */
   height: 100%;
 }
+
+.pdf-slide {
+  width: 80%;              /* make it 60% of page width */
+  margin: 1rem auto;          /* center horizontally */
+  position: relative;
+  padding-bottom: 45.0%;  /* maintain 16:9 aspect ratio */
+  height: 0;               /* collapse initial height */
+  overflow: hidden;
+}

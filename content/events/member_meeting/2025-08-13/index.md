@@ -13,7 +13,12 @@ draft: false
 
 ## What's Up Basics!
 
+You can embed slides here.
+
+{{< pdf "August_2025_Basics.pdf" >}}
 
 ## Voyager Legacy
+
+You can embed a video here.
 
 {{< youtube id="FF0HLiRQVfI" class="video-container" >}}
