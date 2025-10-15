@@ -81,7 +81,7 @@ title = "WASI News and Announcements"
 
 [[main]]
   name = "Newsletter"
-  url = "tags/newsletter"
+  url = "/newsletter"
   weight = 30
   parent = "news"
 
