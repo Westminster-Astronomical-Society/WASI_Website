@@ -16,14 +16,14 @@
     <div class="col-lg-6 d-flex m-0">
         <div class="d-flex flex-column justify-content-center h-100 w-100 p-4">
         {{ with $cfg.title }}<h2 class="display-6 fs-2 text-body-emphasis lh-1 mb-3">{{ . }}</h2>{{ end }}
-        {{ with $cfg.content }}<p class="lead">{{ . }}</p>{{ end }}
+        {{ with $cfg.content }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
                 {{ with $cfg.button }}
                 {{ $off := index . "offcanvas" }}
                 {{ $lnk := index . "link" }}
                 {{ if $off }}
                 {{ $ctrl := replaceRE "^#" "" $off }}
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a class="btn btn-primary btn-lg px-4 me-md-2" data-bs-toggle="offcanvas" data-bs-target="{{ $off }}" href="{{ $off }}" role="button" aria-controls="{{ $ctrl }}">{{ or .label "Learn more" }}</a>
+                        <a class="btn btn-primary px-4 me-md-2 my-2" data-bs-toggle="offcanvas" data-bs-target="{{ $off }}" href="{{ $off }}" role="button" aria-controls="{{ $ctrl }}">{{ or .label "Learn more" }}</a>
                 </div>
                 {{ else if and .enable $lnk }}
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
