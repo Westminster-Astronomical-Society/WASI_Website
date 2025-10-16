@@ -21,9 +21,9 @@ alertText = "An Announcement! <a class=\"alert-link stretched-link\" href=\"http
 colormode = "light" # "light", "dark" or "auto"
 bootStrapJs = true
 breadCrumb = true
-listCategoryFilter = true
-listTagFilter = true
-listProgramFilter = true
+listCategoryFilter = false
+listTagFilter = false
+listProgramFilter = false
 
 [share]
 # Providers in desired order. Valid keys: xitter, facebook, bsky, email

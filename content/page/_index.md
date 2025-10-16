@@ -1,5 +1,6 @@
 ---
 aliases: ["pages", "docs"]
-title: "Docs"
-description: ["Guides and featured pages."]
+title: "Pages"
+description: "Guides and featured pages."
+draft: true
 ---

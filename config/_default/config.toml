@@ -22,9 +22,9 @@ date = ["date", "publishDate", "lastmod"]
 lastmod = ["lastmod", ":fileModTime", ":default"]
 
 [taxonomies]
-tag = "tags"
-category = "categories"
-program = "programs"
+# tag = "tags"
+# category = "categories"
+# program = "programs"
 
 [sitemap]
 changefreq = "monthly"

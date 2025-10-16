@@ -5,7 +5,7 @@
 	{{ if or .Site.Params.options.listCategoryFilter .Site.Params.options.listTagFilter }}
 	<div class="row mb-3">
 
-		{{ if .Site.Params.options.listCategoryFilter }}
+		{{/*  {{ if .Site.Params.options.listCategoryFilter }}
 		<div class="col-auto">
 			<svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2">
 				<use href="{{ `/icons/site-icons.svg#folder` | relURL }}" />
@@ -14,7 +14,7 @@
 			<a class="badge text-bg-secondary nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
 			{{end}}
 		</div>
-		{{ end }}
+		{{ end }}  */}}
 
 		{{ if .Site.Params.options.listTagFilter }}
 		<div class="col-auto">

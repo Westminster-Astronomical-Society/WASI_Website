@@ -9,6 +9,10 @@ Westminster Astronomical Society is committed to public outreach and education i
 
 {{< button href="https://nightsky.jpl.nasa.gov/request/wasi/" title="Request Support" target="_blank" class="btn btn-primary mb-3"/>}}
 
+> *Homines dum docent discunt.*\
+>   — Seneca the Younger
+{ .text-end }
+
 ## Resources
 
 Members wishing to participate in or organize outreach events have access to a variety of outreach resources available on the internet.
@@ -30,5 +34,3 @@ Members wishing to participate in or organize outreach events have access to a v
 The Bear Branch Nature Center [Planetarium](/planetarium/) is an invaluable resource for astronomy public outreach. In addition to regular monthly shows and special events, organizations and groups are encouraged to schedule private shows for their members.
 
 For other events and presentations, the [Stellarium](https://stellarium.org/) planetarium software is a great tool for learning the night sky and can easily be incorporated into your presentations. It is free and open source software that can be installed on a laptop or desktop computer. It has a wide range of features and can be used to create custom shows for outreach events.
-
-{{< person name="Wayne Bird" size=56 >}}

@@ -18,6 +18,7 @@
   #            content: "Info Box Content"
   #            button_label: "Button Label"
   #            link: "#"
+  #            offcanvas: "#offcanvasID"  # Use either link or offcanvas, not both
 
 carousel:
   enable: true
@@ -37,7 +38,7 @@ carousel:
         title: "Support WASI!"
         content: "Your generous support helps us bring the wonders of the night sky to everyone!"
         button_label: "Donate"
-        offcanvas: "#offcanvasDonate"
+        link: "/donate"
 
     slide-2:
       image: "assets/images/backgrounds/6L3A3177.jpg"
@@ -49,8 +50,7 @@ carousel:
         title: "Join WASI!"
         content: "Joining is easy. Become a member today and start exploring the wonders of the universe!"
         button_label: ""
-        offcanvas: "#offcanvasJoin"
-
+        link: "/join"
 
     slide-3:
       video: "assets/images/backgrounds/lune.mp4"
@@ -58,9 +58,8 @@ carousel:
       image_credit: "Credit: [NASA Scientific Visualization Studio](https://svs.gsfc.nasa.gov/4655)"
       title: "Westminster Astronomical Society"
       content: "Bringing the Universe to Carroll County, Maryland since 1984"
-      interval: 10000
       info_box:
-        enable: true
+        enable: false
         title: "Observe the Moon!"
         content: "International Observe the Moon Night is October 4, 2025. Join us for a night of lunar observation and exploration!"
         button_label: ""

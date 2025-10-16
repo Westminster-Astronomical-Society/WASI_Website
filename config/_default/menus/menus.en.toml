@@ -6,7 +6,7 @@ title = "About Westminster Astronomical Society"
 
 [[main]]
 name = "Events"
-url = "/events/"
+url = "https://nightsky.jpl.nasa.gov/events/wasi/"
 weight = 20
 title = "WASI Night Sky Network Calendar"
 
@@ -56,42 +56,22 @@ title = "Astronomy Resources"
   parent = "resources"
 
 [[main]]
-identifier = "news"
-name = "News"
-weight = 70
-title = "WASI News and Announcements"
-
-[[main]]
-  name = "All"
-  url = "post"
-  weight = 80
-  parent = "news"
-
-[[main]]
-  name = "Star*Points"
-  url = "tags/star-points"
-  weight = 10
-  parent = "news"
-
-[[main]]
-  name = "Announcements"
-  url = "tags/announcements"
-  weight = 20
-  parent = "news"
-
-[[main]]
   name = "Newsletter"
   url = "/newsletter"
-  weight = 30
-  parent = "news"
+  weight = 40
+  parent = "resources"
 
+[[main]]
+  name = "Join"
+  url = "/join/"
+  weight = 70
+  title = "Join Westminster Astronomical Society"
 
-[[social]]
-  name = "GitHub"
-  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-github'><use href='/icons/social-icons.svg#github'/></svg>"
-  url = "https://github.com/Westminster-Astronomical-Society"
-  weight = 10
-  title = "Visit the GitHub project"
+[[main]]
+  name = "Donate"
+  url = "/donate/"
+  weight = 80
+  title = "Donate to Westminster Astronomical Society"
 
 [[social]]
   name = "Bsky"

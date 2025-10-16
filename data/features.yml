@@ -8,6 +8,10 @@
   #        - icon: "path/to/icon.svg"
   #          title: "Feature Title"
   #          content: "Feature Content"
+  #          button:               # optional; button object
+  #            enable: true|false
+  #            label: "Button Label"
+  #            link: "#"           # internal or external URL
   #
   # The features section will display three across or stacked
 
@@ -20,22 +24,22 @@ features:
       title: "Outreach"
       content: "It is our mission to inspire interest in astronomy through public engagement and community outreach. We host local events and partner with community organizations to promote astronomy education."
       button:
-        enable: false
+        enable: true
         label: "Learn more"
-        link: "#outreach"
+        link: "/outreach/"
 
     - icon: "/icons/astro-icons.svg#astro-2-1"
       title: "Observing"
       content: "We host regular observing events throughout Carroll County, MD and the surrounding areas. We hope to provide members and the public with opportunities to observe and appreciate the night sky."
       button:
-        enable: false
-        label: "Learn more"
-        link: "#observing"
+        enable: true
+        label: "Calendar"
+        link: "https://nightsky.jpl.nasa.gov/events/wasi/"
 
     - icon: "/icons/astro-icons.svg#astro-5-1"
       title: "Resources"
       content: "We have a variety of resources to help members, and the public improve their observational skills and understanding of astronomy. We have experienced observers who can offer guidance and support."
       button:
-        enable: false
+        enable: true
         label: "Learn more"
-        link: "#resources"
+        link: "/observer-resources/"

@@ -8,6 +8,6 @@
   # The latest posts section will display three across or stacked
 
 latest_posts:
-  enable: true
+  enable: false
   section-title: "Latest Posts"
   number_of_posts: 3 # Three looks best

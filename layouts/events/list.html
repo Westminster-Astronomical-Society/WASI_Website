@@ -14,14 +14,14 @@
                 </div>
             {{ end }}
 
-            {{ if .Site.Params.options.listTagFilter }}
+            {{/*  {{ if .Site.Params.options.listTagFilter }}
                 <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/icons/site-icons.svg#tag` | relURL }}"/></svg>
                     {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages.ByTitle }}
                         <a class="badge text-bg-secondary nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
                     {{end}}
                 </div>
-            {{ end }}
+            {{ end }}  */}}
 
         </div>
     {{ end }}
