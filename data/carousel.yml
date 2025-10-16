@@ -38,7 +38,7 @@ carousel:
         title: "Support WASI!"
         content: "Your generous support helps us bring the wonders of the night sky to everyone!"
         button_label: "Donate"
-        link: "/donate"
+        link: "/support/"
 
     slide-2:
       image: "assets/images/backgrounds/6L3A3177.jpg"
@@ -50,7 +50,7 @@ carousel:
         title: "Join WASI!"
         content: "Joining is easy. Become a member today and start exploring the wonders of the universe!"
         button_label: ""
-        link: "/join"
+        link: "/join/"
 
     slide-3:
       video: "assets/images/backgrounds/lune.mp4"

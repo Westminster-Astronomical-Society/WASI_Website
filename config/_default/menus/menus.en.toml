@@ -69,7 +69,7 @@ title = "Astronomy Resources"
 
 [[main]]
   name = "Donate"
-  url = "/donate/"
+  url = "/support/"
   weight = 80
   title = "Donate to Westminster Astronomical Society"
 
