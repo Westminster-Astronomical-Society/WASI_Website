@@ -8,6 +8,7 @@ website, which is temporarily hosted at
 framework for styling and layout.
 
 To contribute, please fork the repository and clone it to your local machine.
+You can also edit files on the github repository and start a pull request from there.
 
 ## Content Authoring
 
