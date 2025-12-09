@@ -16,4 +16,9 @@ and telescope. Members often attach a camera - or, run it visually using our eye
 Our 14" SCT is on a Astro Physics mount which is pretty easy to use. The user manual
 is [here](/observatory/Astro-Physics_Keypad_Manual-5010.pdf).
 
+We also have a solar scope in the observatory, a collection of eyepieces, and much more!
+
+To comply with our agreement with the County, and for insurance reasons, there are procedures
+which must be followed when using the observatory. These can be found [here](/observatory/sop.pdf).
+
 ![WASI Observatory at night](/observatory/at-night.jpg)
