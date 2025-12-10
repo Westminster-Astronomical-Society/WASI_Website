@@ -17,6 +17,7 @@ Our January 14, 2026 meeting will have our annual election of officers. The foll
 - Second Vice President
 - Treasurer
 - Secretary
+- First assistant zombie slayer
 
 Our current president, Skip Bird, is term-limited so cannot run again. We really do need someone to fill this role. Of course, all of 
 the other positions are available as well.
