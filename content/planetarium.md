@@ -26,7 +26,7 @@ Please call 410-386-2103 (8 AM to 4:30 PM M-F) or register online
  Saturday of the month, scroll to the end of the day. There may be a '+ more' button
  at the bottom of the day's events.  A free account with the RecDesk system will allow payment.
 
-Walk ins are welcome, space permitting.
+Walk ins are welcome, space permitting. 
 
 Live telescope viewing is hosted after the planetarium shows, skies permitting.  
 No registration is needed for the telescope viewing.
