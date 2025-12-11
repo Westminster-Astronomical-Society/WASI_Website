@@ -5,13 +5,11 @@ draft: false
 
 ## Observer Resources
 
-We have a number of resources available to help you plan your observations. There are
-[featured articles](/categories/featured/) that cover various observing topics, monthly
-[Observing Challenges](/categories/observing-challenge/), and member
-[Observation reports](/observations/) that we hope will guide you on your astronomical journey.
-We have below a list with a wide range of online astronomical data resources and
-software useful for observation planning. They are open to the public and accessible
-through web interfaces or directly through various software tools.
+We conduct regular star parties and outreach events to connect WASI members and the public
+with the wonders of the night sky. The second Saturday of each month is both our 
+[planetarium show](/planetarium), and a regularly scheduled star party at Bear Branch Nature Center. We also
+host a three-day star party scheduled around, generally, the new moon. Check out our
+[events calendar](https://nightsky.jpl.nasa.gov/events/wasi/) for those dates.
 
 ### Astronomical League
 ---
