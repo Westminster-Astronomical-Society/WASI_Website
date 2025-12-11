@@ -18,7 +18,7 @@ wonders of the universe.
 
 ### Monthly Meetings
 
-We hold [monthly meetings](/categories/member-meeting/) on the second Wednesday
+We hold [monthly meetings](/meeting/) on the second Wednesday
 of each month at the Bear Branch Nature Center in Westminster, where we host
 guest speakers who share their knowledge and experience in astronomy and related
 fields. Our meetings also include presentations on upcoming celestial events for
@@ -42,12 +42,25 @@ opportunities.
 WASI is governed by a board of directors and officers who are elected by the
 membership. The current officers and board members are:
 
-President:  
-1st Vice President:  
-2nd Vice President:  
-Secretary:  
-Treasurer:  
-Board Member:  
-Board Member:  
+President:  Skip Bird
 
-...
+1st Vice President:  Eric Smallwood
+
+2nd Vice President:  Brooke Parkhurst
+
+Secretary:  Jack Ganssle
+
+Treasurer:  Laurie Ansorge
+
+Past President: Cindy Ward
+
+Chairman: Tony Falletta
+
+Board Member:  Curt Roelle
+
+Board Member:  Pankaj "Doc" Desai
+
+Board Member: Vanessa Thomas
+
+Board Member: Jim Reynolds
+
