@@ -28,8 +28,8 @@ Please call 410-386-2103 (8 AM to 4:30 PM M-F) or register online
 
 Walk ins are welcome, space permitting.
 
-Live telescope viewing is hosted after the planetarium shows, skies permitting.  
-No registration is needed for the telescope viewing.
+Our [observatory](/observatory) is usually open sfter the planetarium shows, skies permitting. Here's a chance to
+look through our big telescope. No registration is needed for the post-show observatory.
 
 ### Group Shows
 
