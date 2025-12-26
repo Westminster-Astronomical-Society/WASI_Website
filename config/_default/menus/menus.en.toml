@@ -62,6 +62,12 @@ title = "Astronomy Resources"
   parent = "resources"
 
 [[main]]
+  name = "What's Up Basics"
+  url = "/whats-up"
+  weight = 40
+  parent = "resources"
+
+[[main]]
   name = "Join"
   url = "/join/"
   weight = 70
