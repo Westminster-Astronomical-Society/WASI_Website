@@ -91,34 +91,13 @@
     <section id="content" class="mb-5 mt-3">
       <div class="row flex-column-reverse flex-lg-row">
         <div class="col-lg-7 col-xl-8">
-          <h4>Bear Branch Clear Sky Chart</h4>
-          <a
-            href="https://www.cleardarksky.com/c/BearBraMDkey.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              class="img-fluid mt-1 mb-0"
-              src="https://www.cleardarksky.com/c/BearBraMDcsk.gif?c=2761254"
-          /></a>
-          <div class="text-muted small mb-4">
-            Attilla Danko:
-            <a
-              href="https://www.cleardarksky.com/c/BearBraMDkey.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              >www.cleardarksky.com</a
-            >
-          </div>
+
           <h4>Bear Branch Astrospheric.com</h4>
           <iframe src="https://www.astrospheric.com/?App=embedded&amp;AppVersion=3&amp;Latitude=39.4723&amp;Longitude=-76.986516" style="width: 100%; height: 681px; min-width: 350px; max-width: 924px; border: medium; border-radius: 5px;"></iframe>
           <div class="text-muted small mb-4">
-            <a
-              href="https://www.astrospheric.com/?Latitude=39.4723&Longitude=-76.986516&Loc=Forecast"
+            <a href="https://www.astrospheric.com/?Latitude=39.4723&Longitude=-76.986516&Loc=Forecast"
               target="_blank"
-              rel="noopener noreferrer"
-              >www.astrospheric.com</a
-            >
+              rel="noopener noreferrer">www.astrospheric.com</a>
           </div>
           
           <p>You can get additional weather and astronomical observing conditions at the sites below.</p>
@@ -212,7 +191,7 @@ minify }} {{ $bundle := slice $nutation $astro $almanac $weather | resources.Con
 "js/almanac.bundle.js" | fingerprint }}
 <script
   src="{{ $bundle.RelPermalink }}"
-  integrity="{{ $bundle.Data.Integrity }}"
+
   defer
 ></script>
 {{ end }}
