@@ -19,6 +19,6 @@ is [here](/observatory/Astro-Physics_Keypad_Manual-5010.pdf).
 We also have a solar scope in the observatory, a collection of eyepieces, and much more!
 
 To comply with our agreement with the County, and for insurance reasons, there are procedures
-which must be followed when using the observatory. These can be found [here](/observatory/bbnc-sop.pdf).
+which must be followed when using the observatory. These can be found [here](/observatory/BBNC-SOP.pdf).
 
 ![WASI Observatory at night](/observatory/at-night.jpg)
