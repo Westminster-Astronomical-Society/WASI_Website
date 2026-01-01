@@ -29,7 +29,7 @@
     <div class="container">
 
       <!-- Brand -->
-      {{ $logo := default "/icons/site-logos.svg#wasi-brand" .Site.Params.mainMenuLogo }}
+      {{ $logo := default "/svg-icons/site-logos.svg#wasi-brand" .Site.Params.mainMenuLogo }}
       <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
         <svg xmlns='http://www.w3.org/2000/svg' class='site-brand'><use href='{{ $logo | relURL }}'/></svg>
       </a>

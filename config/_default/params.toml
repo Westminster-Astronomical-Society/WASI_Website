@@ -6,7 +6,7 @@
 # https://schema.org/Thing
 # https://schema.org/Article
 description = "The home of Westminster Astronomical Society"
-mainMenuLogo = "/icons/site-logos.svg#wasi-blue-brand"
+mainMenuLogo = "/svg-icons/site-logos.svg#wasi-blue-brand"
 
 # For favicons
 ## Chrome Browser
