@@ -16,16 +16,16 @@
     {{ end -}}
 {{ else -}}
     {{ if .Site.Params.options.bootStrapJs -}}
-        {{ $bootstrap := $bootstrap | minify | fingerprint "sha256" -}}
+        {{ $bootstrap := $bootstrap | minify -}}
         <script src="{{ $bootstrap.RelPermalink }}" integrity="{{ $bootstrap.Data.Integrity }}" crossorigin="anonymous"
         defer></script>
     {{ end -}}
     {{ with $color }}
-        {{ $color := . | minify | fingerprint "sha256" -}}
+        {{ $color := . | minify -}}
         <script src="{{ $color.RelPermalink }}" integrity="{{ $color.Data.Integrity }}" crossorigin="anonymous" defer></script>
     {{ end -}}
     {{ with $js }}
-        {{ $js := . | minify | fingerprint "sha256" -}}
+        {{ $js := . | minify -}}
         <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
     {{ end }}
 {{ end }}

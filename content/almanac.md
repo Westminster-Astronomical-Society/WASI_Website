@@ -3,10 +3,10 @@ title: "Bear Branch Almanac"
 draft: false
 type: almanac
 ---
+Bear Branch Nature Center is where WASI meets each month, and is the home of our 
+observatory. We often host star parties here as well. 
 
-There will be an almanac here eventually. It will contain Sun and Moon data, planets, weather, and other useful information for the observatory at Bear Branch Nature Center.
-
-Here are some links to outside resources that might be useful:
+Here are some links to some useful outside resources:
 
 - [USNO Data Services:](https://aa.usno.navy.mil/data/index) Sun and Moon data, rise/set/twilight and more.
 - [JPL Solar System Dynamics:](https://ssd.jpl.nasa.gov/) Ephemerides for solar system bodies.

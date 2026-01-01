@@ -10,6 +10,6 @@
 {{ if eq (hugo.Environment) "development" -}}
   <link rel="stylesheet" href="{{ $css.RelPermalink | relURL }}" media="screen">
 {{ else -}}
-  {{ $secureCSS := $css | resources.Fingerprint "sha256" -}}
+  {{ $secureCSS := $css -}}
   <link rel="stylesheet" href="{{ $secureCSS.RelPermalink }}" media="screen" integrity="{{ $secureCSS.Data.Integrity }}" crossorigin="anonymous">
 {{ end -}}
