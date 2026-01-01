@@ -8,7 +8,7 @@
 		{{/*  {{ if .Site.Params.options.listCategoryFilter }}
 		<div class="col-auto">
 			<svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2">
-				<use href="{{ `/icons/site-icons.svg#folder` | relURL }}" />
+				<use href="{{ `/svg-icons/site-icons.svg#folder` | relURL }}" />
 			</svg>
 			{{range ($.Site.GetPage "taxonomyTerm" "categories").Pages.ByTitle }}
 			<a class="badge text-bg-secondary nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
@@ -19,7 +19,7 @@
 		{{ if .Site.Params.options.listTagFilter }}
 		<div class="col-auto">
 			<svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2">
-				<use href="{{ `/icons/site-icons.svg#tag` | relURL }}" />
+				<use href="{{ `/svg-icons/site-icons.svg#tag` | relURL }}" />
 			</svg>
 			{{range ($.Site.GetPage "taxonomyTerm" "tags").Pages.ByTitle }}
 			<a class="badge text-bg-secondary nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
@@ -58,14 +58,14 @@
 
 					<div class="card-subtitle text-muted mb-3">
 						<svg xmlns="http://www.w3.org/2000/svg" class="site-icons">
-							<use href="{{ `/icons/site-icons.svg#calendar` | relURL }}" />
+							<use href="{{ `/svg-icons/site-icons.svg#calendar` | relURL }}" />
 						</svg>
 						<time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{
 							.Lastmod | time.Format ":date_long" }}</time>
 
 						{{ if isset .Params "categories" }}
 						<svg xmlns="http://www.w3.org/2000/svg" class="site-icons ms-4">
-							<use href="{{ `/icons/site-icons.svg#folder` | relURL }}" />
+							<use href="{{ `/svg-icons/site-icons.svg#folder` | relURL }}" />
 						</svg>
 						{{ range .Params.categories }}
 						<a class="text-decoration-none text-muted ms-2"
@@ -75,7 +75,7 @@
 
 						{{ if isset .Params "tags" }}
 						<svg xmlns="http://www.w3.org/2000/svg" class="site-icons ms-4">
-							<use href="{{ `/icons/site-icons.svg#tag` | relURL }}" />
+							<use href="{{ `/svg-icons/site-icons.svg#tag` | relURL }}" />
 						</svg>
 						{{ range .Params.tags }}
 						<a class="text-decoration-none text-muted ms-2"

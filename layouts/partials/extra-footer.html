@@ -33,7 +33,7 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                     </div>
                     <div class="col-3">
                         <svg class="contact-logo position-absolute mx-4" aria-hidden="true" style="bottom:0; right:0; width:80px; height:80px;" focusable="false">
-                            <use href="{{ "/icons/site-logos.svg#al-color-logo3" | relURL }}" />
+                            <use href="{{ "/svg-icons/site-logos.svg#al-color-logo3" | relURL }}" />
                         </svg>
                     </div>
                 </div>
@@ -54,7 +54,7 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                     {{ if ne $address "" }}
                     <li class="d-flex align-items-start mb-3">
                         <svg class="site-icons contact-icons me-3" aria-hidden="true">
-                            <use href="{{ `/icons/site-icons.svg#map-pin` | relURL }}" />
+                            <use href="{{ `/svg-icons/site-icons.svg#map-pin` | relURL }}" />
                         </svg>
                         <div>
                             <div class="fw-medium">{{ $address | markdownify | safeHTML }}</div>
@@ -65,7 +65,7 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                     {{ if ne $mailing "" }}
                     <li class="d-flex align-items-start mb-3">
                         <svg class="site-icons contact-icons me-3" aria-hidden="true">
-                            <use href="{{ `/icons/site-icons.svg#mail` | relURL }}" />
+                            <use href="{{ `/svg-icons/site-icons.svg#mail` | relURL }}" />
                         </svg>
                         <div>
                             <div class="fw-medium">{{ $mailing | markdownify | safeHTML }}</div>
@@ -76,7 +76,7 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                     {{ if ne $email "" }}
                     <li class="d-flex align-items-start mb-3">
                         <svg class="site-icons contact-icons me-3" aria-hidden="true">
-                            <use href="{{ `/icons/site-icons.svg#at-sign` | relURL }}" />
+                            <use href="{{ `/svg-icons/site-icons.svg#at-sign` | relURL }}" />
                         </svg>
                         <div>
                             <div class="fw-medium">{{ $email | markdownify | safeHTML }}</div>
@@ -87,7 +87,7 @@ Renders a two-column contact section. Reads optional values from `data/contact.y
                     {{ if ne $phone "" }}
                     <li class="d-flex align-items-start mb-3">
                         <svg class="site-icons contact-icons me-3" aria-hidden="true">
-                            <use href="{{ `/icons/site-icons.svg#phone-call` | relURL }}" />
+                            <use href="{{ `/svg-icons/site-icons.svg#phone-call` | relURL }}" />
                         </svg>
                         <div>
                             <div class="fw-medium">{{ $phone | markdownify | safeHTML }}</div>

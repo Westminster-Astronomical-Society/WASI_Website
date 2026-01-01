@@ -1,4 +1,4 @@
-{{ $logo := default "/icons/site-logos.svg#wasi-brand" .Site.Params.mainMenuLogo }}
+{{ $logo := default "/svg-icons/site-logos.svg#wasi-brand" .Site.Params.mainMenuLogo }}
 
 <div
   class="offcanvas offcanvas-start"
@@ -231,7 +231,7 @@
     {{ $maps := (print "https://www.google.com/maps/search/?api=1&query=" ($addr | urlquery)) }}
     <p class="d-flex align-items-center mb-2">
       <svg class="site-icons contact-icons me-2" aria-hidden="true" focusable="false" role="img">
-        <use href="{{ `/icons/site-icons.svg#map-pin` | relURL }}" />
+        <use href="{{ `/svg-icons/site-icons.svg#map-pin` | relURL }}" />
       </svg>
       <a class="fw-medium" href="{{ $maps }}" target="_blank" rel="noopener">{{ $addr }}</a>
     </p>

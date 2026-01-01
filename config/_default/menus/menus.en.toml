@@ -81,28 +81,28 @@ title = "Astronomy Resources"
 
 [[social]]
   name = "Bsky"
-  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-bsky'><use href='/icons/social-icons.svg#bsky'/></svg>"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-bsky'><use href='/svg-icons/social-icons.svg#bsky'/></svg>"
   url = "https://bsky.app/profile/wasi-astro.bsky.social"
   weight = 20
   title = "Contact us on Bsky"
 
 [[social]]
   name = "Xitter"
-  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-xitter'><use href='/icons/social-icons.svg#xitter'/></svg>"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-xitter'><use href='/svg-icons/social-icons.svg#xitter'/></svg>"
   url = "https://twitter.com/WASI_Astro/"
   weight = 30
   title = "Contact us on Xitter"
 
 [[social]]
   name = "Youtube"
-  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-youtube'><use href='/icons/social-icons.svg#youtube'/></svg>"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-youtube'><use href='/svg-icons/social-icons.svg#youtube'/></svg>"
   url = "https://www.youtube.com/@westminsterastronomicalsoc1858"
   weight = 40
   title = "Visit our YouTube channel"
 
   [[social]]
   name = "Facebook"
-  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-facebook'><use href='/icons/social-icons.svg#facebook'/></svg>"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-facebook'><use href='/svg-icons/social-icons.svg#facebook'/></svg>"
   url = "https://www.facebook.com/groups/wasi.contact/"
   weight = 50
   title = "Visit our Facebook page"

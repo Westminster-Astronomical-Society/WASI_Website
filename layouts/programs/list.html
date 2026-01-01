@@ -9,7 +9,7 @@
   {{ if .Site.Params.options.listProgramFilter }}
   <div class="row mb-3">
     <div class="col-auto">
-      <svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/icons/site-icons.svg#tag` | relURL }}"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="site-icons me-2"><use href="{{ `/svg-icons/site-icons.svg#tag` | relURL }}"/></svg>
       {{ $current := .RelPermalink }}
       {{ range ($.Site.GetPage "taxonomyTerm" "programs").Pages.ByTitle }}
         {{ $active := eq .RelPermalink $current }}
