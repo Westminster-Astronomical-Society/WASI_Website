@@ -5,12 +5,12 @@
 
 contact:
   enable: true
-  title: "Contact WASI"
+  title: "Over 40 Years of WASI"
   content: >-
-    For any questions, please contact us using the information provided
-    or send us a message using the contact form.
+    WASI was founded in 1984, and for over 40 years has been promoting a love 
+    of the night sky in Carroll County, MD.
 
-  address: "[300 John Owings Rd. Westminster, MD](https://www.google.com/maps/search/?api=1&query=300+John+Owings+Rd.+Westminster%2C+MD)"
+  address: "[300 John Owings Rd. Westminster, MD](https://www.google.com/maps/search/?api=1&query=Bear+Branch+Nature+Center)"
   mail: "P.O. Box 1162, Westminster, MD 21158 "
   email: "outreach@westminsterastro.org"
   phone: "(443) 732-0020"
