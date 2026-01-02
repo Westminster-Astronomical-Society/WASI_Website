@@ -11,9 +11,13 @@ astronomical events, upcoming club activities, and other topics of interest to
 amateur astronomers.
 
 This month's newsletter:
-{{< pdf "/newsletter/2025/newsletter_fall_2025.pdf" >}}
+{{< pdf "/newsletter/2026/newsletter_winter_2026.pdf" >}}
 
 Past issues of the newsletter are available here for download in PDF format:
+
+### 2026:
+
+- [Winter 2026](/newsletter/2026/newsletter_winter_2026.pdf)
 
 ### 2025:
 
