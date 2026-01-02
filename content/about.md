@@ -37,10 +37,7 @@ opportunities.
 
 
 
-### WASI Officers and Board Members
-
-WASI is governed by a board of directors and officers who are elected by the
-membership. The current officers and board members are:
+### WASI Officers
 
 President:  Skip Bird
 
@@ -54,6 +51,8 @@ Treasurer:  Laurie Ansorge
 
 Past President: Cindy Ward
 
+### WASI Board Members
+
 Chairman: Tony Falletta
 
 Board Member:  Curt Roelle
@@ -64,3 +63,25 @@ Board Member: Vanessa Thomas
 
 Board Member: Jim Reynolds
 
+### WASI Committee Leadership
+Astrophotography Committe Chairman:	Chris Bennett
+
+Bear Branch Planetarium Director:	Al Ansorge
+
+Blaine F. Roelke Memorial Observatory Director:	Jeff Burns
+
+Charlotte Quest Observatory Director:	Chris Bennett
+
+Observing Committee Chairman:	Jeff Burns
+
+### WASI Offices
+
+ALCOR Representative:	Laurie Ansorge
+
+Librarian:	Curt Roelle
+
+Outreach Director:	Wayne (Skip) Bird
+
+Program Coordinator:	Curt Roelle
+
+Webmaster:	Tom Milley

@@ -7,7 +7,7 @@ draft: false
 
 Monthly members meetings are held at 7:00 PM EST on the second Wednesday of the
 month at the Bear Branch Nature Center, 300 John Owings Rd. Westminster, MD and
-online via Zoom. The "What's Up Basics!" presentation is at 7:00 PM EST,
+online via Zoom. There's a demo or presentation at 7:00 PM EST,
 followed by the featured guest speaker presentation at 7:30 PM EST. Club updates
 and business meeting will follow.
 

@@ -87,13 +87,6 @@ title = "Astronomy Resources"
   title = "Contact us on Bsky"
 
 [[social]]
-  name = "Xitter"
-  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-xitter'><use href='/svg-icons/social-icons.svg#xitter'/></svg>"
-  url = "https://twitter.com/WASI_Astro/"
-  weight = 30
-  title = "Contact us on Xitter"
-
-[[social]]
   name = "Youtube"
   pre = "<svg xmlns='http://www.w3.org/2000/svg' class='social-icon icon-youtube'><use href='/svg-icons/social-icons.svg#youtube'/></svg>"
   url = "https://www.youtube.com/@westminsterastronomicalsoc1858"
