@@ -5,10 +5,10 @@ draft: false
 
 ## WASI Monthly Members Meeting
 
-Monthly members meetings are held at 7:00 PM EST on the second Wednesday of the
+Monthly members meetings are held at 7:00 PM Eastern time on the second Wednesday of the
 month at the Bear Branch Nature Center, 300 John Owings Rd. Westminster, MD and
-online via Zoom. There's a demo or presentation at 7:00 PM EST,
-followed by the featured guest speaker presentation at 7:30 PM EST. Club updates
+online via Zoom. There's a demo or class at 7:00 PM,
+followed by the featured guest speaker presentation at 7:30 PM. Club updates
 and business meeting will follow.
 
 Our January 14, 2026 meeting will have our annual election of officers. The following positions are open:
