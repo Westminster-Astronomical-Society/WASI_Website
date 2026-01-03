@@ -52,7 +52,6 @@ social media platforms that do. You should review their privacy policies before
 using these sites.
 
 - [Facebook Privacy](https://www.facebook.com/privacy/policy/)
-- [X.com Privacy](https://x.com/en/privacy)
 - [BlueSky Privacy](https://bsky.social/about/support/privacy-policy)
 - [YouTube Privacy](https://policies.google.com/privacy)
 
