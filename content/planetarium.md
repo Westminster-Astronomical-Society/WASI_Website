@@ -30,7 +30,7 @@ Please call 410-386-2103 (8 AM to 4:30 PM M-F) or register online
 Walk ins are welcome, space permitting. Cash or check is required if not paid on the County web
 page, and extra fees may apply.
 
-Our [observatory](/observatory) is usually open sfter the planetarium shows, skies permitting. Here's a chance to
+Our [observatory](/observatory) is usually open after the planetarium shows, skies permitting. Here's a chance to
 look through our big telescope. No registration is needed for the post-show observatory. The public is
 welcome to bring their own equipment and participate in this star party along with WASI members.
 
