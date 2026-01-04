@@ -64,7 +64,7 @@ Board Member: Vanessa Thomas
 Board Member: Jim Reynolds
 
 ### WASI Committee Leadership
-Astrophotography Committe Chairman:	Chris Bennett
+Astrophotography Committee Chairman:	Chris Bennett
 
 Bear Branch Planetarium Director:	Al Ansorge
 
