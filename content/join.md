@@ -14,9 +14,11 @@ to the Astronomical League with a subscription to Reflector magazine.
 WASI members also have access to the Blaine F. Roelke Memorial Observatory,
 which houses a 14-inch Schmidt-Cassegrain telescope. The observatory is open for
 member use during scheduled observing nights and special events. You can become
-a member by filling out the online application form at the Night Sky Network.
+a member by filling out the online application form.
 
-{{< button href="/2026-paper-application-wasi.pdf" title="Join WASI" target="_blank" class="btn btn-primary mb-3"/>}}
+{{< button href="/app-form" class="btn-primary mb-3" >}}
+Online Application Form
+{{< /button >}}
 
 Membership dues are the same for individuals or families, meaning additional family members are no additional cost.
 Be sure to include each person’s name and email address for processing.
@@ -36,3 +38,5 @@ You can make a secure online payment via PayPal.
 
 Or print this [application form](/2026-paper-application-wasi.pdf)
 and mail it with a check for the number of years desired, made out to WASI to the address on the form.
+
+
