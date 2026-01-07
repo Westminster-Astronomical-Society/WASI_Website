@@ -3,7 +3,7 @@
 -->
 <form id="myForm" action="http://westminsterastro.shark-server.com/cgi-westminsterastro/formmail.pl" method="POST" target="_blank">
 
-  <input type="hidden" name="recipient" value="treasurer@westminsterastro.org, secretary@westminsterastro.org">
+  <input type="hidden" name="recipient" value="lvhager@comcast.net,jack-ebay@ganssle.com">
   <input type="hidden" name="redirect" value="http://westminsterastro.shark-server.com/app-form-payment">
   <input type="hidden" name="subject" value="Submission from WASI web site application form">
   
@@ -19,18 +19,44 @@
     <input type="radio" id="RenewMember" name="type_member" required value="RenewMember">
     <label for="RenewMember">This is a membership renewal</label>
   </div>
-  
-  <p style="text-indent: 1em;"><i>If you are a member, your member number (found on membership card):</i>
+  <div>
+    <input type="radio" id="YouthMember" name="type_member" required value="YouthMember">
+    <label for="YouthMember">Under 18 youth membership</label>
+  </div>
+
+  <p style="text-indent: 1em">
+  <label for="youth">If youth membership, year member turns 18:</label>
+  <input type="text" id="youth" name="youth" size="5">
+</p>
+
+  <p style="text-indent: 2em;"><i>Optional: If you are or were a member, your previously-registered name or member number (from membership card):</i>
+  <p style="text-indent:4em">
   <input type="text" id="member_number">
   </p>
 
   <br>
-  <label for="name">Your name: </label>
-  <input type="text" id="name" name="name" size="50" required>
-
+  <label for="YourName">Your name: </label>
+  <input type="text" id="YourName" name="YourName" size="30" required>
+  <label for="YourEmail">Your email:</label>
+  <input type="text" id="YourEmail" required name="YourEmail" value="" size="20">
+  
   <br>
-  <label for="family_names">If family membership, enter names of those who should get membership cards:</label>
-  <input type="text" id="family_names" name="family_names" size="80">
+  If family membership, enter names of those who should get membership cards:
+  <br>
+  <label for="family_name1">Name:</label>
+  <input type="text" id="family_name1" name="family_name1" size="30">
+  <label for="email1">Email:</label>
+  <input type="text" id="email1" name="email1" value="" size="20">
+  <br>
+  <label for="family_name1">Name:</label>
+  <input type="text" id="family_name2" name="family_nam2" size="30">
+  <label for="email2">Email:</label>
+  <input type="text" id="email2" name="email2" value="" size="20">
+  <br>
+  <label for="family_name1">Name:</label>
+  <input type="text" id="family_name3" name="family_name3" size="30">
+  <label for="email3">Email:</label>
+  <input type="text" id="email3" name="email3" value="" size="20">
   
   <br><br>
   <label for="address">Address:</label>
@@ -52,17 +78,9 @@
   <br>
   <label for="phone">Phone number:</label>
   <input type="text" id="phone" name="phone" required>
-
+  
   <br>
-  <label for="email">Email, separate emails with commas:</label>
-  <input type="text" id="email" required name="email" value="" size="60">
-
-  <br>
-  <label for="youth">If youth membership (under 18), year member turns 18:</label>
-  <input type="text" id="youth" name="youth" size="5">
-
-  <br>
-  <label for="comments">Comments:</label><br>
+  <label for="comments">What would you like us to know? Additional family members/emails?  No problem.  Add them here:</label><br>
   <textarea id="comments" name="comments" rows="4" cols="50">
   </textarea>
   
