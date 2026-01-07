@@ -5,9 +5,10 @@ draft: false
 
 ### Paying for WASI Membership
 
-Membership dues are the same for individuals or families, meaning additional family members are no additional cost. Be sure to include each person's name and email address for processing.
+Membership dues are the same for individuals or families, meaning additional family members are no 
+additional cost. 
 
-Individual youth (under 18) memberships are $5/year and must include the year for which the youngster turns 18.
+Individual youth (under 18) memberships are $5/year.
 <ul>
 <li>$25 per year</li>
 <li>$40 for two years</li>
@@ -19,3 +20,6 @@ membership. Be sure to enter the correct amount in the payment field, and we'd s
 appreciate it if you could add $2 or more to cover the costs of payment processing.
 
 {{< paypal-form >}}
+
+Alternatively, you can mail us a check. Make it out to "WASI" and mail it to
+PO Box 1162, Westminster, MD 21158.
