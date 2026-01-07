@@ -29,7 +29,7 @@ carousel:
   slides:
     slide-1:
       image: "assets/images/backgrounds/6L3A3162.jpg"
-      image_credit: "Credit: [Photographer Name](https://example.com)"
+      image_credit: "Credit: Chris Bennett"
       title: "Westminster Astronomical Society"
       content: "Bringing the Universe to Carroll County, Maryland since 1984"
       interval: 8000
@@ -42,7 +42,7 @@ carousel:
 
     slide-2:
       image: "assets/images/backgrounds/6L3A3177.jpg"
-      image_credit: "Credit: [Photographer Name](https://example.com)"
+      image_credit: "Credit: Chris Bennett"
       title: "Westminster Astronomical Society"
       content: "Bringing the Universe to Carroll County, Maryland since 1984"
       info_box:
@@ -67,7 +67,7 @@ carousel:
 
     slide-4:
       image: "assets/images/backgrounds/6L3A3255.jpg"
-      image_credit: "Credit: [Photographer Name](https://example.com)"
+      image_credit: "Credit: Chris Bennett"
       title: "Westminster Astronomical Society"
       content: "Bringing the Universe to Carroll County, Maryland since 1984"
       info_box:
