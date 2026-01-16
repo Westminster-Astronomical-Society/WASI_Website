@@ -17,6 +17,9 @@ Westminster Astronomical Society is committed to public outreach and education i
 
 Members wishing to participate in or organize outreach events have access to a variety of outreach resources available on the internet.
 
+ - [Stars in the Network](https://nightsky.jpl.nasa.gov/stars/) - The Night Sky Network's list of top astronomy clubs for outreach. WASI is nearly always
+in the top two or three.
+
 - [Night Sky Network](https://nightsky.jpl.nasa.gov/) - A NASA-funded program that provides resources and support for astronomy outreach. On the News & Resources page you can search for articles and resources by description, topic/keyword, or category. You will find downloadable lesson plans, handouts, videos, and information about the various available toolkits.
 
 - [The Astronomical Society of the Pacific](https://astrosociety.org/) - Another organization dedicated to promoting astronomy and providing resources for educators and the public. They offer a variety of resources in partnership with The Night Sky Network and additional resources for educators, and amateur and professional astronomers.
@@ -28,6 +31,8 @@ Members wishing to participate in or organize outreach events have access to a v
 - [Space Place by NASA](https://spaceplace.nasa.gov/) - A website with games, activities, and educational resources for younger kids. Even if your presentations are aimed at a more general audience some of these resources will keep the younger members of your audience engaged.
 
 - [The Astronomical League](https://www.astroleague.org/navigating-the-night-sky-guides/) - The Astronomical League has a series of "Navigating the Night Sky" guides that are useful for outreach events. These guides cover various topics in astronomy and are focused on objects and events currently visible in the night sky.
+
+- [NASA's What's Up](https://science.nasa.gov/skywatching/whats-up/) - NASA publishes monthly videos about the night sky.
 
 ## Planetarium Shows
 
