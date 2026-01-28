@@ -39,17 +39,17 @@ opportunities.
 
 ### WASI Officers
 
-President:  Skip Bird
+President:  Brooke Parkhurst
 
-1st Vice President:  Eric Smallwood
+1st Vice President:  Jeffrey Jacobs
 
-2nd Vice President:  Brooke Parkhurst
+2nd Vice President:  Jeff Kretsch
 
 Secretary:  Jack Ganssle
 
 Treasurer:  Laurie Ansorge
 
-Past President: Cindy Ward
+Past President: Skip Bird
 
 ### WASI Board Members
 
