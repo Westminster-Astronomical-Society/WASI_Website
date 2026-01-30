@@ -5,10 +5,12 @@ draft: false
 
 # What's Up, Basics
 
-Membership meetings start with a 30-minute "What's Up, Basics" session where a presenter shares interesting things
-to find in the sky that month. Since January, 2026 we've been including this information in our monthly WASI Update
-mailing. Here's a collection of these presentations.
+WASI members get a monthly WASI Update email with highlights for the forthcoming month. That includes a
+ "What's Up, Basics" section that calls out interesting things to find in the sky that month. Here you can
+ find those presentations.
+
 
 ### 2026:
 
 - [January](/whats-up/2026/january.pdf) - Skycharts, viewing the comets, telescopes, and a flat or spherical Earth?
+- [February](/whats-up/2026/february.pdf) - Skycharts, hints on solar observations, and Astro Notes highlights.
