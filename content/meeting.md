@@ -8,8 +8,7 @@ draft: false
 Monthly members meetings are held at 7:00 PM Eastern time on the second Wednesday of the
 month at the Bear Branch Nature Center, 300 John Owings Rd. Westminster, MD and
 online via Zoom. There's a demo or class at 7:00 PM,
-followed by the featured guest speaker presentation at 7:30 PM. Club updates
-and business meeting will follow.
+followed by the featured guest speaker presentation at 7:30 PM.
 
 Our February  11, 2026 meeting will feature a session on astrophotography hosted by club members
 Al Ansorge and Chris Bennett. Then, our main speaker is Dr. Mark Mitchell who will talk about Halton Arp and his Peculiar Galaxies.
@@ -36,7 +35,6 @@ Passcode: 965007
 
 ## Previous Meetings
 
-### 13 August, 2025
+You can see videos of previous meetings on our Youtube channel [here](https://www.youtube.com/@westminsterastronomicalsoc1858)
 
-Speaker: Dr. Lou Mayo, Voyager Legacy
-{{< youtube id="FF0HLiRQVfI" class="video-container" >}}
+
