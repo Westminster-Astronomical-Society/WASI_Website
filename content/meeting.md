@@ -10,7 +10,7 @@ month at the Bear Branch Nature Center, 300 John Owings Rd. Westminster, MD and
 online via Zoom. There's a demo or class at 7:00 PM,
 followed by the featured guest speaker presentation at 7:30 PM.
 
-Our Mrch 11, 2026 meeting will feature a session on Messier Marathons by Curt Roelle. Then, our main speaker is Fr. Richard D'Souza,
+Our March 11, 2026 meeting will feature a session on Messier Marathons by Curt Roelle. Then, our main speaker is Fr. Richard D'Souza,
 who is the Superior of the Jesuit community attached to the Vatican Observatory. Fr. D'Souza is interested in studying the 
 formation and evolution of galaxies. In particular, through observations and simulations, 
 he has studied the outer stellar halos of galaxies in order to decipher their accretion histories.
