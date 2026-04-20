@@ -31,6 +31,10 @@ const PLANET_EVENT_ALTITUDE_DEG = -0.5667;
 // Time zone used for observatory's local time (IANA tz name)
 const observatoryTimeZone = 'America/New_York';
 
+// Moon canvas state
+let moonCanvas, moonW, moonH, moonCtx, moonR;
+const moonTerminatorWidth = 2;
+
 function pad(n, w = 2) {
 	const s = String(Math.floor(Math.abs(n)));
 	return (s.length >= w ? s : '0'.repeat(w - s.length) + s);
@@ -154,6 +158,7 @@ function startAlmanacClock() {
 		// Also render Sun & Twilight tables once on load
 		renderSunTwilightTables();
 		initializePlanets();
+		initializeMoon();
 	// Update every second
 	setInterval(updateObservatoryCard, 1000);
 	// Refresh the sun/twilight tables periodically (every 10 minutes)
@@ -420,5 +425,176 @@ function formatEventTime(hours, date) {
 	let eventDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0));
 	eventDate = new Date(eventDate.getTime() + hours * 3600000);
 	return eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+}
+
+// ---------------------------------------------------------------------------
+// Moon Card
+// ---------------------------------------------------------------------------
+
+function initializeMoon() {
+	moonCanvas = document.getElementById('moonCanvas');
+	if (!moonCanvas) return;
+	moonW = moonCanvas.width;
+	moonH = moonCanvas.height;
+	moonCtx = moonCanvas.getContext('2d');
+	moonR = moonW / 2 * 0.91;
+
+	const today = new Date();
+	const y = today.getFullYear();
+	const mo = String(today.getMonth() + 1).padStart(2, '0');
+	const d  = String(today.getDate()).padStart(2, '0');
+	document.getElementById('moonDatePicker').value = `${y}-${mo}-${d}`;
+	document.getElementById('moonDatePicker').addEventListener('change', function () {
+		const parts = this.value.split('-');
+		renderMoonCard(new Date(+parts[0], +parts[1] - 1, +parts[2], 12, 0, 0));
+	});
+
+	renderMoonCard(today);
+}
+
+function renderMoonCard(date) {
+	try {
+		const jd = JulianDateFromUnixTime(date.getTime());
+		const illum = getIlluminatedFractionOfMoon(jd);
+		const prevIllum = getIlluminatedFractionOfMoon(jd - 1);
+		const isWaxing = illum >= prevIllum;
+		const phaseAngle = isWaxing ? illum * 180 : 180 + (1 - illum) * 180;
+
+		const img = document.getElementById('moonImage');
+		if (img.complete) {
+			displayMoon(phaseAngle);
+		} else {
+			img.onload = () => displayMoon(phaseAngle);
+		}
+		updateMoonInfo(date, jd, illum, phaseAngle, isWaxing);
+	} catch (e) {
+		console.error('Failed to render moon card:', e);
+	}
+}
+
+function displayMoon(phase) {
+	moonCtx.drawImage(document.getElementById('moonImage'), 0, 0, moonW, moonH);
+	drawMoonPhase(phase);
+}
+
+function drawMoonPhase(phase) {
+	moonCtx.fillStyle = '#000000cc';
+	const pts = drawMoonDarkSide(phase);
+	fillMoonGradient(pts);
+}
+
+function getMoonX(phase, angle) {
+	const f = Math.cos(phase * Math.PI / 180);
+	const cosi = Math.cos(angle * Math.PI / 180);
+	let x = f * moonR * cosi + moonW / 2;
+	if ((phase <= 180 && cosi < 0) || (phase > 180 && cosi > 0)) {
+		x = moonR * cosi + moonW / 2;
+	}
+	return x;
+}
+
+function drawMoonDarkSide(phase) {
+	const pts = [];
+	let x = getMoonX(phase - moonTerminatorWidth, 0);
+	let y = moonR * Math.sin(0) + moonH / 2;
+	moonCtx.beginPath();
+	moonCtx.moveTo(x, y);
+	for (let i = 0; i <= 360; i++) {
+		x = getMoonX(phase + moonTerminatorWidth, i);
+		let x2 = getMoonX(phase - moonTerminatorWidth, i);
+		if (phase > 180) { const t = x; x = x2; x2 = t; }
+		y = moonR * Math.sin(i * Math.PI / 180) + moonH / 2;
+		pts.push([x, x2, y, phase]);
+		moonCtx.lineTo(x, y + 1);
+	}
+	moonCtx.closePath();
+	moonCtx.fill();
+	return pts;
+}
+
+function fillMoonGradient(pts) {
+	if (Math.abs(pts[0][3] - 180) <= moonTerminatorWidth) return;
+	for (let i = 0; i < pts.length - 1; i++) {
+		let x1 = pts[i][0];
+		const x2 = pts[i][1];
+		const y1 = pts[i][2];
+		const y2 = pts[i + 1][2];
+		if (pts[i][3] > 180) x1++;
+		const g = moonCtx.createLinearGradient(x1, y1, x2, y2);
+		g.addColorStop(1, '#00000000');
+		g.addColorStop(0, '#000000ff');
+		moonCtx.fillStyle = g;
+		moonCtx.beginPath();
+		moonCtx.moveTo(x1, y1);
+		moonCtx.lineTo(x2, y1);
+		moonCtx.lineTo(x2, y2);
+		moonCtx.lineTo(x1, y2);
+		moonCtx.closePath();
+		moonCtx.fill();
+	}
+}
+
+function updateMoonInfo(date, jd, illum, phaseAngle, isWaxing) {
+	// Phase name
+	let phaseName;
+	if (illum < 0.01)       phaseName = 'New Moon';
+	else if (illum < 0.49)  phaseName = isWaxing ? 'Waxing Crescent' : 'Waning Crescent';
+	else if (illum < 0.51)  phaseName = isWaxing ? 'First Quarter'   : 'Last Quarter';
+	else if (illum < 0.99)  phaseName = isWaxing ? 'Waxing Gibbous'  : 'Waning Gibbous';
+	else                     phaseName = 'Full Moon';
+
+	const phaseEl = document.getElementById('moonPhaseName');
+	const illumEl = document.getElementById('moonIllumination');
+	if (phaseEl) phaseEl.textContent = phaseName;
+	if (illumEl) illumEl.textContent = (illum * 100).toFixed(1) + '%';
+
+	// Rise / Set using Meeus Ch.47 position + existing getRiseTransitSet
+	try {
+		const observerLat = latitude * toRad;
+		const observerLonMeeus = -longitude * toRad;
+		const jd0 = Math.floor(jd - 0.5) + 0.5; // 0h UT for the civil date
+
+		// Initial estimate at 0h UT.
+		const initialMoon = moonPositionRaDec(jd0);
+		const [, initialRise, initialSet] = getRiseTransitSet(
+			jd0,
+			observerLat,
+			observerLonMeeus,
+			initialMoon.ra,
+			initialMoon.dec,
+			0.125,
+		);
+
+		const rise = refineMoonEventHour(jd0, observerLat, observerLonMeeus, initialRise, 'rise');
+		const set = refineMoonEventHour(jd0, observerLat, observerLonMeeus, initialSet, 'set');
+		const riseEl = document.getElementById('moonRise');
+		const setEl  = document.getElementById('moonSet');
+		if (riseEl) riseEl.textContent = formatEventTime(rise, date);
+		if (setEl)  setEl.textContent  = formatEventTime(set,  date);
+	} catch (e) {
+		console.error('Moon rise/set calculation failed:', e);
+	}
+}
+
+function refineMoonEventHour(jd0, observerLat, observerLonMeeus, initialHour, eventType) {
+	if (!Number.isFinite(initialHour)) return NaN;
+
+	let hour = initialHour;
+	for (let i = 0; i < 3; i += 1) {
+		const eventJd = jd0 + hour / 24.0;
+		const moon = moonPositionRaDec(eventJd);
+		const [, rise, set] = getRiseTransitSet(
+			jd0,
+			observerLat,
+			observerLonMeeus,
+			moon.ra,
+			moon.dec,
+			0.125,
+		);
+		hour = eventType === 'rise' ? rise : set;
+		if (!Number.isFinite(hour)) return NaN;
+	}
+
+	return hour;
 }
 

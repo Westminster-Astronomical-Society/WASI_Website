@@ -268,3 +268,101 @@ function sunPosition(jd) {
     if (ra < 0) { ra += Math.PI * 2; }
     return [ra / toRad / 15.0, dec / toRad]; // ra in radians, dec in radians
 }
+
+// Illuminated fraction of the Moon's disc (Meeus Ch.48)
+function getIlluminatedFractionOfMoon(jd) {
+    const r = Math.PI / 180.0;
+    const T = (jd - 2451545) / 36525.0;
+    const D  = constrainAngle(297.8501921 + 445267.1114034 * T - 0.0018819 * T * T + T * T * T / 545868.0   - T * T * T * T / 113065000.0) * r;
+    const M  = constrainAngle(357.5291092 +  35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000.0) * r;
+    const Mp = constrainAngle(134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699.0    - T * T * T * T / 14712000.0) * r;
+    const i  = constrainAngle(180 - D / r - 6.289 * Math.sin(Mp) + 2.1 * Math.sin(M)
+        - 1.274 * Math.sin(2 * D - Mp) - 0.658 * Math.sin(2 * D)
+        - 0.214 * Math.sin(2 * Mp)     - 0.11  * Math.sin(D)) * r;
+    return (1 + Math.cos(i)) / 2;
+}
+
+// Geocentric RA and Dec of the Moon (Meeus Ch.47 truncated series)
+// Returns { ra: radians (0..2π), dec: radians }
+function moonPositionRaDec(jd) {
+    const r = Math.PI / 180.0;
+    const T = (jd - 2451545.0) / 36525.0;
+
+    const Lp = constrainAngle(218.3164477 + 481267.88123421 * T - 0.0015786 * T * T + T * T * T / 538841.0    - T * T * T * T / 65194000.0);
+    const D  = constrainAngle(297.8501921 + 445267.1114034  * T - 0.0018819 * T * T + T * T * T / 545868.0    - T * T * T * T / 113065000.0);
+    const M  = constrainAngle(357.5291092 +  35999.0502909  * T - 0.0001536 * T * T + T * T * T / 24490000.0);
+    const Mp = constrainAngle(134.9633964 + 477198.8675055  * T + 0.0087414 * T * T + T * T * T / 69699.0    - T * T * T * T / 14712000.0);
+    const F  = constrainAngle( 93.2720950 + 483202.0175233  * T - 0.0036539 * T * T - T * T * T / 3526000.0  + T * T * T * T / 863310000.0);
+    const A1 = constrainAngle(119.75 + 131.849  * T);
+    const A2 = constrainAngle( 53.09 + 479264.290 * T);
+    const A3 = constrainAngle(313.45 + 481266.484 * T);
+    const E  = 1.0 - 0.002516 * T - 0.0000074 * T * T;
+    const E2 = E * E;
+
+    const Dr = D * r, Mr = M * r, Mpr = Mp * r, Fr = F * r;
+
+    // Table 47.A longitude terms [D, M, M', F, coeff_l (×10⁻⁶ deg)]
+    const lonTerms = [
+        [0, 0, 1, 0,  6288774], [2, 0,-1, 0,  1274027], [2, 0, 0, 0,   658314],
+        [0, 0, 2, 0,   213618], [0, 1, 0, 0,  -185116], [0, 0, 0, 2,  -114332],
+        [2, 0,-2, 0,    58793], [2,-1,-1, 0,    57066], [2, 0, 1, 0,    53322],
+        [2,-1, 0, 0,    45758], [0, 1,-1, 0,   -40923], [1, 0, 0, 0,   -34720],
+        [0, 1, 1, 0,   -30383], [2, 0, 0,-2,    15327], [0, 0, 1,-2,    10980],
+        [4, 0,-1, 0,    10675], [0, 0, 3, 0,    10034], [4, 0,-2, 0,     8548],
+        [2, 1,-1, 0,    -7888], [2, 1, 0, 0,    -6766], [1, 0,-1, 0,    -5163],
+        [1, 1, 0, 0,     4987], [2,-1, 1, 0,     4036], [2, 0, 2, 0,     3994],
+        [4, 0, 0, 0,     3861], [2, 0,-3, 0,     3665], [0, 1,-2, 0,    -2689],
+        [2,-1,-2, 0,     2390], [1, 0, 1, 0,    -2348], [2,-2, 0, 0,     2236],
+        [0, 1, 2, 0,    -2120], [0, 2, 0, 0,    -2069], [2,-2,-1, 0,     2048],
+        [2, 0, 1,-2,    -1773], [2, 0, 0, 2,    -1595], [4,-1,-1, 0,     1215],
+        [0, 0, 2, 2,    -1110], [3, 0,-1, 0,     -892], [2, 1, 1, 0,     -810],
+        [4,-1,-2, 0,      759], [0, 2,-1, 0,     -713], [2, 2,-1, 0,     -700],
+        [2, 1,-2, 0,      691], [2,-1, 0,-2,      596], [4, 0, 1, 0,      549],
+        [0, 0, 4, 0,      537], [4,-1, 0, 0,      520], [1, 0,-2, 0,     -487],
+        [2, 1, 0,-2,     -399], [0, 0, 2,-2,     -381], [1, 1, 1, 0,      351],
+        [3, 0,-2, 0,     -340], [4, 0,-3, 0,      330], [2,-1, 2, 0,      327],
+        [0, 2, 1, 0,     -323], [1, 1,-1, 0,      299], [2, 0, 3, 0,      294]
+    ];
+    // Table 47.B latitude terms [D, M, M', F, coeff_b (×10⁻⁶ deg)]
+    const latTerms = [
+        [0, 0, 0, 1,  5128122], [0, 0, 1, 1,   280602], [0, 0, 1,-1,   277693],
+        [2, 0, 0,-1,   173237], [2, 0,-1, 1,    55413], [2, 0,-1,-1,    46271],
+        [2, 0, 0, 1,    32573], [0, 0, 2, 1,    17198], [2, 0, 1,-1,     9266],
+        [0, 0, 2,-1,     8822], [2,-1, 0,-1,     8216], [2, 0,-2,-1,     4324],
+        [2, 0, 1, 1,     4200], [2, 1, 0,-1,    -3359], [2,-1,-1, 1,     2463],
+        [2,-1, 0, 1,     2211], [2,-1,-1,-1,     2065], [0, 1,-1,-1,    -1870],
+        [4, 0,-1,-1,     1828], [0, 1, 0, 1,    -1794], [0, 0, 0, 3,    -1749],
+        [0, 1,-1, 1,    -1565], [1, 0, 0, 1,    -1491], [0, 1, 1, 1,    -1475],
+        [0, 1, 1,-1,    -1410], [0, 1, 0,-1,    -1344], [1, 0, 0,-1,    -1335],
+        [0, 0, 3, 1,     1107], [4, 0, 0,-1,     1021], [4, 0,-1, 1,      833]
+    ];
+
+    let sigmaL = 0, sigmaB = 0;
+    for (const [d, m, mp, f, cl] of lonTerms) {
+        let c = cl;
+        if (Math.abs(m) === 1) c *= E;
+        if (Math.abs(m) === 2) c *= E2;
+        sigmaL += c * Math.sin(d * Dr + m * Mr + mp * Mpr + f * Fr);
+    }
+    for (const [d, m, mp, f, cb] of latTerms) {
+        let c = cb;
+        if (Math.abs(m) === 1) c *= E;
+        if (Math.abs(m) === 2) c *= E2;
+        sigmaB += c * Math.sin(d * Dr + m * Mr + mp * Mpr + f * Fr);
+    }
+    // Additive corrections (Meeus 47.6 / 47.7)
+    sigmaL += 3958 * Math.sin(A1 * r) + 1962 * Math.sin((Lp - F) * r) + 318 * Math.sin(A2 * r);
+    sigmaB += -2235 * Math.sin(Lp * r) + 382 * Math.sin(A3 * r)
+            + 175 * Math.sin((A1 - F) * r) + 175 * Math.sin((A1 + F) * r)
+            + 127 * Math.sin((Lp - Mp) * r) - 115 * Math.sin((Lp + Mp) * r);
+
+    const lambda = (Lp + sigmaL / 1e6) * r;  // ecliptic longitude (rad)
+    const beta   = (sigmaB / 1e6) * r;        // ecliptic latitude (rad)
+    const eps    = (23.439291111 - 0.013004167 * T) * r; // obliquity (rad)
+
+    // Ecliptic → equatorial
+    let ra  = Math.atan2(Math.sin(lambda) * Math.cos(eps) - Math.tan(beta) * Math.sin(eps), Math.cos(lambda));
+    const dec = Math.asin(Math.sin(beta) * Math.cos(eps) + Math.cos(beta) * Math.sin(eps) * Math.sin(lambda));
+    if (ra < 0) ra += 2 * Math.PI;
+    return { ra, dec };
+}

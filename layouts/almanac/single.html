@@ -193,8 +193,35 @@
 
           <div id="moon-today" class="card mb-3">
             <div class="card-body">
-              <!-- <h5 class="card-title mb-3">Today's Moon</h5> -->
-              <div id="moon-tables"></div>
+              <h5 class="card-title mb-2">Moon</h5>
+              <img id="moonImage" src="/images/moon.jpg" alt="Moon" style="display:none">
+              <canvas id="moonCanvas" width="280" height="280" class="d-block mx-auto mb-1" style="max-width:100%"></canvas>
+              <p class="text-center small text-muted mb-2">Image Credit: NASA</p>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <label for="moonDatePicker" class="small text-nowrap mb-0">Date:</label>
+                <input type="date" id="moonDatePicker" class="form-control form-control-sm">
+              </div>
+              <table class="table table-sm mb-2">
+                <tbody>
+                  <tr>
+                    <th scope="row" class="fw-semibold text-secondary" style="width:45%">Phase</th>
+                    <td id="moonPhaseName">—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="fw-semibold text-secondary">Illumination</th>
+                    <td id="moonIllumination">—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="fw-semibold text-secondary">Rise</th>
+                    <td id="moonRise">—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="fw-semibold text-secondary">Set</th>
+                    <td id="moonSet">—</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="small text-muted mb-0">Note: uses truncated series (Meeus Ch.47) for low precision calculations of moon phases and times.</p>
             </div>
           </div>
 
