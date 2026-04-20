@@ -26,6 +26,7 @@
 const latitude = 39.647398; // positive is north
 const longitude = -76.987309; // west is negative
 const observatory = 'Blaine F. Roelke Memorial Observatory';
+const PLANET_EVENT_ALTITUDE_DEG = -0.5667;
 
 // Time zone used for observatory's local time (IANA tz name)
 const observatoryTimeZone = 'America/New_York';
@@ -152,6 +153,7 @@ function startAlmanacClock() {
 	updateObservatoryCard();
 		// Also render Sun & Twilight tables once on load
 		renderSunTwilightTables();
+		initializePlanets();
 	// Update every second
 	setInterval(updateObservatoryCard, 1000);
 	// Refresh the sun/twilight tables periodically (every 10 minutes)
@@ -292,5 +294,131 @@ function renderSunTwilightTables() {
 		`;
 
 		container.innerHTML = html;
+}
+
+function initializePlanets() {
+	const dateInput = document.getElementById('planetDatePickerDate');
+	const timeInput = document.getElementById('planetDatePickerTime');
+	const tableBody = document.getElementById('planetTableBody');
+	if (!dateInput || !timeInput || !tableBody) return;
+
+	const now = new Date();
+	dateInput.value = [
+		now.getFullYear(),
+		String(now.getMonth() + 1).padStart(2, '0'),
+		String(now.getDate()).padStart(2, '0'),
+	].join('-');
+	timeInput.value = [
+		String(now.getHours()).padStart(2, '0'),
+		String(now.getMinutes()).padStart(2, '0'),
+	].join(':');
+
+	const render = () => renderPlanetTable(getSelectedPlanetDateTime(dateInput, timeInput));
+	render();
+	dateInput.addEventListener('change', render);
+	timeInput.addEventListener('change', render);
+}
+
+function getSelectedPlanetDateTime(dateInput, timeInput) {
+	const [year, month, day] = String(dateInput.value || '').split('-').map(Number);
+	const [hour, minute] = String(timeInput.value || '00:00').split(':').map(Number);
+	if (!Number.isFinite(year) || !Number.isFinite(month) || !Number.isFinite(day)) {
+		return new Date(NaN);
+	}
+	const hh = Number.isFinite(hour) ? hour : 0;
+	const mm = Number.isFinite(minute) ? minute : 0;
+	return new Date(year, month - 1, day, hh, mm, 0, 0);
+}
+
+function renderPlanetTable(date) {
+	const planetTableBody = document.getElementById('planetTableBody');
+	if (!planetTableBody || Number.isNaN(date.getTime())) return;
+	try {
+		if (!Array.isArray(data1800to2050) || data1800to2050.length === 0) {
+			throw new Error('Planetary ephemeris data is unavailable.');
+		}
+
+		const jd = JulianDateFromUnixTime(date.getTime());
+		const observerLat = latitude * toRad;
+		const observerLon = longitude * toRad;
+		const observerLonMeeus = -observerLon;
+		const earthPos = computePlanetShort(2, jd);
+
+		planetTableBody.innerHTML = '';
+
+		for (let i = 0; i < data1800to2050.length; i += 1) {
+			if (i === 2) continue;
+
+			const planetPos = computePlanetShort(i, jd);
+			const geocentricPos = subtractVectors(planetPos, earthPos);
+			const [ra, dec] = xyzToRaDec(geocentricPos);
+			const [azimuth, altitude] = raDecToAltAz(ra, dec, observerLat, observerLon, jd);
+			const [transit, rise, set] = getRiseTransitSet(
+				jd,
+				observerLat,
+				observerLonMeeus,
+				ra,
+				dec,
+				PLANET_EVENT_ALTITUDE_DEG,
+			);
+
+			const row = planetTableBody.insertRow();
+			row.innerHTML = `
+				<th scope="row">${planetNames[i]}</th>
+				<td>${formatRA(ra)}</td>
+				<td>${formatSignedDegrees(dec * toDeg)}</td>
+				<td>${formatSignedDegrees(altitude * toDeg)}</td>
+				<td>${formatAzimuth(azimuth)}</td>
+				<td>${formatEventTime(rise, date)}</td>
+				<td>${formatEventTime(transit, date)}</td>
+				<td>${formatEventTime(set, date)}</td>
+			`;
+		}
+	} catch (error) {
+		console.error('Failed to render planetary table:', error);
+		planetTableBody.innerHTML =
+			'<tr><td colspan="8" class="text-muted">Unable to compute planetary positions.</td></tr>';
+	}
+}
+
+function subtractVectors(a, b) {
+	return a.map((value, index) => value - b[index]);
+}
+
+function formatRA(radians) {
+	let hours = radians * 12 / Math.PI;
+	hours = ((hours % 24) + 24) % 24;
+	let totalMinutes = Math.round(hours * 60);
+	if (totalMinutes >= 24 * 60) totalMinutes = 0;
+
+	const hh = Math.floor(totalMinutes / 60);
+	const mm = totalMinutes % 60;
+	return `${String(hh).padStart(2, '0')}h ${String(mm).padStart(2, '0')}m`;
+}
+
+function formatSignedDegrees(degrees) {
+	const sign = degrees < 0 ? '-' : '+';
+	const totalMinutes = Math.round(Math.abs(degrees) * 60);
+	const deg = Math.floor(totalMinutes / 60);
+	const min = totalMinutes % 60;
+	return `${sign}${String(deg).padStart(2, '0')}° ${String(min).padStart(2, '0')}'`;
+}
+
+function formatAzimuth(radians) {
+	let degrees = radians * toDeg;
+	degrees = ((degrees % 360) + 360) % 360;
+	let totalMinutes = Math.round(degrees * 60);
+	if (totalMinutes >= 360 * 60) totalMinutes = 0;
+
+	const deg = Math.floor(totalMinutes / 60);
+	const min = totalMinutes % 60;
+	return `${String(deg).padStart(3, '0')}° ${String(min).padStart(2, '0')}'`;
+}
+
+function formatEventTime(hours, date) {
+	if (!Number.isFinite(hours)) return '--';
+	let eventDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0));
+	eventDate = new Date(eventDate.getTime() + hours * 3600000);
+	return eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
 }
 

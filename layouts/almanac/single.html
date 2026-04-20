@@ -107,14 +107,41 @@
             <li><a href="https://www.cleardarksky.com/" target="_blank" rel="noopener">Clear Dark Sky:</a> Astronomical observing conditions.</li>
             <li><a href="https://www.astrospheric.com/?Latitude=39.6474&amp;Longitude=-76.987316&amp;Loc=Forecast" target="_blank" rel="noopener">Astrospheric:</a> Another source for astronomical observing conditions.</li>
             </ul>
-
-
-          <div id="planets" class="mb-5">
-            <!--<h3>Planets</h3> -->
-            <p class="text-muted">
-              <!--Planet positions and visibility notes go here. -->
-            </p>
-          </div>
+            <div class="card">
+                <div class="card-body">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-3">
+                    <div>
+                    <h4 class="card-title mb-1">Planetary Positions</h4>
+                    <p class="text-muted mb-0">Computed for the Blaine F. Roelke Memorial Observatory.</p>
+                    </div>
+                    <div class="d-flex flex-column flex-sm-row gap-2">
+                    <input type="date" id="planetDatePickerDate" class="form-control" aria-label="Planetary positions date">
+                    <input type="time" id="planetDatePickerTime" class="form-control" step="60" aria-label="Planetary positions time">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="planetTable" class="table table-sm align-middle mb-0">
+                    <thead>
+                        <tr>
+                        <th scope="col">Planet</th>
+                        <th scope="col">RA (J2000)</th>
+                        <th scope="col">Dec (J2000)</th>
+                        <th scope="col">Altitude</th>
+                        <th scope="col">Azimuth</th>
+                        <th scope="col">Rise</th>
+                        <th scope="col">Transit</th>
+                        <th scope="col">Set</th>
+                        </tr>
+                    </thead>
+                    <tbody id="planetTableBody"></tbody>
+                    </table>
+                </div>
+                <p class="small text-muted mb-0 mt-3">
+                    <strong>Note:</strong> Positions are calculated using the low precision algorithm described in Chapter 8 of the Explanatory Supplement to the Astronomical Almanac. See <a href="https://ssd.jpl.nasa.gov/?planet_pos" target="_blank">Keperian Elements for Approximate Positions of the Major Planets</a> at JPL Solar System Dynamics for a general overview.<br><br>
+                    The positions should be accurate enough for most purposes but since it only has elements for Earth-Moon barycenter, there is some parallax error and apparent positions will differ slightly from that of a topocentric observer.
+                </p>
+                </div>
+            </div>
         </div>
 
         <div class="col-lg-5 col-xl-4">
@@ -185,9 +212,9 @@
 </div>
 {{/* Bundle and load almanac scripts (astro functions + page logic) */}}
 {{ $nutation := resources.Get "js/nutation.js" | minify }} {{ $astro :=
-resources.Get "js/astro.js" | minify }} {{ $almanac := resources.Get
-"js/almanac.js" | minify }} {{ $weather := resources.Get "js/nws-api.js" |
-minify }} {{ $bundle := slice $nutation $astro $almanac $weather | resources.Concat
+resources.Get "js/astro.js" | minify }} {{ $kepler := resources.Get
+"js/kepler.js" | minify }} {{ $almanac := resources.Get "js/almanac.js" |
+minify }} {{ $weather := resources.Get "js/nws-api.js" | minify }} {{ $bundle := slice $nutation $astro $kepler $almanac $weather | resources.Concat
 "js/almanac.bundle.js" | fingerprint }}
 <script
   src="{{ $bundle.RelPermalink }}"

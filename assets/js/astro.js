@@ -195,6 +195,63 @@ function getSunTimes(jd, latitude, longitude, ra, dec, h0) {
     return [constrain(transit) * 24.0, constrain(rise) * 24.0, constrain(set) * 24.0];
 }
 
+function raDecToAltAz(ra, dec, lat, lon, jd_ut) {
+    const gmst = greenwichMeanSiderealTime(jd_ut);
+    let localSiderealTime = (gmst + lon) % (2 * Math.PI);
+
+    let hourAngle = localSiderealTime - ra;
+    if (hourAngle < 0) { hourAngle += 2 * Math.PI; }
+    if (hourAngle > Math.PI) { hourAngle -= 2 * Math.PI; }
+
+    let azimuth = Math.atan2(
+        Math.sin(hourAngle),
+        Math.cos(hourAngle) * Math.sin(lat) - Math.tan(dec) * Math.cos(lat)
+    );
+    const altitude = Math.asin(
+        Math.sin(lat) * Math.sin(dec) + Math.cos(lat) * Math.cos(dec) * Math.cos(hourAngle)
+    );
+
+    azimuth -= Math.PI;
+    if (azimuth < 0) { azimuth += 2 * Math.PI; }
+
+    return [azimuth, altitude, localSiderealTime, hourAngle];
+}
+
+function xyzToRaDec(target) {
+    const x = target[0];
+    const y = target[1];
+    const z = target[2];
+    const radius = Math.sqrt(x * x + y * y + z * z);
+    let ra = Math.atan2(y, x);
+    let dec = Math.acos(z / radius);
+
+    if (ra < 0) { ra += 2 * Math.PI; }
+    dec = Math.PI * 0.5 - dec;
+
+    return [ra, dec, radius];
+}
+
+function getRiseTransitSet(jd, lat, lonWestPositive, ra, dec, altitudeDeg) {
+    const gmst = greenwichMeanSiderealTime(Math.floor(jd) + 0.5) * toDeg;
+    const transit = (ra * toDeg + lonWestPositive * toDeg - gmst) / 360.0;
+
+    const cosLatCosDec = Math.cos(lat) * Math.cos(dec);
+    if (Math.abs(cosLatCosDec) < 1e-12) {
+        return [constrain(transit) * 24.0, NaN, NaN];
+    }
+
+    const cosH = (Math.sin(altitudeDeg * toRad) - Math.sin(lat) * Math.sin(dec)) / cosLatCosDec;
+    if (cosH < -1 || cosH > 1) {
+        return [constrain(transit) * 24.0, NaN, NaN];
+    }
+
+    const hourAngle = Math.acos(cosH) * toDeg;
+    const rise = transit - hourAngle / 360.0;
+    const set = transit + hourAngle / 360.0;
+
+    return [constrain(transit) * 24.0, constrain(rise) * 24.0, constrain(set) * 24.0];
+}
+
 // RA and Dec of the Sun
 function sunPosition(jd) {
     const n = jd - 2451545.0;
