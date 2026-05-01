@@ -15,3 +15,5 @@ WASI members get a monthly WASI Update email with highlights for the forthcoming
 - [January](/whats-up/2026/january.pdf) - Skycharts, viewing the comets, telescopes, and a flat or spherical Earth?
 - [February](/whats-up/2026/february.pdf) - Skycharts, hints on solar observations, and Astro Notes highlights.
 - [March](/whats-up/2026/march.pdf) - Skycharts, an eclipse! And reservation info for Alcon.
+- [April](/whats-up/2026/april.pdf) - Planetary lineups, WASI news.
+- [May](/whats-up/2026/may.pdf) - Skycharts and WASI news.
