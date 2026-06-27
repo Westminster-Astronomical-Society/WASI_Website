@@ -10,11 +10,12 @@ month at the Bear Branch Nature Center, 300 John Owings Rd. Westminster, MD and
 online via Zoom. There's a demo or class at 7:00 PM,
 followed by the featured guest speaker presentation at 7:30 PM.
 
-Our June 10, 2026 meeting features a talk by Dr. Demos Kazanas. Dr, Kazanas talk is
-titled "Cosmological Inflation: A Personal Perspective". He will review briefly the standard
- cosmology and outline two of its fundamental problems, namely the horizon and flatness
- problems. He will discuss how cosmological inflation can provide a resolution to
- these along with some thoughts concerning the future of the universe. 
+Our July 8, 2026 meeting features a talk by Tom Reinert. His talk is titled "Light Pollution Reconsidered". Tom is a retired Washington, D.C., attorney and immediate Past president of DarkSky International, who spent most of his career representing airlines and railroads in labor and employment matters. His work included extensive experience translating complex scientific expert testimony for lay decision-makers. He is a graduate of Harvard College and Harvard Law School.
+ 
+His environmental advocacy includes a decade working with local riverkeeper organizations on the Chesapeake Bay in Maryland to combat water pollution. In 2013, seeing the Andromeda Galaxy with his naked eye from atop Kitt Peak rekindled his interest in astronomy and inspired a commitment to reducing light pollution.
+ 
+Now residing in Northern Virginia and wintering in the desert outside Tucson, Tom and his wife Chris travel extensively throughout the western United States seeking dark sky locations. For several years, he has volunteered with DarkSky on legal and national public policy issues.
+
 
 {{< button href="https://us02web.zoom.us/j/87973841396?pwd=VWVTVUpoV1ZkSEJkVGY5djFZckx5Zz09" title="Zoom" target="_blank" class="btn btn-primary my-2"/>}}
 
