@@ -18,3 +18,5 @@ WASI members get a monthly WASI Update email with highlights for the forthcoming
 - [April](/whats-up/2026/april.pdf) - Planetary lineups, WASI news.
 - [May](/whats-up/2026/may.pdf) - Skycharts and WASI news.
 - [June](/whats-up/2026/june.pdf) - Skycharts and a near miss of Venus and the Moon.
+- [July](/whats-up/2026/july.pdf) - Skycharts and fun with observing M6 and M7.
+
