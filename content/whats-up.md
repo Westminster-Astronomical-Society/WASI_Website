@@ -19,4 +19,6 @@ WASI members get a monthly WASI Update email with highlights for the forthcoming
 - [May](/whats-up/2026/may.pdf) - Skycharts and WASI news.
 - [June](/whats-up/2026/june.pdf) - Skycharts and a near miss of Venus and the Moon.
 - [July](/whats-up/2026/july.pdf) - Skycharts and fun with observing M6 and M7.
-
+- [August](/whats-up/2026/august.pdf) - Skycharts and observing Venus and M10.
+- [September](/whats-up/2026/september.pdf) - Skycharts and a celestial parallelogram.
+- [October](/whats-up/2026/october.pdf) - Skycharts and an occultation.
