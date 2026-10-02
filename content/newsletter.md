@@ -17,7 +17,10 @@ Past issues of the newsletter are available here for download in PDF format:
 
 ### 2026:
 
-- [Winter 2026](/newsletter/2026/newsletter_winter_2026.pdf)
+- [Winter 2026](/newsletter/2026/winter.pdf)
+- [Spring 2026](/newsletter/2026/spring.pdf)
+- [Summer 2026](/newsletter/2026/summer.pdf)
+- [Fall 2026](/newsletter/2026/fall.pdf)
 
 ### 2025:
 
