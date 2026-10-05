@@ -84,4 +84,4 @@ Outreach Director:	Wayne (Skip) Bird
 
 Program Coordinator:	Curt Roelle
 
-Webmaster:	Tom Milley
+Webmaster:	Jack Ganssle
