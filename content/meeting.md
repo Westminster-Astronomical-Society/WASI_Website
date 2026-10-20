@@ -10,9 +10,16 @@ month at the Bear Branch Nature Center, 300 John Owings Rd. Westminster, MD and
 online via Zoom. There's a demo or class at 7:00 PM,
 followed by the featured guest speaker presentation at 7:30 PM.
 
-Although the new generation of revolutionary "smart scopes" have built-in catalogs and "GoTo" capabilities, not everyone owns one. Those with traditional instruments must use charts, their knowledge of the heavens, a little elbow grease and a good finder scope for locating faint objects. But there is another method, drifting, which provides a reliable process for finding faint deep sky objects using nearby easy-to-find stars, or even other deep sky objects, for locating them. Curtis Roelle will describe the Drifting method at the October 14 meeting. (Note: This is a repeat of a presentation given in 2022.)
+November is our annual Telescope Buyers Workshop meeting. With the popularity of the broad line of smart scopes of different brands we thought it would be useful to demonstrate the use and operation of electronic smart scopes. 
 
-After the presentation, members shall be given an opportunity to share their images and travel experiences from both August eclipses: 1) A solar eclipse (total eclipse was visible in Europe) and 2) A very deep partial lunar eclipse. Images can be shared from attendees' laptops and cell phones by dial in for the ZOOM! meeting.
+I am asking volunteers who own any model of the following brands of smart telescopes to give a short (0-15 minutes) discussion on the 1) initial set up (includes describing the downloading of any applicable apps), 2) observing session set-up, 3) operation of the smart scope during observatuion, and 4) some examples of your results.
+
+- ZWO (Seestar)
+- Unistellar
+- Vaonis
+- Dwarf Labs
+
+Please contact [me](mailto:librarian@westminsterastro.org) to volunteer or to ask questions about the meeting.
 
 
 {{< button href="https://us02web.zoom.us/j/87973841396?pwd=VWVTVUpoV1ZkSEJkVGY5djFZckx5Zz09" title="Zoom" target="_blank" class="btn btn-primary my-2"/>}}
