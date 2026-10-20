@@ -12,7 +12,7 @@ followed by the featured guest speaker presentation at 7:30 PM.
 
 November is our annual Telescope Buyers Workshop meeting. With the popularity of the broad line of smart scopes of different brands we thought it would be useful to demonstrate the use and operation of electronic smart scopes. 
 
-I am asking volunteers who own any model of the following brands of smart telescopes to give a short (0-15 minutes) discussion on the 1) initial set up (includes describing the downloading of any applicable apps), 2) observing session set-up, 3) operation of the smart scope during observatuion, and 4) some examples of your results.
+I am asking volunteers who own any model of the following brands of smart telescopes to give a short (0-15 minutes) discussion on the 1) initial set up (includes describing the downloading of any applicable apps), 2) observing session set-up, 3) operation of the smart scope during observationss, and 4) some examples of your results.
 
 - ZWO (Seestar)
 - Unistellar
@@ -21,6 +21,7 @@ I am asking volunteers who own any model of the following brands of smart telesc
 
 Please contact [me](mailto:librarian@westminsterastro.org) to volunteer or to ask questions about the meeting.
 
+And we'll have a swap table if you'd like to trade or sell gear. Please bring cash as electronic payments may not be easy for some.
 
 {{< button href="https://us02web.zoom.us/j/87973841396?pwd=VWVTVUpoV1ZkSEJkVGY5djFZckx5Zz09" title="Zoom" target="_blank" class="btn btn-primary my-2"/>}}
 
