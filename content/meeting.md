@@ -21,7 +21,13 @@ I am asking volunteers who own any model of the following brands of smart telesc
 
 Please contact [me](mailto:librarian@westminsterastro.org) to volunteer or to ask questions about the meeting.
 
-And we'll have a swap table if you'd like to trade or sell gear. Please bring cash as electronic payments may not be easy for some.
+This year we have a VERY special set of items for our FREE raffle (aka door prizes).  As always, and in keeping with county regulations on such things, the tickets remain free and you must be present to win (or your stand in must be present 'cause I'm not going to ship or deliver).
+
+We will have loads of displays and literature to help you make those important decisions on equipment purchases and the highlight this year is on smart scopes (and binos).
+
+There will be a 'swap' table(s) so bring CASH (& change) but also anything you want to SELL or trade with others.
+
+We continue to appreciate any items worthy of door prizes for donations like books, astronomy merch or gear.
 
 {{< button href="https://us02web.zoom.us/j/87973841396?pwd=VWVTVUpoV1ZkSEJkVGY5djFZckx5Zz09" title="Zoom" target="_blank" class="btn btn-primary my-2"/>}}
 
