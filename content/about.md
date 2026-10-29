@@ -41,7 +41,7 @@ opportunities.
 
 President:  Brooke Parkhurst
 
-1st Vice President:  Jeffrey Jacobs
+1st Vice President:  Vacant
 
 2nd Vice President:  Jeff Kretsch
 
