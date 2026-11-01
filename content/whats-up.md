@@ -22,3 +22,5 @@ WASI members get a monthly WASI Update email with highlights for the forthcoming
 - [August](/whats-up/2026/august.pdf) - Skycharts and observing Venus and M10.
 - [September](/whats-up/2026/september.pdf) - Skycharts and a celestial parallelogram.
 - [October](/whats-up/2026/october.pdf) - Skycharts and an occultation.
+- [November](/whats-up/2026/november.pdf) - Skycharts and some asterisms.
+
