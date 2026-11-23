@@ -10,7 +10,9 @@ month at the Bear Branch Nature Center, 300 John Owings Rd. Westminster, MD and
 online via Zoom. There's a demo or class at 7:00 PM,
 followed by the featured guest speaker presentation at 7:30 PM.
 
-December is our annual holiday pot-luck and party.
+December is our annual holiday pot-luck and party. Be sure to add your food contribution to the spreadsheet so we don't have too many duplicates. 
+That's here: https://westminsterastro.groups.io/g/main/table?id=37370.
+
 
 
 {{< button href="https://us02web.zoom.us/j/87973841396?pwd=VWVTVUpoV1ZkSEJkVGY5djFZckx5Zz09" title="Zoom" target="_blank" class="btn btn-primary my-2"/>}}
